@@ -50,7 +50,6 @@ coverage/
 coverage-final.json
 
 # Media assets built by tools
-/src/assets/Thumbnails/
 # Logs
 logs
 *.log
