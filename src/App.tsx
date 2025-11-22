@@ -6,6 +6,8 @@ import ChoptaTungnath from "./pages/ChoptaTungnath";
 import UdaipurMountAbu from "./pages/UdaipurMountAbu";
 import ManaliSissuKasol from "./pages/ManaliSissuKasol";
 import Layout from "./components/Layout";
+import AboutUs from "./pages/AboutUs";
+import ContactUs from "./pages/ContactUs";
 
 export default function App() {
   return (
@@ -22,6 +24,8 @@ export default function App() {
         {/* More trips */}
         <Route path="rishikesh" element={<div>Rishikesh Coming Soon</div>} />
         <Route path="udaipur" element={<div>Udaipur Coming Soon</div>} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<ContactUs />} />
       </Route>
     </Routes>
   );

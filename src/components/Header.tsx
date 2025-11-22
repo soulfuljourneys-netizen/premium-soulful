@@ -42,17 +42,51 @@ export default function Header() {
           className="hidden md:flex gap-6 ml-8 items-center"
           aria-label="Primary navigation"
         >
-          <a className="text-sm hover:underline" href="#overview">
-            Overview
+          <div className="relative group">
+            <button className="text-sm font-semibold hover:underline focus:outline-none">
+              Trips
+            </button>
+            <div className="absolute left-0 mt-2 w-56 bg-white border rounded shadow-lg opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity z-10">
+              <a
+                className="block px-4 py-2 text-sm hover:bg-slate-100"
+                href="/manali-kasol-chills"
+              >
+                Manali Kasol
+              </a>
+              <a
+                className="block px-4 py-2 text-sm hover:bg-slate-100"
+                href="/kasol-kheerganga"
+              >
+                Kasol Kheerganga
+              </a>
+              <a
+                className="block px-4 py-2 text-sm hover:bg-slate-100"
+                href="/chopta-tungnath"
+              >
+                Chopta Tungnath
+              </a>
+              <a
+                className="block px-4 py-2 text-sm hover:bg-slate-100"
+                href="/jibhi-tirthan"
+              >
+                Jibhi Tirthan
+              </a>
+              <a
+                className="block px-4 py-2 text-sm hover:bg-slate-100"
+                href="/udaipur-mount-abu"
+              >
+                Udaipur Mount Abu
+              </a>
+            </div>
+          </div>
+          <a className="text-sm hover:underline" href="/about">
+            About Us
           </a>
-          <a className="text-sm hover:underline" href="#itinerary">
-            Itinerary
+          <a className="text-sm hover:underline" href="/contact">
+            Contact Us
           </a>
-          <a className="text-sm hover:underline" href="#details">
-            Details
-          </a>
-          <a className="text-sm hover:underline" href="#book">
-            Book
+          <a className="text-sm hover:underline" href="#careers">
+            Careers
           </a>
         </nav>
 
