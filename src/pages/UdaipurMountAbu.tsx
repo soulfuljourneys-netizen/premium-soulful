@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import HeroBlock from "../components/HeroBlock";
+import thumb1 from "../assets/Hero Sections/Udaipur Mount Abu/Jagat Niwas Palace, Udaipur.jpg";
+import thumb2 from "../assets/Hero Sections/Udaipur Mount Abu/Sajjangarh palace, udaipur.jpg";
+import thumb3 from "../assets/Hero Sections/Udaipur Mount Abu/Udaipur City Palace.jpg";
+import thumb4 from "../assets/Hero Sections/Udaipur Mount Abu/Udaipur Ghat.jpg";
 import ItineraryAccordion from "../components/ItineraryAccordion";
 import DetailsPanel from "../components/DetailsPanel";
 import VideoScroller from "../components/VideoScroller";
 import VideoModal from "../components/VideoModal";
 import MobileActionBar from "../components/MobileActionBar";
 import PageVisuals from "../components/PageVisuals";
+import TripStaySection from "../components/TripStaySection";
 
 export default function UdaipurMountAbu() {
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
@@ -57,17 +62,6 @@ export default function UdaipurMountAbu() {
     "Adventure charges & personal expenses",
   ];
 
-  const essentials = {
-    gears: ["Small daypack", "Water bottle", "Comfortable walking shoes"],
-    clothes: [
-      "Light layers",
-      "Comfortable daytime clothes",
-      "Swimwear (optional)",
-    ],
-    footwear: ["Walking shoes", "Sandals"],
-    medication: ["Personal meds", "Basic first-aid"],
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value } as any));
 
@@ -93,14 +87,8 @@ export default function UdaipurMountAbu() {
           description={
             "A soulful combo of Udaipur’s palaces and lakes with the green hill station charm of Mount Abu — culture, pools, and evening bonfires. Every Friday evening departure from Delhi / Gurgaon."
           }
-          heroImage={
-            "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=1600&auto=format&fit=crop"
-          }
-          thumbnails={[
-            "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=800&auto=format&fit=crop",
-          ]}
+          heroImage={thumb1}
+          thumbnails={[thumb1, thumb2, thumb3, thumb4]}
           ctaPrimary={{ text: "Reserve Your Seat", href: "#book" }}
           ctaSecondary={{
             text: "More Info",
@@ -167,7 +155,14 @@ export default function UdaipurMountAbu() {
       <DetailsPanel
         inclusions={inclusions}
         exclusions={exclusions}
-        essentials={essentials}
+        dates={[
+          "12th–16th Dec",
+          "19th–23rd Dec",
+          "21st–31st Dec (Everyday Departure)",
+          "2nd–6th Jan",
+          "9th–13th Jan",
+          "16th–20th Jan",
+        ]}
       />
 
       <section

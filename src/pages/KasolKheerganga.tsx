@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import HeroBlock from "../components/HeroBlock";
+import thumb1 from "../assets/Hero Sections/Kasol Kheerganga/Kasol Himanchal Pradesh.jpg";
+import thumb2 from "../assets/Hero Sections/Kasol Kheerganga/Maggie at Kasol.jpg";
+import thumb3 from "../assets/Hero Sections/Kasol Kheerganga/Manikaran sahib.jpg";
+import thumb4 from "../assets/Hero Sections/Kasol Kheerganga/Parvati valley treks.jpg";
 import ItineraryAccordion from "../components/ItineraryAccordion";
 import DetailsPanel from "../components/DetailsPanel";
 import VideoScroller from "../components/VideoScroller";
 import VideoModal from "../components/VideoModal";
 import MobileActionBar from "../components/MobileActionBar";
 import PageVisuals from "../components/PageVisuals";
+import TripStaySection from "../components/TripStaySection";
 
 export default function KasolKheerganga() {
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
@@ -58,13 +63,6 @@ export default function KasolKheerganga() {
     "GST/taxes unless specified",
   ];
 
-  const essentials = {
-    gears: ["Rucksack + daypack", "Water bottle (1–2L)", "Sunscreen"],
-    clothes: ["Warm layers", "Quick-dry trousers", "Light jacket for evenings"],
-    footwear: ["Comfortable trekking shoes", "Camp slippers"],
-    medication: ["Personal meds", "Basic first-aid"],
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value } as any));
 
@@ -88,14 +86,8 @@ export default function KasolKheerganga() {
           description={
             "Kasol is a riverside hamlet famous for its laidback cafe culture and scenic trails. This trip blends relaxed riverside time with an invigorating trek to Kheerganga and cozy nights in camps."
           }
-          heroImage={
-            "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c6?q=80&w=1600&auto=format&fit=crop"
-          }
-          thumbnails={[
-            "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c6?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop",
-          ]}
+          heroImage={thumb1}
+          thumbnails={[thumb1, thumb2, thumb3, thumb4]}
           ctaPrimary={{ text: "Reserve Your Seat", href: "#book" }}
           ctaSecondary={{
             text: "More Info",
@@ -161,10 +153,27 @@ export default function KasolKheerganga() {
 
       <ItineraryAccordion itinerary={itinerary} />
 
+      {/* Stays We Provide Carousel Section */}
+      <TripStaySection
+        carousels={[
+          {
+            title: "Stays We Provide",
+            images: [thumb1, thumb2, thumb3, thumb4],
+          },
+        ]}
+      />
+
       <DetailsPanel
         inclusions={inclusions}
         exclusions={exclusions}
-        essentials={essentials}
+        dates={[
+          "12th–16th Dec",
+          "19th–23rd Dec",
+          "21st–31st Dec (Everyday Departure)",
+          "2nd–6th Jan",
+          "9th–13th Jan",
+          "16th–20th Jan",
+        ]}
       />
 
       <section

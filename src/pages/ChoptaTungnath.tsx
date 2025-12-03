@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import HeroBlock from "../components/HeroBlock";
+import thumb1 from "../assets/Hero Sections/Chopta Tungnath/Chandrashila Peak.jpg";
+import thumb2 from "../assets/Hero Sections/Chopta Tungnath/Chopta tungnath Camp.jpg";
+import thumb3 from "../assets/Hero Sections/Chopta Tungnath/Tungnath Tempe View.jpg";
+import thumb4 from "../assets/Hero Sections/Chopta Tungnath/Tungnath Temple.jpg";
 import ItineraryAccordion from "../components/ItineraryAccordion";
 import DetailsPanel from "../components/DetailsPanel";
 import VideoScroller from "../components/VideoScroller";
 import VideoModal from "../components/VideoModal";
 import MobileActionBar from "../components/MobileActionBar";
 import PageVisuals from "../components/PageVisuals";
+import TripStaySection from "../components/TripStaySection";
 
 export default function ChoptaTungnath() {
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
@@ -47,15 +52,8 @@ export default function ChoptaTungnath() {
 
   const exclusions = ["Personal expenses", "Adventure charges", "GST/taxes"];
 
-  const essentials = {
-    gears: ["Rucksack + daypack", "Water bottle (1–2L)", "Warm gloves"],
-    clothes: ["Warm layers", "Trekking trousers", "Windproof jacket"],
-    footwear: ["Trekking boots", "Camp slippers"],
-    medication: ["Personal meds", "Basic first-aid"],
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value } as any));
+    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
   const submitForm = () => {
     console.log("Booking request", form);
@@ -79,14 +77,8 @@ export default function ChoptaTungnath() {
           description={
             "Alpine meadows of Chopta and the spiritual trail to Tungnath — ideal for short trekking groups and nature lovers."
           }
-          heroImage={
-            "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop"
-          }
-          thumbnails={[
-            "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop",
-          ]}
+          heroImage={thumb1}
+          thumbnails={[thumb1, thumb2, thumb3, thumb4]}
           ctaPrimary={{ text: "Reserve Your Seat", href: "#book" }}
           ctaSecondary={{ text: "More Info", href: "#" }}
           stats={[
@@ -148,10 +140,27 @@ export default function ChoptaTungnath() {
 
       <ItineraryAccordion itinerary={itinerary} />
 
+      {/* Stays We Provide Carousel Section */}
+      <TripStaySection
+        carousels={[
+          {
+            title: "Stays We Provide",
+            images: [thumb1, thumb2, thumb3, thumb4],
+          },
+        ]}
+      />
+
       <DetailsPanel
         inclusions={inclusions}
         exclusions={exclusions}
-        essentials={essentials}
+        dates={[
+          "12th–16th Dec",
+          "19th–23rd Dec",
+          "21st–31st Dec (Everyday Departure)",
+          "2nd–6th Jan",
+          "9th–13th Jan",
+          "16th–20th Jan",
+        ]}
       />
 
       <section
@@ -160,12 +169,40 @@ export default function ChoptaTungnath() {
       >
         <div>
           <div className="text-sm text-slate-600">Starting from</div>
-          <div className="text-3xl font-extrabold">
+          <div className="text-2xl font-bold text-purple-700 mb-2">
+            Quad Room Sharing
+          </div>
+          <div className="text-3xl font-extrabold mb-1">
             ₹5,999{" "}
             <span className="text-base font-medium text-slate-600">
               / person
             </span>
           </div>
+          <div className="mt-2 space-y-1">
+            <div className="font-semibold">
+              Quad Room sharing:{" "}
+              <span className="text-slate-700">₹5,999 / per person</span>
+            </div>
+            <div className="font-semibold">
+              Triple Room sharing:{" "}
+              <span className="text-slate-700">₹6,499 / per person</span>
+            </div>
+            <div className="font-semibold">
+              Double Room sharing:{" "}
+              <span className="text-slate-700">₹6,999 / per person</span>
+            </div>
+          </div>
+          <button
+            className="mt-2 text-xs text-purple-600 underline hover:text-purple-800"
+            type="button"
+            onClick={() =>
+              alert(
+                "Quad: 4 people in a room. Triple: 3 people in a room. Double: 2 people in a room. Room sharing means you share the room with other travelers, each gets a separate bed."
+              )
+            }
+          >
+            What is Quad, Triple, Double Room sharing?
+          </button>
         </div>
 
         <form

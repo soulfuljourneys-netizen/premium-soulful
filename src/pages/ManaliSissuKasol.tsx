@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import HeroBlock from "../components/HeroBlock";
+import hero1 from "../assets/Hero Sections/Manali Kasol/hadimba temple.jpg";
+import hero2 from "../assets/Hero Sections/Manali Kasol/Manali Honeymoon Package_.jpg";
+import hero3 from "../assets/Hero Sections/Manali Kasol/manali atal tunnel road.jpg";
+import hero4 from "../assets/Hero Sections/Manali Kasol/Sissu (Manali).jpg";
 import ItineraryAccordion from "../components/ItineraryAccordion";
 import DetailsPanel from "../components/DetailsPanel";
 import VideoScroller from "../components/VideoScroller";
 import VideoModal from "../components/VideoModal";
 import MobileActionBar from "../components/MobileActionBar";
 import PageVisuals from "../components/PageVisuals";
+import TripStaySection from "../components/TripStaySection";
 
 export default function ManaliSissuKasol() {
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
@@ -105,14 +110,8 @@ export default function ManaliSissuKasol() {
           description={
             "A combined itinerary covering Manali’s highlights, the snow-accessible Sissu/Atal Tunnel region (seasonal), and riverside camping at Kasol — ideal for adventure and relaxed evenings around the bonfire."
           }
-          heroImage={
-            "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop"
-          }
-          thumbnails={[
-            "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=800&auto=format&fit=crop",
-            "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c6?q=80&w=800&auto=format&fit=crop",
-          ]}
+          heroImage={hero1}
+          thumbnails={[hero2, hero3, hero4]}
           ctaPrimary={{ text: "Reserve Your Seat", href: "#book" }}
           ctaSecondary={{
             text: "More Info",
@@ -177,11 +176,20 @@ export default function ManaliSissuKasol() {
 
       <ItineraryAccordion itinerary={itinerary} />
 
-      <DetailsPanel
-        inclusions={inclusions}
-        exclusions={exclusions}
-        essentials={essentials}
+      <TripStaySection
+        carousels={[
+          {
+            title: "Stays We Provide — Hotel",
+            images: [hero1, hero2],
+          },
+          {
+            title: "Stays We Provide — Camps",
+            images: [hero3, hero4],
+          },
+        ]}
       />
+
+      <DetailsPanel inclusions={inclusions} exclusions={exclusions} />
 
       <section
         id="book"
