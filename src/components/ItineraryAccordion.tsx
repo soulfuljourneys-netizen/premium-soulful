@@ -19,7 +19,7 @@ export default function ItineraryAccordion({ itinerary }: Props) {
       <div className="mt-4 space-y-4">
         {itinerary.map((day, i) => (
           <article
-            key={i + '-' + day.title}
+            key={i + "-" + day.title}
             onClick={() => toggle(i)}
             role="button"
             tabIndex={0}
@@ -41,7 +41,9 @@ export default function ItineraryAccordion({ itinerary }: Props) {
             </div>
             <div
               className={`px-6 pb-6 transition-all duration-300 overflow-hidden ${
-                expanded === i ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+                expanded === i
+                  ? "max-h-[1000px] opacity-100"
+                  : "max-h-0 opacity-0"
               }`}
             >
               <p className="text-slate-600">{day.body}</p>
