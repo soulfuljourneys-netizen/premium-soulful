@@ -6,6 +6,7 @@ import ChoptaTungnath from "./pages/ChoptaTungnath";
 import UdaipurMountAbu from "./pages/UdaipurMountAbu";
 import ManaliSissuKasol from "./pages/ManaliSissuKasol";
 import Layout from "./components/Layout";
+import MetaLeadForm from "./pages/MetaLeadForm";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 
@@ -16,6 +17,7 @@ export default function App() {
         <Route index element={<Home />} />
         {/* ManaliSolang removed (deleted) */}
         <Route path="chopta-tungnath" element={<ChoptaTungnath />} />
+        <Route path="group-trips-queries" element={<MetaLeadForm />} />
         <Route path="kasol-kheerganga" element={<KasolKheerganga />} />
         <Route path="jibhi-tirthan" element={<JibhiTirthan />} />
         <Route path="udaipur-mount-abu" element={<UdaipurMountAbu />} />
