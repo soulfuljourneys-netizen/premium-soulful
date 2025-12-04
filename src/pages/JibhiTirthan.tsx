@@ -8,13 +8,13 @@ import ItineraryAccordion from "../components/ItineraryAccordion";
 import DetailsPanel from "../components/DetailsPanel";
 import VideoScroller from "../components/VideoScroller";
 import VideoModal from "../components/VideoModal";
-import StayCarousel from "../components/StayCarousel";
+// import StayCarousel from "../components/StayCarousel";
 import TripStaySection from "../components/TripStaySection";
 import MobileActionBar from "../components/MobileActionBar";
 import PageVisuals from "../components/PageVisuals";
 
 export default function JibhiTirthan() {
-  const [expanded, setExpanded] = useState<number | null>(null);
+  // const [expanded, setExpanded] = useState<number | null>(null);
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
 
   const [openVideo, setOpenVideo] = useState<{
@@ -78,7 +78,7 @@ export default function JibhiTirthan() {
     },
   ];
 
-  const toggle = (i: number) => setExpanded((prev) => (prev === i ? null : i));
+  // const toggle = (i: number) => setExpanded((prev) => (prev === i ? null : i));
 
   return (
     <main className="max-w-6xl mx-auto px-4 md:px-6 pb-36 pt-6">

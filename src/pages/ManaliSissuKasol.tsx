@@ -69,16 +69,16 @@ export default function ManaliSissuKasol() {
     "Personal expenses",
   ];
 
-  const essentials = {
-    gears: ["Rucksack + daypack", "Water bottle (1–2L)", "Sunscreen"],
-    clothes: [
-      "Warm layers",
-      "Thermals (if visiting snow)",
-      "Comfortable daywear",
-    ],
-    footwear: ["Trekking shoes / walking shoes", "Sandals"],
-    medication: ["Personal meds", "Basic first-aid"],
-  };
+  // const essentials = {
+  //   gears: ["Rucksack + daypack", "Water bottle (1–2L)", "Sunscreen"],
+  //   clothes: [
+  //     "Warm layers",
+  //     "Thermals (if visiting snow)",
+  //     "Comfortable daywear",
+  //   ],
+  //   footwear: ["Trekking shoes / walking shoes", "Sandals"],
+  //   medication: ["Personal meds", "Basic first-aid"],
+  // };
 
   const prices = {
     before: { quad: "₹6,499", triple: "₹6,999", dbl: "₹7,499" },
@@ -86,7 +86,7 @@ export default function ManaliSissuKasol() {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value } as any));
+    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
   const submitForm = () => {
     console.log("Booking request", form);

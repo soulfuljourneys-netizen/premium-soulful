@@ -49,8 +49,15 @@ export default function MetaLeadForm() {
     setOverlayText("Submitting your details…");
 
     const pysEventId =
-      (window as any).pysOptions?.dynamicEvents?.automatic_event_form?.facebook
-        ?.eventID || "LEAD_" + Date.now();
+      ((window as any).pysOptions?.dynamicEvents?.automatic_event_form
+        ?.facebook &&
+      typeof (window as any).pysOptions.dynamicEvents.automatic_event_form
+        .facebook === "object" &&
+      "eventID" in
+        (window as any).pysOptions.dynamicEvents.automatic_event_form.facebook
+        ? (window as any).pysOptions.dynamicEvents.automatic_event_form.facebook
+            .eventID
+        : undefined) || "LEAD_" + Date.now();
     const fbcCookie = getCookie("_fbc");
     const fbpCookie = getCookie("_fbp");
     const fbclid = new URLSearchParams(window.location.search).get("fbclid");
@@ -65,18 +72,18 @@ export default function MetaLeadForm() {
     // HubSpot payload
     const hubspotData = {
       fields: [
-        { name: "firstname", value: form.firstname },
-        { name: "lastname", value: form.lastname },
-        { name: "email", value: form.email },
-        { name: "phone", value: formattedPhone },
-        { name: "trip", value: form.trip },
-        { name: "trip_month", value: form.trip_month },
-        { name: "persons", value: form.persons },
+        { name: "firstname", value: form.firstname || "N/A" },
+        { name: "lastname", value: form.lastname || "N/A" },
+        { name: "email", value: form.email || "N/A" },
+        { name: "phone", value: formattedPhone || "N/A" },
+        { name: "trip", value: form.trip || "N/A" },
+        { name: "trip_month", value: form.trip_month || "N/A" },
+        { name: "persons", value: form.persons || "N/A" },
         {
           name: "how_soon_you_want_to_book",
-          value: form.how_soon_you_want_to_book,
+          value: form.how_soon_you_want_to_book || "N/A",
         },
-        { name: "twitterhandle", value: fbc },
+        { name: "twitterhandle", value: fbc || "N/A" },
       ],
     };
 
@@ -122,7 +129,7 @@ export default function MetaLeadForm() {
 
       setOverlayText("Redirecting…");
       setTimeout(() => {
-        window.location.href = "https://soulfuljourneystours.com/group-trips";
+        window.location.href = "https://premiumsoulful.com/thank-you-meta/";
       }, 500);
     } catch (err) {
       setOverlayText("Error submitting. Please try again.");
@@ -131,16 +138,30 @@ export default function MetaLeadForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-white flex items-center justify-center px-4">
-      <div className="max-w-lg w-full bg-white border border-slate-200 rounded-2xl shadow-lg p-8">
-        <h2 className="text-3xl font-bold text-purple-700 mb-2 text-center">
-          Soulful Journeys Lead Form
-        </h2>
-        <p className="text-slate-600 mb-6 text-center">
-          Fill your details to get a callback and exclusive offers for Meta ads
-          leads.
-        </p>
-        <form className="space-y-4" onSubmit={handleSubmit}>
+    <div
+      className="min-h-screen flex items-center justify-center bg-[#18121e] bg-cover bg-center relative overflow-hidden"
+      style={{ backgroundImage: "none" }}
+    >
+      {/* Ghost friends group chilling image as background */}
+      <img
+        src="/assets/ghost-friends-chilling.png"
+        alt="Ghost friends group chilling"
+        className="pointer-events-none select-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[420px] max-w-[90vw] opacity-80 z-0"
+        style={{ filter: "drop-shadow(0 8px 32px #0008)" }}
+      />
+      {/* Subtle overlay for modern minimal look */}
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-[#18121e]/80 to-[#18121e]/95 backdrop-blur-sm z-10"
+        aria-hidden="true"
+      ></div>
+      <div className="relative w-full max-w-md mx-auto p-8 rounded-2xl shadow-2xl bg-[#20162b]/90 border border-[#3a234a] flex flex-col items-center z-20">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-white text-center mb-2 tracking-tight drop-shadow-lg">
+          Vibe Check, are you the one?
+        </h1>
+        <div className="text-center text-lg font-extrabold text-white mb-6 tracking-widest drop-shadow">
+          PΛΛVE!
+        </div>
+        <form onSubmit={handleSubmit} className="w-full space-y-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
               name="firstname"
@@ -148,7 +169,7 @@ export default function MetaLeadForm() {
               onChange={handleChange}
               placeholder="First Name"
               required
-              className="p-3 border rounded-2xl"
+              className="px-5 py-3 rounded-2xl bg-[#2a1536] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 text-lg border border-[#3a234a] shadow-inner"
             />
             <input
               name="lastname"
@@ -156,7 +177,7 @@ export default function MetaLeadForm() {
               onChange={handleChange}
               placeholder="Last Name"
               required
-              className="p-3 border rounded-2xl"
+              className="px-5 py-3 rounded-2xl bg-[#2a1536] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 text-lg border border-[#3a234a] shadow-inner"
             />
           </div>
           <input
@@ -165,36 +186,58 @@ export default function MetaLeadForm() {
             onChange={handleChange}
             placeholder="Email"
             type="email"
-            className="p-3 border rounded-2xl w-full"
+            className="px-5 py-3 rounded-2xl bg-[#2a1536] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 text-lg border border-[#3a234a] shadow-inner w-full"
           />
           <input
             name="phone"
             value={form.phone}
             onChange={handleChange}
-            placeholder="Phone Number"
+            placeholder="whatsapp number"
             required
-            className="p-3 border rounded-2xl w-full"
+            className="px-5 py-3 rounded-2xl bg-[#2a1536] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 text-lg border border-[#3a234a] shadow-inner w-full"
           />
-          <select
-            name="trip"
-            value={form.trip}
-            onChange={handleChange}
-            required
-            className="p-3 border rounded-2xl w-full"
-          >
-            <option value="">Select Trip</option>
-            {trips.map((trip) => (
-              <option key={trip} value={trip}>
-                {trip}
-              </option>
-            ))}
-          </select>
+          <div className="mt-2">
+            <div className="text-white font-semibold mb-2">
+              Which Trip you're looking?
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {trips.map((option) => (
+                <label
+                  key={option}
+                  className="flex items-center space-x-2 cursor-pointer text-white"
+                >
+                  <input
+                    type="radio"
+                    name="trip"
+                    value={option}
+                    checked={form.trip === option}
+                    onChange={handleChange}
+                    className="h-4 w-4 accent-pink-500 border-2 border-white focus:ring-2 focus:ring-pink-500"
+                    required
+                  />
+                  <span className="text-sm font-medium">{option}</span>
+                </label>
+              ))}
+              <label className="flex items-center space-x-2 cursor-pointer text-white">
+                <input
+                  type="radio"
+                  name="trip"
+                  value="Something else"
+                  checked={form.trip === "Something else"}
+                  onChange={handleChange}
+                  className="h-4 w-4 accent-pink-500 border-2 border-white focus:ring-2 focus:ring-pink-500"
+                  required
+                />
+                <span className="text-sm font-medium">Something else</span>
+              </label>
+            </div>
+          </div>
           <select
             name="trip_month"
             value={form.trip_month}
             onChange={handleChange}
             required
-            className="p-3 border rounded-2xl w-full"
+            className="px-5 py-3 rounded-2xl bg-[#2a1536] text-white focus:outline-none focus:ring-2 focus:ring-pink-500 text-lg border border-[#3a234a] shadow-inner w-full"
           >
             <option value="">Select Month</option>
             {months.map((month) => (
@@ -209,14 +252,14 @@ export default function MetaLeadForm() {
             onChange={handleChange}
             placeholder="Number of Persons"
             required
-            className="p-3 border rounded-2xl w-full"
+            className="px-5 py-3 rounded-2xl bg-[#2a1536] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 text-lg border border-[#3a234a] shadow-inner w-full"
           />
           <select
             name="how_soon_you_want_to_book"
             value={form.how_soon_you_want_to_book}
             onChange={handleChange}
             required
-            className="p-3 border rounded-2xl w-full"
+            className="px-5 py-3 rounded-2xl bg-[#2a1536] text-white focus:outline-none focus:ring-2 focus:ring-pink-500 text-lg border border-[#3a234a] shadow-inner w-full"
           >
             <option value="">How soon do you want to book?</option>
             <option value="Immediately">Immediately</option>
@@ -226,9 +269,10 @@ export default function MetaLeadForm() {
           </select>
           <button
             type="submit"
-            className="w-full py-3 rounded-2xl bg-purple-600 text-white font-bold text-lg hover:bg-purple-700 transition"
+            className="w-full py-3 mt-4 rounded-2xl bg-pink-500 hover:bg-pink-600 text-white font-bold text-lg shadow-lg transition-all duration-200 tracking-wider"
+            disabled={overlay}
           >
-            Submit
+            {overlay ? "Submitting..." : "PASS THE VIBE CHECK"}
           </button>
         </form>
         {overlay && (
