@@ -3,7 +3,7 @@ name: Deploy to Hostinger
 on:
   push:
     branches:
-      - main   # or master, depending on your repo
+      - main
 
 jobs:
   build-and-deploy:
@@ -27,10 +27,10 @@ jobs:
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
-          server: ${{ secrets.FTP_HOST }}
+          server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 21
+          port: ${{ secrets.FTP_PORT }}
           protocol: ftps
           local-dir: ./dist
           server-dir: ${{ secrets.FTP_REMOTE_DIR }}
