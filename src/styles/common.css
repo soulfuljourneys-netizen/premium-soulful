@@ -10,6 +10,9 @@
 .content-area {
   padding-top: 90px;
 }
+.content-area.home {
+  padding-top: 0;
+}
 
 /* Category Bar */
 .category-bar {

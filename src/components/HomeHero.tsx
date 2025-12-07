@@ -74,10 +74,13 @@ export default function HomeHero() {
   const right = images[(idx + 2) % images.length];
 
   return (
-    <section id="home-hero" className="w-full min-h-[88vh] md:min-h-[92vh] bg-[#0f002e] text-white flex flex-col md:flex-row items-center justify-center px-6 md:px-8 pt-0 md:pt-0">
+    <section
+      id="home-hero"
+      className="w-full min-h-[88vh] md:min-h-[92vh] bg-[#0f002e] text-white flex flex-col md:flex-row items-center justify-center px-6 md:px-8 pt-0 md:pt-0"
+    >
       {/* LEFT — Collage */}
-      <div className="w-full md:w-1/2 flex items-center justify-center">
-        <div className="flex items-end justify-center gap-2 md:gap-3 translate-x-0 md:translate-x-4 px-2">
+      <div className="w-full md:w-1/2 flex items-center justify-center pl-4 md:pl-12 lg:pl-20">
+        <div className="flex items-end justify-center gap-2 md:gap-3 translate-x-0 md:translate-x-6 px-2">
           {/* Left card (slightly smaller) */}
           <div className="w-28 md:w-64 transform -rotate-6 transition-transform duration-700 ease-out">
             <Card src={left} />
