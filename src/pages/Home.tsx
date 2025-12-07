@@ -97,83 +97,85 @@ export default function Home() {
           <div className="max-w-5xl mx-auto">
             <div className="rounded-2xl p-6 md:p-8 bg-white/6 border border-neutral-200/6">
               <div className="text-center">
-                    <h2 className="text-2xl md:text-3xl font-extrabold text-neutral-900">
-                      Why Choose Us
-                    </h2>
-                    <span className="block h-1 w-14 mx-auto mt-3 rounded-full bg-gradient-to-r from-[#ffb347] to-[#ff4c1b]" />
+                <h2 className="text-2xl md:text-3xl font-extrabold text-neutral-900">
+                  Why Choose Us
+                </h2>
+                <span className="block h-1 w-14 mx-auto mt-3 rounded-full bg-gradient-to-r from-[#ffb347] to-[#ff4c1b]" />
                 <p className="text-neutral-700 mt-2 max-w-2xl mx-auto">
-                  We make trips energetic, social and unforgettable — tailored for
-                  young travellers who want more than the usual sightseeing.
+                  We make trips energetic, social and unforgettable — tailored
+                  for young travellers who want more than the usual sightseeing.
                 </p>
               </div>
 
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="bg-[rgba(255,255,255,0.04)] border border-white/6 rounded-xl p-6 flex flex-col items-center text-center shadow-lg">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#ffb347] to-[#ff4c1b] flex items-center justify-center mb-3">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    viewBox="0 0 24 24"
-                    fill="white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden
-                  >
-                    <path d="M16 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM8 11c1.657 0 3-1.343 3-3S9.657 5 8 5 5 6.343 5 8s1.343 3 3 3zM8 13c-2.667 0-8 1.333-8 4v2h16v-2c0-2.667-5.333-4-8-4zm8 0c-.333 0-1.333.167-2 .333 1.333.667 2 1.667 2 3.667V19h6v-2c0-2.667-5.333-4-6-4z" />
-                  </svg>
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="bg-[rgba(255,255,255,0.04)] border border-white/6 rounded-xl p-6 flex flex-col items-center text-center shadow-lg">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#ffb347] to-[#ff4c1b] flex items-center justify-center mb-3">
+                    <svg
+                      className="w-6 h-6 text-white"
+                      viewBox="0 0 24 24"
+                      fill="white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden
+                    >
+                      <path d="M16 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM8 11c1.657 0 3-1.343 3-3S9.657 5 8 5 5 6.343 5 8s1.343 3 3 3zM8 13c-2.667 0-8 1.333-8 4v2h16v-2c0-2.667-5.333-4-8-4zm8 0c-.333 0-1.333.167-2 .333 1.333.667 2 1.667 2 3.667V19h6v-2c0-2.667-5.333-4-6-4z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold text-neutral-900">
+                    Young Tribe
+                  </h3>
+                  <p className="text-neutral-700 mt-2 text-sm">
+                    A community of like-minded young travellers — make friends
+                    on every trip.
+                  </p>
                 </div>
-                <h3 className="text-lg font-bold text-neutral-900">Young Tribe</h3>
-                <p className="text-neutral-700 mt-2 text-sm">
-                  A community of like-minded young travellers — make friends on
-                  every trip.
-                </p>
-              </div>
 
-              <div className="bg-[rgba(255,255,255,0.04)] border border-white/6 rounded-xl p-6 flex flex-col items-center text-center shadow-lg">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#ffb347] to-[#ff4c1b] flex items-center justify-center mb-3">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    viewBox="0 0 24 24"
-                    fill="white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden
-                  >
-                    <path d="M12 2l2.1 4.3L18.5 7l-3.2 2.8.8 4.5L12 12.9 8.9 14.3l.8-4.5L6.5 7l4.4-.7L12 2z" />
-                  </svg>
+                <div className="bg-[rgba(255,255,255,0.04)] border border-white/6 rounded-xl p-6 flex flex-col items-center text-center shadow-lg">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#ffb347] to-[#ff4c1b] flex items-center justify-center mb-3">
+                    <svg
+                      className="w-6 h-6 text-white"
+                      viewBox="0 0 24 24"
+                      fill="white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden
+                    >
+                      <path d="M12 2l2.1 4.3L18.5 7l-3.2 2.8.8 4.5L12 12.9 8.9 14.3l.8-4.5L6.5 7l4.4-.7L12 2z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold text-neutral-900">
+                    We don't do Boring
+                  </h3>
+                  <p className="text-neutral-700 mt-2 text-sm">
+                    High-energy activities, curated nights and experiences that
+                    spark stories.
+                  </p>
                 </div>
-                <h3 className="text-lg font-bold text-neutral-900">
-                  We don't do Boring
-                </h3>
-                <p className="text-neutral-700 mt-2 text-sm">
-                  High-energy activities, curated nights and experiences that
-                  spark stories.
-                </p>
-              </div>
 
-              <div className="bg-[rgba(255,255,255,0.04)] border border-white/6 rounded-xl p-6 flex flex-col items-center text-center shadow-lg">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#ffb347] to-[#ff4c1b] flex items-center justify-center mb-3">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    viewBox="0 0 24 24"
-                    fill="white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden
-                  >
-                    <path
-                      d="M12 2v6M6 14l6-4 6 4M6 20h12"
-                      stroke="white"
-                      strokeWidth="0"
-                    />
-                    <path d="M12 2v6" />
-                  </svg>
+                <div className="bg-[rgba(255,255,255,0.04)] border border-white/6 rounded-xl p-6 flex flex-col items-center text-center shadow-lg">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#ffb347] to-[#ff4c1b] flex items-center justify-center mb-3">
+                    <svg
+                      className="w-6 h-6 text-white"
+                      viewBox="0 0 24 24"
+                      fill="white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden
+                    >
+                      <path
+                        d="M12 2v6M6 14l6-4 6 4M6 20h12"
+                        stroke="white"
+                        strokeWidth="0"
+                      />
+                      <path d="M12 2v6" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold text-neutral-900">
+                    Energetic Trip Captains
+                  </h3>
+                  <p className="text-neutral-700 mt-2 text-sm">
+                    Experienced, fun leaders who keep the group safe and the
+                    vibes high.
+                  </p>
                 </div>
-                <h3 className="text-lg font-bold text-neutral-900">
-                  Energetic Trip Captains
-                </h3>
-                <p className="text-neutral-700 mt-2 text-sm">
-                  Experienced, fun leaders who keep the group safe and the vibes
-                  high.
-                </p>
               </div>
-            </div>
             </div>
           </div>
         </section>

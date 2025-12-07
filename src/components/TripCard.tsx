@@ -20,10 +20,13 @@ export default function TripCard({
 }: TripCardProps) {
   return (
     <a href={href} className="no-underline">
-      <motion.div className="trip-card shadow-md hover:shadow-xl transition-shadow" whileHover={{ scale: 1.04 }}>
+      <motion.div
+        className="trip-card shadow-md hover:shadow-xl transition-shadow"
+        whileHover={{ scale: 1.04 }}
+      >
         {/* Show a single square thumbnail when provided; fallback to main image */}
         {thumbnails && thumbnails.length > 0 ? (
-            <div className="trip-img-box aspect-square w-full rounded-lg overflow-hidden bg-slate-100">
+          <div className="trip-img-box aspect-square w-full rounded-lg overflow-hidden bg-slate-100">
             <img
               src={thumbnails[0]}
               alt={`${title} thumbnail`}
@@ -32,7 +35,11 @@ export default function TripCard({
           </div>
         ) : (
           <div className="trip-img-box">
-            <img src={image} className="trip-img saturate-110 contrast-105" alt={title} />
+            <img
+              src={image}
+              className="trip-img saturate-110 contrast-105"
+              alt={title}
+            />
           </div>
         )}
         <div className="trip-info">

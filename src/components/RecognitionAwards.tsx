@@ -1,18 +1,54 @@
 import React from "react";
 
 const items = [
-  { title: "Best Youth Travel 2023", src: "https://via.placeholder.com/220x80.png?text=Best+Youth+Travel+2023" },
-  { title: "Community Choice 2024", src: "https://via.placeholder.com/220x80.png?text=Community+Choice+2024" },
-  { title: "Startup Award 2022", src: "https://via.placeholder.com/220x80.png?text=Startup+Award+2022" },
-  { title: "Travel Influencer 2024", src: "https://via.placeholder.com/220x80.png?text=Travel+Influencer+2024" },
-  { title: "NDTV Feature", src: "https://via.placeholder.com/220x80.png?text=NDTV" },
-  { title: "Times of India", src: "https://via.placeholder.com/220x80.png?text=Times+of+India" },
-  { title: "India Today", src: "https://via.placeholder.com/220x80.png?text=India+Today" },
-  { title: "Zee News", src: "https://via.placeholder.com/220x80.png?text=Zee+News" },
-  { title: "Aaj Tak", src: "https://via.placeholder.com/220x80.png?text=Aaj+Tak" },
-  { title: "Hindustan Times", src: "https://via.placeholder.com/220x80.png?text=Hindustan+Times" },
-  { title: "Entrepreneur India", src: "https://via.placeholder.com/220x80.png?text=Entrepreneur+India" },
-  { title: "Regional Tourism Award", src: "https://via.placeholder.com/220x80.png?text=Regional+Tourism+Award" },
+  {
+    title: "Best Youth Travel 2023",
+    src: "https://via.placeholder.com/220x80.png?text=Best+Youth+Travel+2023",
+  },
+  {
+    title: "Community Choice 2024",
+    src: "https://via.placeholder.com/220x80.png?text=Community+Choice+2024",
+  },
+  {
+    title: "Startup Award 2022",
+    src: "https://via.placeholder.com/220x80.png?text=Startup+Award+2022",
+  },
+  {
+    title: "Travel Influencer 2024",
+    src: "https://via.placeholder.com/220x80.png?text=Travel+Influencer+2024",
+  },
+  {
+    title: "NDTV Feature",
+    src: "https://via.placeholder.com/220x80.png?text=NDTV",
+  },
+  {
+    title: "Times of India",
+    src: "https://via.placeholder.com/220x80.png?text=Times+of+India",
+  },
+  {
+    title: "India Today",
+    src: "https://via.placeholder.com/220x80.png?text=India+Today",
+  },
+  {
+    title: "Zee News",
+    src: "https://via.placeholder.com/220x80.png?text=Zee+News",
+  },
+  {
+    title: "Aaj Tak",
+    src: "https://via.placeholder.com/220x80.png?text=Aaj+Tak",
+  },
+  {
+    title: "Hindustan Times",
+    src: "https://via.placeholder.com/220x80.png?text=Hindustan+Times",
+  },
+  {
+    title: "Entrepreneur India",
+    src: "https://via.placeholder.com/220x80.png?text=Entrepreneur+India",
+  },
+  {
+    title: "Regional Tourism Award",
+    src: "https://via.placeholder.com/220x80.png?text=Regional+Tourism+Award",
+  },
 ];
 
 export default function RecognitionAwards() {
@@ -30,7 +66,10 @@ export default function RecognitionAwards() {
 
         <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
           {items.map((it, i) => (
-            <div key={i} className="flex flex-col items-center text-center p-3 bg-white/4 rounded-lg border border-white/6">
+            <div
+              key={i}
+              className="flex flex-col items-center text-center p-3 bg-white/4 rounded-lg border border-white/6"
+            >
               <img
                 src={it.src}
                 alt={it.title}

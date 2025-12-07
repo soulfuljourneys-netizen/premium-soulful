@@ -32,11 +32,14 @@ export default function TourismAlliances() {
             style={{ animation: "scrollVideos 60s linear infinite" }}
           >
             {longList.map((src, i) => (
-              <div key={i} className="flex-shrink-0 flex items-center justify-center px-2">
+              <div
+                key={i}
+                className="flex-shrink-0 flex items-center justify-center px-2"
+              >
                 <div className="p-2 bg-white rounded-md shadow-sm flex items-center justify-center">
                   <img
                     src={src}
-                    alt={`Tourism board ${((i % logos.length) + 1)}`}
+                    alt={`Tourism board ${(i % logos.length) + 1}`}
                     className="h-14 md:h-24 object-contain transition ease-linear"
                   />
                 </div>
