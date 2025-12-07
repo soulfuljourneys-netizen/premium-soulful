@@ -13,7 +13,7 @@ function Typewriter({ words }: { words: string[] }) {
   const [typing, setTyping] = React.useState(true);
 
   React.useEffect(() => {
-    let timeout: any;
+    let timeout: ReturnType<typeof setTimeout>;
     const word = words[index];
 
     if (typing) {
@@ -76,65 +76,92 @@ export default function HomeHero() {
   return (
     <section
       id="home-hero"
-      className="w-full min-h-[88vh] md:min-h-[92vh] bg-[#0f002e] text-white flex flex-col md:flex-row items-center justify-center px-6 md:px-8 pt-0 md:pt-0"
+      className="w-full min-h-[88vh] md:min-h-[92vh] text-white flex flex-col items-center justify-center px-6 md:px-8 pt-0 md:pt-0 pb-8 md:pb-0 relative overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(120deg, #0f002e 0%, #3a1c71 50%, #1a093f 80%, #000 100%)",
+      }}
     >
-      {/* LEFT — Collage */}
-      <div className="w-full md:w-1/2 flex items-center justify-center pl-4 md:pl-12 lg:pl-20">
-        <div className="flex items-end justify-center gap-2 md:gap-3 translate-x-0 md:translate-x-6 px-2">
-          {/* Left card (slightly smaller) */}
-          <div className="w-28 md:w-64 transform -rotate-6 transition-transform duration-700 ease-out">
-            <Card src={left} />
-          </div>
-          {/* Center card (larger, fixed) */}
-          <div className="w-40 md:w-80 z-10 transition-transform duration-700 ease-out">
-            <Card src={center} />
-          </div>
-          {/* Right card (slightly smaller) */}
-          <div className="w-28 md:w-64 transform rotate-6 transition-transform duration-700 ease-out">
-            <Card src={right} />
-          </div>
-        </div>
-      </div>
-
-      {/* RIGHT — Typewriter + Counters + CTAs */}
-      <div className="w-full md:w-1/2 flex flex-col justify-center items-center text-center space-y-8 mt-8 md:mt-0 px-2">
-        <Typewriter
-          words={["Travel.", "Party.", "Socialise.", "Experience."]}
-        />
-        <p className="text-white/80 text-lg md:text-xl max-w-md">
-          India’s Coolest Youth Travel Community
-        </p>
-
-        <div className="grid grid-cols-3 gap-6 mt-2">
-          <div className="text-white text-center">
-            <div className="text-3xl md:text-4xl font-bold">1000+</div>
-            <div className="text-white/70 text-sm md:text-base">Travellers</div>
-          </div>
-          <div className="text-white text-center">
-            <div className="text-3xl md:text-4xl font-bold">100+</div>
-            <div className="text-white/70 text-sm md:text-base">
-              Trips Hosted
+      {/* Radial overlay for extra depth */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          background:
+            "radial-gradient(circle at 60% 40%, rgba(58,28,113,0.25) 0%, rgba(0,0,0,0.0) 70%)",
+        }}
+      />
+      {/* inner wrapper: add mobile top padding so header overlays but content has breathing room */}
+      <div className="w-full flex flex-col md:flex-row items-center justify-center pt-20 md:pt-0">
+        {/* LEFT — Collage */}
+        <div className="w-full md:w-1/2 flex items-center justify-center pl-4 md:pl-12 lg:pl-20">
+          <div className="flex items-end justify-center gap-2 md:gap-3 translate-x-0 md:translate-x-6 px-2">
+            {/* Left card (slightly smaller) */}
+            <div className="w-28 md:w-64 transform -rotate-6 transition-transform duration-700 ease-out">
+              <Card src={left} />
+            </div>
+            {/* Center card (larger, fixed) */}
+            <div className="w-40 md:w-80 z-10 transition-transform duration-700 ease-out">
+              <Card src={center} />
+            </div>
+            {/* Right card (slightly smaller) */}
+            <div className="w-28 md:w-64 transform rotate-6 transition-transform duration-700 ease-out">
+              <Card src={right} />
             </div>
           </div>
-          <div className="text-white text-center">
-            <div className="text-3xl md:text-4xl font-bold">4.9+</div>
-            <div className="text-white/70 text-sm md:text-base">Avg Rating</div>
-          </div>
         </div>
 
-        <div className="mt-4 flex justify-center gap-4">
-          <a
-            href="#trips"
-            className="px-6 py-3 bg-[#ff4c1b] text-white font-semibold rounded-2xl shadow-lg hover:bg-[#e24418] transition"
-          >
-            Explore Trips
-          </a>
-          <a
-            href="#contact"
-            className="px-6 py-3 bg-white/10 backdrop-blur-md text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 transition"
-          >
-            Contact
-          </a>
+        {/* RIGHT — Typewriter + Counters + CTAs */}
+        <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-end text-center md:text-right space-y-6 sm:space-y-8 mt-8 md:mt-0 px-2 sm:px-4 md:pr-12 lg:pr-28">
+          <Typewriter
+            words={["Travel.", "Party.", "Socialise.", "Experience."]}
+          />
+          <p className="text-white/80 text-base sm:text-lg md:text-xl max-w-xs sm:max-w-md">
+            India’s Coolest Youth Travel Community
+          </p>
+
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 mt-2">
+            <div className="text-white text-center">
+              <div className="text-lg sm:text-2xl md:text-4xl font-bold">
+                1000+
+              </div>
+              <div className="text-white/70 text-xs sm:text-sm md:text-base">
+                Travellers
+              </div>
+            </div>
+            <div className="text-white text-center">
+              <div className="text-lg sm:text-2xl md:text-4xl font-bold">
+                100+
+              </div>
+              <div className="text-white/70 text-xs sm:text-sm md:text-base">
+                Trips Hosted
+              </div>
+            </div>
+            <div className="text-white text-center">
+              <div className="text-lg sm:text-2xl md:text-4xl font-bold">
+                4.9+
+              </div>
+              <div className="text-white/70 text-xs sm:text-sm md:text-base">
+                Avg Rating
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-4 flex flex-col sm:flex-row justify-center sm:justify-start gap-3 sm:gap-4 mb-10 md:mb-0">
+            <a
+              href="#trips"
+              className="px-5 py-3 sm:px-6 sm:py-3 bg-gradient-to-r from-[#ffb347] via-[#ff4c1b] to-[#ffb347] text-white font-semibold rounded-2xl shadow-lg hover:brightness-110 transition text-base sm:text-lg"
+            >
+              Explore Trips
+            </a>
+            <a
+              href="#contact"
+              className="px-5 py-3 sm:px-6 sm:py-3 bg-white/10 backdrop-blur-md text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 transition text-base sm:text-lg"
+            >
+              Contact
+            </a>
+          </div>
         </div>
       </div>
     </section>
