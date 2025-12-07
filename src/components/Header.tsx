@@ -4,6 +4,7 @@ import soulfulLogo from "../assets/Thumbnails/Soulful Logo.jpg";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [overHero, setOverHero] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [tripsDropdownOpen, setTripsDropdownOpen] = useState(false);
   const location = useLocation();
@@ -23,18 +24,38 @@ export default function Header() {
   const tripPrice = tripPath ? tripPrices[tripPath] : undefined;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const computeStates = () => {
+      setScrolled(window.scrollY > 60);
+      if (location.pathname === "/") {
+        const hero = document.getElementById("home-hero");
+        if (hero) {
+          const heroBottom = hero.offsetTop + hero.offsetHeight;
+          // Header considered overlapping hero until its top passes beyond hero bottom
+          setOverHero(window.scrollY < heroBottom - 60);
+        } else {
+          setOverHero(false);
+        }
+      } else {
+        setOverHero(false);
+      }
+    };
 
-  const headerClass = scrolled
-    ? "fixed inset-x-0 top-0 z-50 bg-white/90 shadow-sm"
-    : "fixed inset-x-0 top-0 z-50 bg-transparent";
+    computeStates();
+    window.addEventListener("scroll", computeStates);
+    window.addEventListener("resize", computeStates);
+    return () => {
+      window.removeEventListener("scroll", computeStates);
+      window.removeEventListener("resize", computeStates);
+    };
+  }, [location.pathname]);
 
-  const logoClass = scrolled
-    ? "w-12 h-12 rounded-2xl flex items-center justify-center font-bold bg-white text-[#0f002e] shadow-sm"
-    : "w-12 h-12 rounded-2xl flex items-center justify-center font-bold bg-[#0f002e] text-white shadow";
+  const headerClass = overHero
+    ? "fixed inset-x-0 top-0 z-50 bg-transparent"
+    : "fixed inset-x-0 top-0 z-50 bg-white/90 shadow-sm";
+
+  const logoClass = overHero
+    ? "w-12 h-12 rounded-2xl flex items-center justify-center font-bold bg-[#0f002e] text-white shadow"
+    : "w-12 h-12 rounded-2xl flex items-center justify-center font-bold bg-white text-[#0f002e] shadow-sm";
 
   return (
     <header className={headerClass}>
@@ -47,10 +68,18 @@ export default function Header() {
           />
         </Link>
         <div className="flex flex-col">
-          <h1 className="text-lg md:text-2xl font-semibold leading-none">
+          <h1
+            className={`text-lg md:text-2xl font-semibold leading-none ${
+              overHero ? "text-white" : "text-slate-900"
+            }`}
+          >
             Soulful Journeys
           </h1>
-          <p className="text-xs md:text-sm text-slate-500">
+          <p
+            className={`text-xs md:text-sm ${
+              overHero ? "text-white/70" : "text-slate-500"
+            }`}
+          >
             Curated soulful travel experiences
           </p>
         </div>
@@ -59,12 +88,19 @@ export default function Header() {
           className="hidden md:flex gap-6 ml-auto items-center"
           aria-label="Primary navigation"
         >
-          <Link className="text-sm hover:underline" to="/">
+          <Link
+            className={`text-sm hover:underline ${
+              overHero ? "text-white" : "text-slate-900"
+            }`}
+            to="/"
+          >
             Home
           </Link>
           <div className="relative">
             <button
-              className="text-sm hover:underline focus:outline-none flex items-center gap-1 font-normal"
+              className={`text-sm hover:underline focus:outline-none flex items-center gap-1 font-normal ${
+                overHero ? "text-white" : "text-slate-900"
+              }`}
               onClick={() => setTripsDropdownOpen((v) => !v)}
               aria-haspopup="true"
               aria-expanded={tripsDropdownOpen}
@@ -127,13 +163,28 @@ export default function Header() {
               </div>
             )}
           </div>
-          <Link className="text-sm hover:underline" to="/contact">
+          <Link
+            className={`text-sm hover:underline ${
+              overHero ? "text-white" : "text-slate-900"
+            }`}
+            to="/contact"
+          >
             Contact Us
           </Link>
-          <Link className="text-sm hover:underline" to="/about">
+          <Link
+            className={`text-sm hover:underline ${
+              overHero ? "text-white" : "text-slate-900"
+            }`}
+            to="/about"
+          >
             About Us
           </Link>
-          <Link className="text-sm hover:underline" to="#careers">
+          <Link
+            className={`text-sm hover:underline ${
+              overHero ? "text-white" : "text-slate-900"
+            }`}
+            to="#careers"
+          >
             Careers
           </Link>
         </nav>
@@ -164,7 +215,7 @@ export default function Header() {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            className="text-[#0f002e]"
+            className={overHero ? "text-white" : "text-[#0f002e]"}
           >
             <path
               strokeLinecap="round"

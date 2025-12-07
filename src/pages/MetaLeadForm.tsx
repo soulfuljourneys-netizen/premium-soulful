@@ -48,16 +48,22 @@ export default function MetaLeadForm() {
     setOverlay(true);
     setOverlayText("Submitting your details…");
 
-    const pysEventId =
-      ((window as any).pysOptions?.dynamicEvents?.automatic_event_form
-        ?.facebook &&
-      typeof (window as any).pysOptions.dynamicEvents.automatic_event_form
-        .facebook === "object" &&
-      "eventID" in
-        (window as any).pysOptions.dynamicEvents.automatic_event_form.facebook
-        ? (window as any).pysOptions.dynamicEvents.automatic_event_form.facebook
-            .eventID
-        : undefined) || "LEAD_" + Date.now();
+    // Safely access nested `pysOptions` without using `any` by runtime-checking shapes
+    const pysRoot = (window as unknown as { pysOptions?: unknown }).pysOptions;
+    let pysEventId = "LEAD_" + Date.now();
+    if (pysRoot && typeof pysRoot === "object") {
+      const dyn = (pysRoot as { dynamicEvents?: unknown }).dynamicEvents;
+      if (dyn && typeof dyn === "object") {
+        const auto = (dyn as { automatic_event_form?: unknown }).automatic_event_form;
+        if (auto && typeof auto === "object") {
+          const fb = (auto as { facebook?: unknown }).facebook;
+          if (fb && typeof fb === "object" && "eventID" in fb) {
+            const evt = (fb as { eventID?: unknown }).eventID;
+            if (typeof evt === "string") pysEventId = evt;
+          }
+        }
+      }
+    }
     const fbcCookie = getCookie("_fbc");
     const fbpCookie = getCookie("_fbp");
     const fbclid = new URLSearchParams(window.location.search).get("fbclid");
