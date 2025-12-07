@@ -10,11 +10,11 @@ export default function Header() {
 
   // Trip page paths and prices
   const tripPrices: Record<string, string> = {
-    "/manali-kasol-chills": "8499",
-    "/kasol-kheerganga": "7999",
-    "/chopta-tungnath": "7499",
+    "/manali-kasol-chills": "7499",
+    "/kasol-kheerganga": "6999",
+    "/chopta-tungnath": "6999",
     "/jibhi-tirthan": "6999",
-    "/udaipur-mount-abu": "9999",
+    "/udaipur-mount-abu": "7999",
   };
   const tripPath = Object.keys(tripPrices).find((p) =>
     location.pathname.startsWith(p)
