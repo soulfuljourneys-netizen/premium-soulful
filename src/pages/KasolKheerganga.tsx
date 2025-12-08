@@ -7,6 +7,7 @@ import thumb4 from "../assets/Hero Sections/Kasol Kheerganga/Parvati valley trek
 import ItineraryAccordion from "../components/ItineraryAccordion";
 import DetailsPanel from "../components/DetailsPanel";
 import VideoScroller from "../components/VideoScroller";
+import LeadFormCard from "../components/LeadFormCard";
 import VideoModal from "../components/VideoModal";
 import MobileActionBar from "../components/MobileActionBar";
 import PageVisuals from "../components/PageVisuals";
@@ -182,80 +183,47 @@ export default function KasolKheerganga() {
       >
         <div>
           <div className="text-sm text-slate-600">Prices (Before 15th Dec)</div>
-          <div className="text-2xl font-semibold">
-            Quad: ₹5,499 • Triple: ₹5,999 • Double: ₹6,499
+
+          <div className="mt-2">
+            <div className="text-3xl sm:text-4xl font-extrabold text-slate-900">
+              ₹5,499{" "}
+              <span className="text-lg font-medium text-slate-600">
+                / person
+              </span>
+            </div>
           </div>
-          <p className="mt-2 text-slate-600">
-            After Dec 15 add ₹2,000 to above prices.
+
+          <div className="mt-3 text-slate-600 text-sm">
+            <ul className="list-disc list-inside space-y-1">
+              <li>
+                <span className="font-semibold text-slate-900">Quad:</span>{" "}
+                ₹5,499
+              </li>
+              <li>
+                <span className="font-semibold text-slate-900">Triple:</span>{" "}
+                ₹5,999
+              </li>
+              <li>
+                <span className="font-semibold text-slate-900">Double:</span>{" "}
+                ₹6,499
+              </li>
+            </ul>
+          </div>
+
+          <p className="mt-3 text-sm text-slate-600">
+            After Dec 15 add{" "}
+            <span className="font-semibold text-slate-900">₹2,000</span> to
+            above prices.
           </p>
         </div>
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit();
-          }}
-          className="w-full md:w-1/2 bg-white border border-slate-200 rounded-2xl p-4 shadow-sm"
-        >
-          <div className="grid grid-cols-1 gap-3">
-            <label className="sr-only" htmlFor="name">
-              Full name
-            </label>
-            <input
-              id="name"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              placeholder="Full name"
-              className="p-3 border rounded-2xl"
-              required
-            />
-
-            <label className="sr-only" htmlFor="phone">
-              Phone number
-            </label>
-            <input
-              id="phone"
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
-              placeholder="Phone number"
-              className="p-3 border rounded-2xl"
-              required
-            />
-
-            <label className="sr-only" htmlFor="email">
-              Email
-            </label>
-            <input
-              id="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="Email (optional)"
-              className="p-3 border rounded-2xl"
-            />
-
-            <div className="flex gap-2">
-              <button
-                type="submit"
-                className="flex-1 px-2 py-1 rounded-2xl bg-purple-600 text-white font-semibold text-sm"
-              >
-                Request Call
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSubmit()}
-                className="flex-1 px-2 py-1 rounded-2xl border text-sm"
-              >
-                Reserve (Token)
-              </button>
-            </div>
-          </div>
-          <p className="mt-3 text-xs text-slate-800/60">
-            By submitting, you agree to our terms & privacy policy.
-          </p>
-        </form>
+        <div className="w-full md:w-1/2">
+          <LeadFormCard
+            initialTrip="Kasol Kheerganga"
+            step1Label="Get Callback"
+            submitLabel="Submit"
+          />
+        </div>
       </section>
 
       <section className="mt-10">

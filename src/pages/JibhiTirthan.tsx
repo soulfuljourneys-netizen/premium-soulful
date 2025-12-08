@@ -8,26 +8,28 @@ import ItineraryAccordion from "../components/ItineraryAccordion";
 import DetailsPanel from "../components/DetailsPanel";
 import VideoScroller from "../components/VideoScroller";
 import VideoModal from "../components/VideoModal";
-// import StayCarousel from "../components/StayCarousel";
 import TripStaySection from "../components/TripStaySection";
 import MobileActionBar from "../components/MobileActionBar";
 import PageVisuals from "../components/PageVisuals";
+import LeadFormCard from "../components/LeadFormCard";
 
 export default function JibhiTirthan() {
-  // const [expanded, setExpanded] = useState<number | null>(null);
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
-
   const [openVideo, setOpenVideo] = useState<{
     src: string;
     index: number;
     sources: string[];
   } | null>(null);
 
+  const prices = {
+    before: { quad: "₹6,499", triple: "₹6,999", dbl: "₹7,499" },
+    after: { add: "₹1,000" },
+  };
+
   const inclusions = [
-    "Transport from pickup point",
-    "Accommodation (as per itinerary)",
+    "Accommodation as per itinerary",
     "Meals as specified",
-    "Campfires & local guide",
+    "Transport as per plan",
   ];
 
   const exclusions = [
@@ -35,25 +37,6 @@ export default function JibhiTirthan() {
     "Travel insurance",
     "Optional activity fees",
   ];
-
-  const prices = {
-    before: { quad: "₹6,499", triple: "₹6,999", dbl: "₹7,499" },
-    after: { add: "₹1,000" },
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
-
-  const submitForm = () => {
-    console.log("Booking request", form);
-    alert("Request received. We'll contact you shortly.");
-    setForm({ name: "", phone: "", email: "" });
-  };
-
-  const handleSubmit = (e?: React.FormEvent) => {
-    if (e && e.preventDefault) e.preventDefault();
-    submitForm();
-  };
 
   const itinerary = [
     {
@@ -78,12 +61,23 @@ export default function JibhiTirthan() {
     },
   ];
 
-  // const toggle = (i: number) => setExpanded((prev) => (prev === i ? null : i));
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+
+  const submitForm = () => {
+    console.log("Booking request", form);
+    alert("Request received. We'll contact you shortly.");
+    setForm({ name: "", phone: "", email: "" });
+  };
+
+  const handleSubmit = (e?: React.FormEvent) => {
+    if (e && e.preventDefault) e.preventDefault();
+    submitForm();
+  };
 
   return (
     <main className="max-w-6xl mx-auto px-4 md:px-6 pb-36 pt-6">
       <div className="relative">
-        <PageVisuals />
         <HeroBlock
           title="Jibhi — Tirthan Valley"
           subtitle="5 Days / 4 Nights — Every Friday Evening from Delhi & Chandigarh"
@@ -106,7 +100,9 @@ export default function JibhiTirthan() {
             },
           ]}
         />
+        <PageVisuals />
       </div>
+
       <section
         id="overview"
         className="mt-12 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm"
@@ -185,87 +181,49 @@ export default function JibhiTirthan() {
       >
         <div>
           <div className="text-sm text-slate-600">Prices (Before 15th Dec)</div>
-          <div className="text-3xl font-extrabold">
-            {prices.before.quad}{" "}
-            <span className="text-base font-medium text-slate-600">
-              / person
-            </span>
+
+          <div className="mt-2">
+            <div className="text-3xl sm:text-4xl font-extrabold text-slate-900">
+              {prices.before.quad}{" "}
+              <span className="text-lg font-medium text-slate-600">
+                / person
+              </span>
+            </div>
           </div>
-          <div className="mt-2 text-slate-600">
-            Quad: {prices.before.quad} • Triple: {prices.before.triple} •
-            Double: {prices.before.dbl}
+
+          <div className="mt-3 text-slate-600 text-sm">
+            <ul className="list-disc list-inside space-y-1">
+              <li>
+                <span className="font-semibold text-slate-900">Quad:</span>{" "}
+                {prices.before.quad}
+              </li>
+              <li>
+                <span className="font-semibold text-slate-900">Triple:</span>{" "}
+                {prices.before.triple}
+              </li>
+              <li>
+                <span className="font-semibold text-slate-900">Double:</span>{" "}
+                {prices.before.dbl}
+              </li>
+            </ul>
           </div>
-          <p className="mt-2 text-slate-600">
-            After Dec 15 add {prices.after.add} to above prices.
+
+          <p className="mt-3 text-sm text-slate-600">
+            After Dec 15 add{" "}
+            <span className="font-semibold text-slate-900">
+              {prices.after.add}
+            </span>{" "}
+            to above prices.
           </p>
         </div>
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit();
-          }}
-          className="w-full md:w-1/2 bg-white border border-slate-200 rounded-2xl p-4 shadow-sm"
-        >
-          <div className="grid grid-cols-1 gap-3">
-            <label className="sr-only" htmlFor="name">
-              Full name
-            </label>
-            <input
-              id="name"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              placeholder="Full name"
-              className="p-3 border rounded-2xl"
-              required
-            />
-
-            <label className="sr-only" htmlFor="phone">
-              Phone number
-            </label>
-            <input
-              id="phone"
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
-              placeholder="Phone number"
-              className="p-3 border rounded-2xl"
-              required
-            />
-
-            <label className="sr-only" htmlFor="email">
-              Email
-            </label>
-            <input
-              id="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="Email (optional)"
-              className="p-3 border rounded-2xl"
-            />
-
-            <div className="flex gap-2">
-              <button
-                type="submit"
-                className="flex-1 px-2 py-1 rounded-2xl bg-purple-600 text-white font-semibold text-sm"
-              >
-                Request Call
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSubmit()}
-                className="flex-1 px-2 py-1 rounded-2xl border text-sm"
-              >
-                Reserve (Token)
-              </button>
-            </div>
-          </div>
-          <p className="mt-3 text-xs text-slate-800/60">
-            By submitting, you agree to our terms & privacy policy.
-          </p>
-        </form>
+        <div className="w-full md:w-1/2">
+          <LeadFormCard
+            initialTrip="Jibhi Tirthan"
+            step1Label="Get Callback"
+            submitLabel="Submit"
+          />
+        </div>
       </section>
 
       <section className="mt-10">

@@ -11,6 +11,7 @@ import VideoModal from "../components/VideoModal";
 import MobileActionBar from "../components/MobileActionBar";
 import PageVisuals from "../components/PageVisuals";
 import TripStaySection from "../components/TripStaySection";
+import LeadFormCard from "../components/LeadFormCard";
 
 export default function ChoptaTungnath() {
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
@@ -52,6 +53,11 @@ export default function ChoptaTungnath() {
 
   const exclusions = ["Personal expenses", "Adventure charges", "GST/taxes"];
 
+  const prices = {
+    before: { quad: "₹5,999", triple: "₹6,499", dbl: "₹6,999" },
+    after: { add: "₹1,000" },
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
@@ -69,8 +75,6 @@ export default function ChoptaTungnath() {
   return (
     <main className="max-w-6xl mx-auto px-4 md:px-6 pb-36 pt-6">
       <div className="relative">
-        <PageVisuals />
-
         <HeroBlock
           title="Chopta — Tungnath"
           subtitle="3 Days / 2 Nights — Weekend getaway"
@@ -87,7 +91,9 @@ export default function ChoptaTungnath() {
             { label: "Price", value: "Starting ₹5,999" },
           ]}
         />
+        <PageVisuals />
       </div>
+
       <section
         id="overview"
         className="mt-12 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm"
@@ -140,7 +146,6 @@ export default function ChoptaTungnath() {
 
       <ItineraryAccordion itinerary={itinerary} />
 
-      {/* Stays We Provide Carousel Section */}
       <TripStaySection
         carousels={[
           {
@@ -168,109 +173,50 @@ export default function ChoptaTungnath() {
         className="mt-12 p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
       >
         <div>
-          <div className="text-sm text-slate-600">Starting from</div>
-          <div className="text-2xl font-bold text-purple-700 mb-2">
-            Quad Room Sharing
-          </div>
-          <div className="text-3xl font-extrabold mb-1">
-            ₹5,999{" "}
-            <span className="text-base font-medium text-slate-600">
-              / person
-            </span>
-          </div>
-          <div className="mt-2 space-y-1">
-            <div className="font-semibold">
-              Quad Room sharing:{" "}
-              <span className="text-slate-700">₹5,999 / per person</span>
-            </div>
-            <div className="font-semibold">
-              Triple Room sharing:{" "}
-              <span className="text-slate-700">₹6,499 / per person</span>
-            </div>
-            <div className="font-semibold">
-              Double Room sharing:{" "}
-              <span className="text-slate-700">₹6,999 / per person</span>
+          <div className="text-sm text-slate-600">Prices (Before 15th Dec)</div>
+
+          <div className="mt-2">
+            <div className="text-3xl sm:text-4xl font-extrabold text-slate-900">
+              {prices.before.quad}{" "}
+              <span className="text-lg font-medium text-slate-600">
+                / person
+              </span>
             </div>
           </div>
-          <button
-            className="mt-2 text-xs text-purple-600 underline hover:text-purple-800"
-            type="button"
-            onClick={() =>
-              alert(
-                "Quad: 4 people in a room. Triple: 3 people in a room. Double: 2 people in a room. Room sharing means you share the room with other travelers, each gets a separate bed."
-              )
-            }
-          >
-            What is Quad, Triple, Double Room sharing?
-          </button>
+
+          <div className="mt-3 text-slate-600 text-sm">
+            <ul className="list-disc list-inside space-y-1">
+              <li>
+                <span className="font-semibold text-slate-900">Quad:</span>{" "}
+                {prices.before.quad}
+              </li>
+              <li>
+                <span className="font-semibold text-slate-900">Triple:</span>{" "}
+                {prices.before.triple}
+              </li>
+              <li>
+                <span className="font-semibold text-slate-900">Double:</span>{" "}
+                {prices.before.dbl}
+              </li>
+            </ul>
+          </div>
+
+          <p className="mt-3 text-sm text-slate-600">
+            After Dec 15 add{" "}
+            <span className="font-semibold text-slate-900">
+              {prices.after.add}
+            </span>{" "}
+            to above prices.
+          </p>
         </div>
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit();
-          }}
-          className="w-full md:w-1/2 bg-white border border-slate-200 rounded-2xl p-4 shadow-sm"
-        >
-          <div className="grid grid-cols-1 gap-3">
-            <label className="sr-only" htmlFor="name">
-              Full name
-            </label>
-            <input
-              id="name"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              placeholder="Full name"
-              className="p-3 border rounded-2xl"
-              required
-            />
-
-            <label className="sr-only" htmlFor="phone">
-              Phone number
-            </label>
-            <input
-              id="phone"
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
-              placeholder="Phone number"
-              className="p-3 border rounded-2xl"
-              required
-            />
-
-            <label className="sr-only" htmlFor="email">
-              Email
-            </label>
-            <input
-              id="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="Email (optional)"
-              className="p-3 border rounded-2xl"
-            />
-
-            <div className="flex gap-2">
-              <button
-                type="submit"
-                className="flex-1 px-2 py-1 rounded-2xl bg-purple-600 text-white font-semibold text-sm"
-              >
-                Request Call
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSubmit()}
-                className="flex-1 px-2 py-1 rounded-2xl border text-sm"
-              >
-                Reserve (Token)
-              </button>
-            </div>
-          </div>
-          <p className="mt-3 text-xs text-slate-800/60">
-            By submitting, you agree to our terms & privacy policy.
-          </p>
-        </form>
+        <div className="w-full md:w-1/2">
+          <LeadFormCard
+            initialTrip="Chopta Tungnath"
+            step1Label="Get Callback"
+            submitLabel="Submit"
+          />
+        </div>
       </section>
 
       <section className="mt-10">
