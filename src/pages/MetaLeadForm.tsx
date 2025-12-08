@@ -1,4 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import ghostPic from "../assets/Misc/ghost-picture.jpg";
+// Typewriter component (tuned for the meta form hero)
+function Typewriter({ words }: { words: string[] }) {
+  const [index, setIndex] = React.useState(0);
+  const [display, setDisplay] = React.useState("");
+  const [typing, setTyping] = React.useState(true);
+
+  React.useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>;
+    const word = words[index];
+
+    if (typing) {
+      timeout = setTimeout(() => {
+        setDisplay((prev) => word.slice(0, prev.length + 1));
+        if (display.length + 1 === word.length) setTyping(false);
+      }, 70);
+    } else {
+      timeout = setTimeout(() => {
+        setDisplay("");
+        setTyping(true);
+        setIndex((i) => (i + 1) % words.length);
+      }, 900);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [display, typing, index, words]);
+
+  return (
+    <span className="text-lg sm:text-xl md:text-2xl font-semibold text-white">
+      {display}
+      <span className="inline-block w-1 h-6 align-middle bg-white ml-2 animate-pulse" />
+    </span>
+  );
+}
+import brandingLogo from "../assets/Misc/Branding-2.png";
 
 function getCookie(name: string) {
   const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
@@ -54,7 +89,8 @@ export default function MetaLeadForm() {
     if (pysRoot && typeof pysRoot === "object") {
       const dyn = (pysRoot as { dynamicEvents?: unknown }).dynamicEvents;
       if (dyn && typeof dyn === "object") {
-        const auto = (dyn as { automatic_event_form?: unknown }).automatic_event_form;
+        const auto = (dyn as { automatic_event_form?: unknown })
+          .automatic_event_form;
         if (auto && typeof auto === "object") {
           const fb = (auto as { facebook?: unknown }).facebook;
           if (fb && typeof fb === "object" && "eventID" in fb) {
@@ -143,143 +179,323 @@ export default function MetaLeadForm() {
     }
   };
 
+  // Basic client-side validation
+  const [errors, setErrors] = React.useState<{ [k: string]: string }>({});
+  const [step, setStep] = useState<number>(1);
+
+  const validate = () => {
+    const next: { [k: string]: string } = {};
+    if (!form.firstname.trim()) next.firstname = "First name is required";
+    if (!form.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      next.email = "Enter a valid email";
+    const digits = form.phone.replace(/\D/g, "");
+    if (!digits || digits.length < 10)
+      next.phone = "Enter a valid phone number";
+    if (!form.trip) next.trip = "Please choose a trip";
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  };
+
+  const validatePart1 = () => {
+    const next: { [k: string]: string } = {};
+    if (!form.firstname.trim()) next.firstname = "First name is required";
+    if (!form.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      next.email = "Enter a valid email";
+    const digits = form.phone.replace(/\D/g, "");
+    if (!digits || digits.length < 10)
+      next.phone = "Enter a valid phone number";
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  };
+
+  const validatePart2 = () => {
+    const next: { [k: string]: string } = {};
+    if (!form.trip) next.trip = "Please choose a trip";
+    if (!form.trip_month) next.trip_month = "Please choose a month";
+    if (
+      !form.persons ||
+      Number.isNaN(Number(form.persons)) ||
+      Number(form.persons) <= 0
+    )
+      next.persons = "Enter number of persons";
+    if (!form.how_soon_you_want_to_book)
+      next.how_soon_you_want_to_book = "Please select a booking timeframe";
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  };
+
+  const formIsValid = React.useMemo(() => {
+    // quick validation for disabling the submit until fields look valid
+    if (!form.firstname.trim()) return false;
+    if (!form.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      return false;
+    const digits = form.phone.replace(/\D/g, "");
+    if (!digits || digits.length < 10) return false;
+    if (!form.trip) return false;
+    return true;
+  }, [form]);
+
+  // Hide site chrome (Header/Footer) while this page is mounted
+  useEffect(() => {
+    try {
+      document.body.classList.add("hide-chrome");
+    } catch (err) {
+      // ignore in non-DOM contexts
+    }
+    return () => {
+      try {
+        document.body.classList.remove("hide-chrome");
+      } catch (err) {
+        // ignore
+      }
+    };
+  }, []);
+
   return (
-    <div
-      className="min-h-screen flex items-center justify-center bg-[#18121e] bg-cover bg-center relative overflow-hidden"
-      style={{ backgroundImage: "none" }}
+    <section
+      id="lead-hero"
+      className="w-full min-h-screen flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 px-6 relative overflow-hidden pt-12 sm:pt-16 md:pt-36 pb-20 md:pb-36"
+      style={{
+        background:
+          "linear-gradient(120deg, #0f002e 0%, #3a1c71 50%, #1a093f 80%, #000 100%)",
+      }}
     >
-      {/* Ghost friends group chilling image as background */}
-      <img
-        src="/assets/ghost-friends-chilling.png"
-        alt="Ghost friends group chilling"
-        className="pointer-events-none select-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[420px] max-w-[90vw] opacity-80 z-0"
-        style={{ filter: "drop-shadow(0 8px 32px #0008)" }}
-      />
-      {/* Subtle overlay for modern minimal look */}
+      {/* Radial overlay for extra depth (same as Home hero) */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-[#18121e]/80 to-[#18121e]/95 backdrop-blur-sm z-10"
-        aria-hidden="true"
-      ></div>
-      <div className="relative w-full max-w-md mx-auto p-8 rounded-2xl shadow-2xl bg-[#20162b]/90 border border-[#3a234a] flex flex-col items-center z-20">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-white text-center mb-2 tracking-tight drop-shadow-lg">
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          background:
+            "radial-gradient(circle at 60% 40%, rgba(58,28,113,0.25) 0%, rgba(0,0,0,0.0) 70%)",
+        }}
+      />
+
+      {/* Ghost background image (subtle, full-bleed under the overlay) */}
+      <img
+        src={ghostPic}
+        alt="ghost background"
+        className="ghost-bg pointer-events-none select-none absolute inset-0 w-full h-full object-cover z-0"
+      />
+
+      {/* Page heading - branding image above the title, with hero-style subheading */}
+      <div className="relative w-full max-w-full sm:max-w-md md:max-w-lg mx-auto z-20 text-center mb-4 md:mb-0 md:mr-10 px-4 sm:px-0 fade-up">
+        <img
+          src={brandingLogo}
+          alt="Soulful Journeys branding"
+          className="mx-auto w-24 h-auto sm:w-28 md:w-32 lg:w-40 mb-4 drop-shadow-lg"
+        />
+
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white text-center mb-3 tracking-tight drop-shadow-lg leading-tight">
           Vibe Check, are you the one?
         </h1>
-        <div className="text-center text-lg font-extrabold text-white mb-6 tracking-widest drop-shadow">
-          PΛΛVE!
+
+        <div className="text-center text-xl sm:text-2xl md:text-3xl font-medium text-white/90 mb-2 tracking-wide">
+          <Typewriter
+            words={["Travel.", "Party.", "Socialize.", "Experience."]}
+          />
         </div>
-        <form onSubmit={handleSubmit} className="w-full space-y-5">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              name="firstname"
-              value={form.firstname}
-              onChange={handleChange}
-              placeholder="First Name"
-              required
-              className="px-5 py-3 rounded-2xl bg-[#2a1536] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 text-lg border border-[#3a234a] shadow-inner"
-            />
-            <input
-              name="lastname"
-              value={form.lastname}
-              onChange={handleChange}
-              placeholder="Last Name"
-              required
-              className="px-5 py-3 rounded-2xl bg-[#2a1536] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 text-lg border border-[#3a234a] shadow-inner"
-            />
+      </div>
+
+      <div className="relative w-full max-w-full sm:max-w-md md:max-w-lg mx-auto p-6 sm:p-8 md:p-10 rounded-xl shadow-2xl bg-[rgba(10,6,18,0.6)] border border-[rgba(255,255,255,0.06)] backdrop-blur-sm flex flex-col items-center z-20 fade-up">
+        <form
+          className="w-full space-y-5"
+          onSubmit={(e) => {
+            e.preventDefault(); /* handled below */
+          }}
+        >
+          {/* Step indicator */}
+          <div className="w-full flex justify-between items-center text-sm text-white/70 mb-1">
+            <div>Step {step} of 2</div>
+            <div>{step === 1 ? "Basic details" : "Trip details"}</div>
           </div>
-          <input
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="Email"
-            type="email"
-            className="px-5 py-3 rounded-2xl bg-[#2a1536] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 text-lg border border-[#3a234a] shadow-inner w-full"
-          />
-          <input
-            name="phone"
-            value={form.phone}
-            onChange={handleChange}
-            placeholder="whatsapp number"
-            required
-            className="px-5 py-3 rounded-2xl bg-[#2a1536] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 text-lg border border-[#3a234a] shadow-inner w-full"
-          />
-          <div className="mt-2">
-            <div className="text-white font-semibold mb-2">
-              Which Trip you're looking?
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {trips.map((option) => (
-                <label
-                  key={option}
-                  className="flex items-center space-x-2 cursor-pointer text-white"
-                >
-                  <input
-                    type="radio"
-                    name="trip"
-                    value={option}
-                    checked={form.trip === option}
-                    onChange={handleChange}
-                    className="h-4 w-4 accent-pink-500 border-2 border-white focus:ring-2 focus:ring-pink-500"
-                    required
-                  />
-                  <span className="text-sm font-medium">{option}</span>
-                </label>
-              ))}
-              <label className="flex items-center space-x-2 cursor-pointer text-white">
+
+          {step === 1 ? (
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <input
-                  type="radio"
-                  name="trip"
-                  value="Something else"
-                  checked={form.trip === "Something else"}
+                  name="firstname"
+                  value={form.firstname}
                   onChange={handleChange}
-                  className="h-4 w-4 accent-pink-500 border-2 border-white focus:ring-2 focus:ring-pink-500"
-                  required
+                  placeholder="First Name"
+                  className="px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg bg-transparent text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#ffb347] text-base sm:text-lg border border-white/6 w-full"
                 />
-                <span className="text-sm font-medium">Something else</span>
-              </label>
+                {errors.firstname && (
+                  <div className="text-xs text-pink-400 mt-1">
+                    {errors.firstname}
+                  </div>
+                )}
+                <input
+                  name="lastname"
+                  value={form.lastname}
+                  onChange={handleChange}
+                  placeholder="Last Name"
+                  className="px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg bg-transparent text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#ffb347] text-base sm:text-lg border border-white/6 w-full"
+                />
+              </div>
+
+              <div>
+                <input
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="Email"
+                  type="email"
+                  className="px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg bg-transparent text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#ffb347] text-base sm:text-lg border border-white/6 w-full"
+                />
+                {errors.email && (
+                  <div className="text-xs text-pink-400 mt-1">
+                    {errors.email}
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <input
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  placeholder="WhatsApp number"
+                  className="px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg bg-transparent text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#ffb347] text-base sm:text-lg border border-white/6 w-full"
+                />
+                {errors.phone && (
+                  <div className="text-xs text-pink-400 mt-1">
+                    {errors.phone}
+                  </div>
+                )}
+              </div>
+
+              <div className="flex gap-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!validatePart1()) return;
+                    setStep(2);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#ffb347] to-[#ff4c1b] text-white font-bold text-sm sm:text-base md:text-lg shadow-lg transition-all duration-200 tracking-wider disabled:opacity-60"
+                  disabled={overlay}
+                >
+                  Continue
+                </button>
+              </div>
             </div>
-          </div>
-          <select
-            name="trip_month"
-            value={form.trip_month}
-            onChange={handleChange}
-            required
-            className="px-5 py-3 rounded-2xl bg-[#2a1536] text-white focus:outline-none focus:ring-2 focus:ring-pink-500 text-lg border border-[#3a234a] shadow-inner w-full"
-          >
-            <option value="">Select Month</option>
-            {months.map((month) => (
-              <option key={month} value={month}>
-                {month}
-              </option>
-            ))}
-          </select>
-          <input
-            name="persons"
-            value={form.persons}
-            onChange={handleChange}
-            placeholder="Number of Persons"
-            required
-            className="px-5 py-3 rounded-2xl bg-[#2a1536] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 text-lg border border-[#3a234a] shadow-inner w-full"
-          />
-          <select
-            name="how_soon_you_want_to_book"
-            value={form.how_soon_you_want_to_book}
-            onChange={handleChange}
-            required
-            className="px-5 py-3 rounded-2xl bg-[#2a1536] text-white focus:outline-none focus:ring-2 focus:ring-pink-500 text-lg border border-[#3a234a] shadow-inner w-full"
-          >
-            <option value="">How soon do you want to book?</option>
-            <option value="Immediately">Immediately</option>
-            <option value="Within a week">Within a week</option>
-            <option value="Within a month">Within a month</option>
-            <option value="Just exploring">Just exploring</option>
-          </select>
-          <button
-            type="submit"
-            className="w-full py-3 mt-4 rounded-2xl bg-pink-500 hover:bg-pink-600 text-white font-bold text-lg shadow-lg transition-all duration-200 tracking-wider"
-            disabled={overlay}
-          >
-            {overlay ? "Submitting..." : "PASS THE VIBE CHECK"}
-          </button>
+          ) : (
+            <div className="space-y-4">
+              <div className="mt-2">
+                <div className="text-white font-semibold mb-2">
+                  Which Trip you're looking?
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {trips.map((option) => (
+                    <label
+                      key={option}
+                      className="flex items-center space-x-2 cursor-pointer text-white"
+                    >
+                      <input
+                        type="radio"
+                        name="trip"
+                        value={option}
+                        checked={form.trip === option}
+                        onChange={handleChange}
+                        className="h-4 w-4 accent-pink-500 border-2 border-white focus:ring-2 focus:ring-pink-500"
+                      />
+                      <span className="text-sm font-medium">{option}</span>
+                    </label>
+                  ))}
+                  <label className="flex items-center space-x-2 cursor-pointer text-white">
+                    <input
+                      type="radio"
+                      name="trip"
+                      value="Something else"
+                      checked={form.trip === "Something else"}
+                      onChange={handleChange}
+                      className="h-4 w-4 accent-pink-500 border-2 border-white focus:ring-2 focus:ring-pink-500"
+                    />
+                    <span className="text-sm font-medium">Something else</span>
+                  </label>
+                </div>
+                {errors.trip && (
+                  <div className="text-xs text-pink-400 mt-1">
+                    {errors.trip}
+                  </div>
+                )}
+              </div>
+
+              <select
+                name="trip_month"
+                value={form.trip_month}
+                onChange={handleChange}
+                className="px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-[#ffb347] text-base sm:text-lg border border-white/6 shadow-none w-full"
+              >
+                <option value="">Select Month</option>
+                {months.map((month) => (
+                  <option key={month} value={month}>
+                    {month}
+                  </option>
+                ))}
+              </select>
+              {errors.trip_month && (
+                <div className="text-xs text-pink-400 mt-1">
+                  {errors.trip_month}
+                </div>
+              )}
+
+              <input
+                name="persons"
+                value={form.persons}
+                onChange={handleChange}
+                placeholder="Number of Persons"
+                className="px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg bg-transparent text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#ffb347] text-base sm:text-lg border border-white/6 w-full"
+              />
+              {errors.persons && (
+                <div className="text-xs text-pink-400 mt-1">
+                  {errors.persons}
+                </div>
+              )}
+
+              <select
+                name="how_soon_you_want_to_book"
+                value={form.how_soon_you_want_to_book}
+                onChange={handleChange}
+                className="px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-[#ffb347] text-base sm:text-lg border border-white/6 shadow-none w-full"
+              >
+                <option value="">How soon do you want to book?</option>
+                <option value="Immediately">Immediately</option>
+                <option value="Within a week">Within a week</option>
+                <option value="Within a month">Within a month</option>
+                <option value="Just exploring">Just exploring</option>
+              </select>
+              {errors.how_soon_you_want_to_book && (
+                <div className="text-xs text-pink-400 mt-1">
+                  {errors.how_soon_you_want_to_book}
+                </div>
+              )}
+
+              <div className="flex gap-3">
+                <button
+                  type="button"
+                  onClick={() => setStep(1)}
+                  className="flex-1 py-3 rounded-xl bg-white/8 text-white font-semibold text-sm sm:text-base md:text-lg shadow-sm transition-all duration-200 tracking-wider"
+                  disabled={overlay}
+                >
+                  Back
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    if (!validatePart2()) return;
+                    // perform final submit
+                    handleSubmit(e as unknown as React.FormEvent);
+                  }}
+                  className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#ffb347] to-[#ff4c1b] text-white font-bold text-sm sm:text-base md:text-lg shadow-lg transition-all duration-200 tracking-wider disabled:opacity-60"
+                  disabled={overlay}
+                >
+                  {overlay ? "Submitting..." : "PASS THE VIBE CHECK"}
+                </button>
+              </div>
+            </div>
+          )}
         </form>
         {overlay && (
           <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
@@ -294,6 +510,6 @@ export default function MetaLeadForm() {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 }

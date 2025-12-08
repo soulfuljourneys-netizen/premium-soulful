@@ -14,6 +14,12 @@
   padding-top: 0;
 }
 
+/* When hiding the site chrome (header/footer) for special pages, remove the
+   reserved top padding so the page hero can reach the viewport top. */
+body.hide-chrome .content-area {
+  padding-top: 0 !important;
+}
+
 /* Category Bar */
 .category-bar {
   display: flex;
