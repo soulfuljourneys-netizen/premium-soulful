@@ -9,6 +9,7 @@ import Layout from "./components/Layout";
 import MetaLeadForm from "./pages/MetaLeadForm";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
+import Payment from "./pages/Payment";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
         {/* More trips */}
         <Route path="rishikesh" element={<div>Rishikesh Coming Soon</div>} />
         <Route path="udaipur" element={<div>Udaipur Coming Soon</div>} />
+        <Route path="payment" element={<Payment />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
       </Route>
