@@ -1,13 +1,16 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  # If your app is deployed to a subfolder change RewriteBase accordingly (e.g. /mysite/)
+  RewriteBase /
 
-  # Serve existing files directly
+  # Serve existing files and directories directly
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # Rewrite all other requests to index.html (Single Page App)
-  RewriteRule ^ /index.html [L]
+  # All other requests are rewritten to index.html (SPA entry)
+  # Use a relative path (no leading slash) so this works correctly in subfolders.
+  RewriteRule ^ index.html [L]
 </IfModule>
 
 # Optional: Add some basic caching headers for static assets (adjust as needed)
@@ -20,3 +23,47 @@
   ExpiresByType image/png "access plus 1 month"
   ExpiresByType image/svg+xml "access plus 1 month"
 </IfModule>
+
+# Recommended: disable directory listing
+Options -Indexes
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+<<<<<<< HEAD
+
+  # Serve existing files directly
+=======
+  # If your app is deployed to a subfolder change RewriteBase accordingly (e.g. /mysite/)
+  RewriteBase /
+
+  # Serve existing files and directories directly
+>>>>>>> 4b38702 (Add .htaccess for SPA routing (Hostinger friendly))
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+<<<<<<< HEAD
+  # Rewrite all other requests to index.html (Single Page App)
+  RewriteRule ^ /index.html [L]
+=======
+  # All other requests are rewritten to index.html (SPA entry)
+  # Use a relative path (no leading slash) so this works correctly in subfolders.
+  RewriteRule ^ index.html [L]
+>>>>>>> 4b38702 (Add .htaccess for SPA routing (Hostinger friendly))
+</IfModule>
+
+# Optional: Add some basic caching headers for static assets (adjust as needed)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
+<<<<<<< HEAD
+=======
+
+# Recommended: disable directory listing
+Options -Indexes
+>>>>>>> 4b38702 (Add .htaccess for SPA routing (Hostinger friendly))
