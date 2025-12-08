@@ -1,35 +1,119 @@
+import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import KasolKheerganga from "./pages/KasolKheerganga";
-import JibhiTirthan from "./pages/JibhiTirthan";
-import ChoptaTungnath from "./pages/ChoptaTungnath";
-import UdaipurMountAbu from "./pages/UdaipurMountAbu";
-import ManaliSissuKasol from "./pages/ManaliSissuKasol";
 import Layout from "./components/Layout";
-import MetaLeadForm from "./pages/MetaLeadForm";
-import AboutUs from "./pages/AboutUs";
-import ContactUs from "./pages/ContactUs";
-import Payment from "./pages/Payment";
+
+const Home = lazy(() => import("./pages/Home"));
+const KasolKheerganga = lazy(() => import("./pages/KasolKheerganga"));
+const JibhiTirthan = lazy(() => import("./pages/JibhiTirthan"));
+const ChoptaTungnath = lazy(() => import("./pages/ChoptaTungnath"));
+const UdaipurMountAbu = lazy(() => import("./pages/UdaipurMountAbu"));
+const ManaliSissuKasol = lazy(() => import("./pages/ManaliSissuKasol"));
+const MetaLeadForm = lazy(() => import("./pages/MetaLeadForm"));
+const AboutUs = lazy(() => import("./pages/AboutUs"));
+const ContactUs = lazy(() => import("./pages/ContactUs"));
+const Payment = lazy(() => import("./pages/Payment"));
+
+function Loader() {
+  return (
+    <div
+      className="py-12 text-center text-gray-500"
+      role="status"
+      aria-live="polite"
+    >
+      Loading...
+    </div>
+  );
+}
 
 export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
+        <Route
+          index
+          element={
+            <Suspense fallback={<Loader />}>
+              <Home />
+            </Suspense>
+          }
+        />
         {/* ManaliSolang removed (deleted) */}
-        <Route path="chopta-tungnath" element={<ChoptaTungnath />} />
-        <Route path="group-trips-queries" element={<MetaLeadForm />} />
-        <Route path="kasol-kheerganga" element={<KasolKheerganga />} />
-        <Route path="jibhi-tirthan" element={<JibhiTirthan />} />
-        <Route path="udaipur-mount-abu" element={<UdaipurMountAbu />} />
-        <Route path="manali-kasol-chills" element={<ManaliSissuKasol />} />
+        <Route
+          path="chopta-tungnath"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ChoptaTungnath />
+            </Suspense>
+          }
+        />
+        <Route
+          path="group-trips-queries"
+          element={
+            <Suspense fallback={<Loader />}>
+              <MetaLeadForm />
+            </Suspense>
+          }
+        />
+        <Route
+          path="kasol-kheerganga"
+          element={
+            <Suspense fallback={<Loader />}>
+              <KasolKheerganga />
+            </Suspense>
+          }
+        />
+        <Route
+          path="jibhi-tirthan"
+          element={
+            <Suspense fallback={<Loader />}>
+              <JibhiTirthan />
+            </Suspense>
+          }
+        />
+        <Route
+          path="udaipur-mount-abu"
+          element={
+            <Suspense fallback={<Loader />}>
+              <UdaipurMountAbu />
+            </Suspense>
+          }
+        />
+        <Route
+          path="manali-kasol-chills"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ManaliSissuKasol />
+            </Suspense>
+          }
+        />
 
         {/* More trips */}
         <Route path="rishikesh" element={<div>Rishikesh Coming Soon</div>} />
         <Route path="udaipur" element={<div>Udaipur Coming Soon</div>} />
-        <Route path="payment" element={<Payment />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/contact" element={<ContactUs />} />
+        <Route
+          path="payment"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Payment />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <Suspense fallback={<Loader />}>
+              <AboutUs />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ContactUs />
+            </Suspense>
+          }
+        />
       </Route>
     </Routes>
   );
