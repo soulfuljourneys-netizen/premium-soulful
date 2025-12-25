@@ -25,8 +25,13 @@ export default function TripCard({
   pickup,
 }: TripCardProps) {
   // If explicit duration/pickup props aren't provided, try to parse from `subtitle` (format: "5D • 4N | Pickup: Delhi")
-  const parsedDuration = duration ?? (subtitle ? subtitle.split("|")[0].trim() : undefined);
-  const parsedPickup = pickup ?? (subtitle && subtitle.includes("|") ? subtitle.split("|")[1].trim() : undefined);
+  const parsedDuration =
+    duration ?? (subtitle ? subtitle.split("|")[0].trim() : undefined);
+  const parsedPickup =
+    pickup ??
+    (subtitle && subtitle.includes("|")
+      ? subtitle.split("|")[1].trim()
+      : undefined);
 
   return (
     <a href={href} className="no-underline">
