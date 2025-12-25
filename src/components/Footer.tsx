@@ -23,7 +23,7 @@ export default function Footer() {
           <div className="text-sm text-white/80">
             Curated soulful travel experiences
           </div>
-          <div className="text-sm text-white/80">+91 90904 03075</div>
+          <div className="text-sm text-white/80">+91 83830 21712</div>
         </div>
         <div className="flex flex-col gap-6 md:gap-8">
           <div className="flex flex-col md:flex-row gap-8 md:gap-16">

@@ -8,6 +8,9 @@ type TripCardProps = {
   image: string;
   thumbnails?: string[];
   cta?: string;
+  heading?: string;
+  duration?: string;
+  pickup?: string;
 };
 
 export default function TripCard({
@@ -17,7 +20,14 @@ export default function TripCard({
   image,
   thumbnails,
   cta = "View Details",
+  heading,
+  duration,
+  pickup,
 }: TripCardProps) {
+  // If explicit duration/pickup props aren't provided, try to parse from `subtitle` (format: "5D • 4N | Pickup: Delhi")
+  const parsedDuration = duration ?? (subtitle ? subtitle.split("|")[0].trim() : undefined);
+  const parsedPickup = pickup ?? (subtitle && subtitle.includes("|") ? subtitle.split("|")[1].trim() : undefined);
+
   return (
     <a href={href} className="no-underline">
       <motion.div
@@ -42,10 +52,27 @@ export default function TripCard({
             />
           </div>
         )}
-        <div className="trip-info">
-          <h3 className="trip-name">{title}</h3>
-          {subtitle && <p className="trip-sub">{subtitle}</p>}
-          <button className="primary-btn">{cta}</button>
+        <div className="trip-info flex flex-col items-center text-center px-3">
+          {heading && (
+            <div className="text-xs font-semibold text-neutral-500 uppercase mb-1">
+              {heading}
+            </div>
+          )}
+
+          {/* Normalize dashes: replace em-dash or double-hyphen with a single hyphen with spaces */}
+          {(() => {
+            const t = title || "";
+            let displayTitle = t.replace(/-{2,}|—|–/g, "-");
+            displayTitle = displayTitle.replace(/\s*-\s*/g, " - ");
+            return <h3 className="trip-name">{displayTitle}</h3>;
+          })()}
+
+          <div className="trip-meta mt-2 text-sm text-neutral-600">
+            {parsedDuration && <div className="">{parsedDuration}</div>}
+            {parsedPickup && <div className="mt-1">{parsedPickup}</div>}
+          </div>
+
+          <button className="primary-btn mt-4">{cta}</button>
         </div>
       </motion.div>
     </a>

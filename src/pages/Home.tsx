@@ -50,7 +50,8 @@ export default function Home() {
         >
           <TripCard
             title="Kasol — Kheerganga"
-            subtitle="5D • 4N | Pickup: Delhi"
+            duration="5D • 4N"
+            pickup="Pickup: Delhi & Chandigarh"
             href="/kasol-kheerganga"
             image={kasolThumb}
             thumbnails={[kasolThumb]}
@@ -58,7 +59,8 @@ export default function Home() {
 
           <TripCard
             title="Jibhi — Tirthan"
-            subtitle="5D • 4N | Pickup: Delhi & Chandigarh"
+            duration="5D • 4N"
+            pickup="Pickup: Delhi & Chandigarh"
             href="/jibhi-tirthan"
             image={jibhiThumb}
             thumbnails={[jibhiThumb]}
@@ -66,7 +68,8 @@ export default function Home() {
 
           <TripCard
             title="Chopta — Tungnath"
-            subtitle="5D • 4N | Every Friday from Delhi"
+            duration="5D • 4N"
+            pickup="Pickup: Delhi & Rishikesh"
             href="/chopta-tungnath"
             image={choptaThumb}
             thumbnails={[choptaThumb]}
@@ -74,7 +77,8 @@ export default function Home() {
 
           <TripCard
             title="Udaipur — Mount Abu"
-            subtitle="5D • 4N | Pickup: Delhi / Gurgaon (Jaipur pickup available)"
+            duration="5D • 4N"
+            pickup="Pickup: Delhi & Jaipur"
             href="/udaipur-mount-abu"
             image={udaipurThumb}
             thumbnails={[udaipurThumb]}
@@ -82,7 +86,8 @@ export default function Home() {
 
           <TripCard
             title="Manali — Sissu — Kasol"
-            subtitle="6D • 5N | Pickup: Delhi & Chandigarh"
+            duration="6D • 5N"
+            pickup="Pickup: Delhi & Chandigarh"
             href="/manali-kasol-chills"
             image={manaliThumb}
             thumbnails={[manaliThumb]}

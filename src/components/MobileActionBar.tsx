@@ -7,8 +7,8 @@ interface Props {
 }
 
 export default function MobileActionBar({
-  whatsappHref = "https://wa.me/9090403075",
-  callHref = "tel:9090403075",
+  whatsappHref = "https://wa.me/918383021712",
+  callHref = "tel:+918383021712",
   bookHref = "#book",
 }: Props) {
   return (
