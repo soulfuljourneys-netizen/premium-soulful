@@ -37,7 +37,7 @@ export default function TourismAlliances() {
                 key={i}
                 className="flex-shrink-0 flex items-center justify-center px-1 md:px-2"
               >
-                  <div className="p-2 md:p-1 bg-transparent rounded-md flex items-center justify-center">
+                <div className="p-2 md:p-1 bg-transparent rounded-md flex items-center justify-center">
                   <img
                     src={src}
                     alt={`Tourism board ${(i % logos.length) + 1}`}
