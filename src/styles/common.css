@@ -359,6 +359,12 @@ body.hide-chrome .content-area {
 .animate-scrollVideos {
   animation: scrollVideos 24s linear infinite;
 }
+@media (max-width: 768px) {
+  .animate-scrollVideos {
+    /* faster loop on small screens so logos aren't so slow */
+    animation-duration: 14s;
+  }
+}
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 .cursor-grab { cursor: grab; }

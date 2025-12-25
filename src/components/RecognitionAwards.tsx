@@ -1,53 +1,31 @@
 import React from "react";
 
+import CNBC from "../assets/Recognition and Awards/CNBC TV.png";
+import DNA from "../assets/Recognition and Awards/DNA_Newspaper_Logo.svg.png";
+import Livemint from "../assets/Recognition and Awards/Livemint Logo Vector.svg .png";
+import MidDay from "../assets/Recognition and Awards/Mid Day.png";
+import StartupIndia from "../assets/Recognition and Awards/Startup India.png";
+
 const items = [
   {
-    title: "Best Youth Travel 2023",
-    src: "https://via.placeholder.com/220x80.png?text=Best+Youth+Travel+2023",
+    title: "CNBC TV",
+    src: CNBC,
   },
   {
-    title: "Community Choice 2024",
-    src: "https://via.placeholder.com/220x80.png?text=Community+Choice+2024",
+    title: "DNA Newspaper",
+    src: DNA,
   },
   {
-    title: "Startup Award 2022",
-    src: "https://via.placeholder.com/220x80.png?text=Startup+Award+2022",
+    title: "Livemint",
+    src: Livemint,
   },
   {
-    title: "Travel Influencer 2024",
-    src: "https://via.placeholder.com/220x80.png?text=Travel+Influencer+2024",
+    title: "Mid Day",
+    src: MidDay,
   },
   {
-    title: "NDTV Feature",
-    src: "https://via.placeholder.com/220x80.png?text=NDTV",
-  },
-  {
-    title: "Times of India",
-    src: "https://via.placeholder.com/220x80.png?text=Times+of+India",
-  },
-  {
-    title: "India Today",
-    src: "https://via.placeholder.com/220x80.png?text=India+Today",
-  },
-  {
-    title: "Zee News",
-    src: "https://via.placeholder.com/220x80.png?text=Zee+News",
-  },
-  {
-    title: "Aaj Tak",
-    src: "https://via.placeholder.com/220x80.png?text=Aaj+Tak",
-  },
-  {
-    title: "Hindustan Times",
-    src: "https://via.placeholder.com/220x80.png?text=Hindustan+Times",
-  },
-  {
-    title: "Entrepreneur India",
-    src: "https://via.placeholder.com/220x80.png?text=Entrepreneur+India",
-  },
-  {
-    title: "Regional Tourism Award",
-    src: "https://via.placeholder.com/220x80.png?text=Regional+Tourism+Award",
+    title: "Startup India",
+    src: StartupIndia,
   },
 ];
 
@@ -64,18 +42,18 @@ export default function RecognitionAwards() {
           Featured in national media and recognised across the travel industry.
         </p>
 
-        <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+        <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-items-center items-center">
           {items.map((it, i) => (
             <div
               key={i}
-              className="flex flex-col items-center text-center p-3 bg-white/4 rounded-lg border border-white/6"
+              className="flex flex-col items-center text-center p-2 bg-transparent rounded-lg"
             >
               <img
                 src={it.src}
                 alt={it.title}
-                className="h-12 md:h-14 object-contain mb-2 grayscale opacity-95"
+                className="h-10 sm:h-12 md:h-14 object-contain mb-1 max-w-[140px]"
               />
-              <div className="text-xs text-neutral-800/90">{it.title}</div>
+              <div className="text-xs text-neutral-800/90 mt-1">{it.title}</div>
             </div>
           ))}
         </div>
