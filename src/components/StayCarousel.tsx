@@ -36,16 +36,17 @@ export default function StayCarousel({ title, images }: StayCarouselProps) {
   return (
     <section className="my-10">
       <h3 className="text-xl font-bold mb-4">{title}</h3>
-      <div className="relative w-full max-w-2xl mx-auto">
+      <div className="relative w-full max-w-4xl mx-auto">
         <div className="flex gap-4 overflow-hidden rounded-2xl shadow-lg justify-center">
           {getVisibleImages().map((img, idx) => (
-            <img
-              key={idx}
-              src={img}
-              alt={title + " stay " + idx}
-              className="w-full h-64 object-cover cursor-pointer max-w-xs"
-              onClick={() => setPopup((current + idx) % images.length)}
-            />
+            <div key={idx} className="flex-shrink-0 w-full md:w-1/3">
+              <img
+                src={img}
+                alt={title + " stay " + idx}
+                className="w-full h-64 object-cover cursor-pointer"
+                onClick={() => setPopup((current + idx) % images.length)}
+              />
+            </div>
           ))}
         </div>
         <button

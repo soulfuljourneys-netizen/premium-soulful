@@ -12,6 +12,14 @@ import MobileActionBar from "../components/MobileActionBar";
 import PageVisuals from "../components/PageVisuals";
 import TripStaySection from "../components/TripStaySection";
 import LeadFormCard from "../components/LeadFormCard";
+import udaipur1 from "../assets/Udaipur Stays/Udaipur 1.jpeg";
+import udaipur2 from "../assets/Udaipur Stays/Udaipur 2.jpeg";
+import udaipur3 from "../assets/Udaipur Stays/Udaipur 3.jpeg";
+import udaipur4 from "../assets/Udaipur Stays/Udaipur 4.jpeg";
+import udaipur5 from "../assets/Udaipur Stays/Udaipur 5.jpeg";
+import udaipur6 from "../assets/Udaipur Stays/Udaipur 6.jpeg";
+import udaipur7 from "../assets/Udaipur Stays/Udaipur 7.jpeg";
+import udaipur8 from "../assets/Udaipur Stays/Udaipur 8.jpeg";
 
 export default function UdaipurMountAbu() {
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
@@ -156,6 +164,15 @@ export default function UdaipurMountAbu() {
       </section>
 
       <ItineraryAccordion itinerary={itinerary} />
+
+      <TripStaySection
+        carousels={[
+          {
+            title: "Stays We Provide",
+            images: [udaipur1, udaipur2, udaipur3, udaipur4, udaipur5, udaipur6, udaipur7, udaipur8],
+          },
+        ]}
+      />
 
       <DetailsPanel
         inclusions={inclusions}

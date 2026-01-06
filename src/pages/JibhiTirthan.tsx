@@ -4,6 +4,22 @@ import thumb1 from "../assets/Hero Sections/Jibhi Tirthan/Jalori Pass.jpg";
 import thumb2 from "../assets/Hero Sections/Jibhi Tirthan/Jibhi Himachal Pradesh.jpg";
 import thumb3 from "../assets/Hero Sections/Jibhi Tirthan/Jibhi waterfall.jpg";
 import thumb4 from "../assets/Hero Sections/Jibhi Tirthan/Mini Thailand, Jibhi, Himachal Pradesh.jpg";
+import jibhi1 from "../assets/Jibhi Stay/Cottage 1.jpeg";
+import jibhi2 from "../assets/Jibhi Stay/Cottage 2.jpeg";
+import jibhi3 from "../assets/Jibhi Stay/Cottage 3.jpeg";
+import jibhi4 from "../assets/Jibhi Stay/Cottage 4.jpeg";
+import jibhi5 from "../assets/Jibhi Stay/Cottage 5.jpeg";
+import jibhi6 from "../assets/Jibhi Stay/Cottage 6.jpeg";
+import jibhi7 from "../assets/Jibhi Stay/Cottage 7.jpeg";
+import jibhi8 from "../assets/Jibhi Stay/Cottage 8.jpeg";
+import jibhi9 from "../assets/Jibhi Stay/Cottage 9.jpeg";
+import jibhi10 from "../assets/Jibhi Stay/Cottage 10.jpeg";
+import jibhi11 from "../assets/Jibhi Stay/Cottage 11.jpeg";
+import jibhi12 from "../assets/Jibhi Stay/Cottage 12.jpeg";
+import jibhi13 from "../assets/Jibhi Stay/Cottage 13.jpeg";
+import jibhi14 from "../assets/Jibhi Stay/Cottage 14.jpeg";
+import jibhi15 from "../assets/Jibhi Stay/Cottage 15.jpeg";
+import jibhi16 from "../assets/Jibhi Stay/Cottage 16.jpeg";
 import ItineraryAccordion from "../components/ItineraryAccordion";
 import DetailsPanel from "../components/DetailsPanel";
 import VideoScroller from "../components/VideoScroller";
@@ -157,7 +173,24 @@ export default function JibhiTirthan() {
         carousels={[
           {
             title: "Stays We Provide",
-            images: [thumb1, thumb2, thumb3, thumb4],
+            images: [
+              jibhi1,
+              jibhi2,
+              jibhi3,
+              jibhi4,
+              jibhi5,
+              jibhi6,
+              jibhi7,
+              jibhi8,
+              jibhi9,
+              jibhi10,
+              jibhi11,
+              jibhi12,
+              jibhi13,
+              jibhi14,
+              jibhi15,
+              jibhi16,
+            ],
           },
         ]}
       />

@@ -12,6 +12,15 @@ import VideoModal from "../components/VideoModal";
 import MobileActionBar from "../components/MobileActionBar";
 import PageVisuals from "../components/PageVisuals";
 import TripStaySection from "../components/TripStaySection";
+import kasol1 from "../assets/Kasol Stays/Kasol Camp 1.jpeg";
+import kasol2 from "../assets/Kasol Stays/Kasol Camp 2.jpeg";
+import kasol3 from "../assets/Kasol Stays/Kasol Camp 3.jpeg";
+import kasol4 from "../assets/Kasol Stays/Kasol Camp 4.jpeg";
+import kasol5 from "../assets/Kasol Stays/Kasol Camp 5.jpeg";
+import kasol6 from "../assets/Kasol Stays/Kasol Camp 6.jpeg";
+import kasol7 from "../assets/Kasol Stays/Kasol Camp 7.jpeg";
+import kasol8 from "../assets/Kasol Stays/Kasol Camp 8.jpeg";
+import kasol9 from "../assets/Kasol Stays/Kasol Camp 9.jpeg";
 
 export default function KasolKheerganga() {
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
@@ -159,7 +168,7 @@ export default function KasolKheerganga() {
         carousels={[
           {
             title: "Stays We Provide",
-            images: [thumb1, thumb2, thumb3, thumb4],
+            images: [kasol1, kasol2, kasol3, kasol4, kasol5, kasol6, kasol7, kasol8, kasol9],
           },
         ]}
       />

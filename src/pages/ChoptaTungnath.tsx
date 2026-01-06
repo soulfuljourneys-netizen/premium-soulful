@@ -11,6 +11,14 @@ import VideoModal from "../components/VideoModal";
 import MobileActionBar from "../components/MobileActionBar";
 import PageVisuals from "../components/PageVisuals";
 import TripStaySection from "../components/TripStaySection";
+import chop1 from "../assets/Chopta Stays/Chopta1.jpeg";
+import chop2 from "../assets/Chopta Stays/Chopta2.jpeg";
+import chop3 from "../assets/Chopta Stays/Chopta3.jpeg";
+import chop4 from "../assets/Chopta Stays/Chopta4.jpeg";
+import chop5 from "../assets/Chopta Stays/Chopta5.jpeg";
+import chop6 from "../assets/Chopta Stays/Chopta6.jpeg";
+import chop7 from "../assets/Chopta Stays/Chopta7.jpeg";
+import chop8 from "../assets/Chopta Stays/Chopta8.jpeg";
 import LeadFormCard from "../components/LeadFormCard";
 
 export default function ChoptaTungnath() {
@@ -150,7 +158,7 @@ export default function ChoptaTungnath() {
         carousels={[
           {
             title: "Stays We Provide",
-            images: [thumb1, thumb2, thumb3, thumb4],
+            images: [chop1, chop2, chop3, chop4, chop5, chop6, chop7, chop8],
           },
         ]}
       />

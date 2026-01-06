@@ -12,6 +12,19 @@ import MobileActionBar from "../components/MobileActionBar";
 import PageVisuals from "../components/PageVisuals";
 import TripStaySection from "../components/TripStaySection";
 import LeadFormCard from "../components/LeadFormCard";
+// Kasol stays intentionally left out here to avoid reusing the same images
+// Kasol images are used on the Kasol page (`KasolKheerganga.tsx`) only.
+import manali1 from "../assets/Manali Stays/Manali 1.jpeg";
+import manali2 from "../assets/Manali Stays/Manali 2.jpeg";
+import manali3 from "../assets/Manali Stays/Manali 3.jpeg";
+import manali4 from "../assets/Manali Stays/Manali 4.jpeg";
+import manali5 from "../assets/Manali Stays/Manali 5.jpeg";
+import manali6 from "../assets/Manali Stays/Manali 6.jpeg";
+import manali7 from "../assets/Manali Stays/Manali 7.jpeg";
+import manali8 from "../assets/Manali Stays/Manali 8.jpeg";
+import manali9 from "../assets/Manali Stays/Manali 9.jpeg";
+import manali10 from "../assets/Manali Stays/Manali 10.jpeg";
+import manali11 from "../assets/Manali Stays/Manali 11.jpeg";
 
 export default function ManaliSissuKasol() {
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
@@ -81,11 +94,6 @@ export default function ManaliSissuKasol() {
     console.log("Booking request", form);
     alert("Request received. We'll contact you shortly.");
     setForm({ name: "", phone: "", email: "" });
-  };
-
-  const handleSubmit = (e?: React.FormEvent) => {
-    if (e && e.preventDefault) e.preventDefault();
-    submitForm();
   };
 
   return (
@@ -168,12 +176,8 @@ export default function ManaliSissuKasol() {
       <TripStaySection
         carousels={[
           {
-            title: "Stays We Provide — Hotel",
-            images: [hero1, hero2],
-          },
-          {
-            title: "Stays We Provide — Camps",
-            images: [hero3, hero4],
+            title: "Stays We Provide",
+            images: [manali1, manali2, manali3, manali4, manali5, manali6, manali7, manali8, manali9, manali10, manali11],
           },
         ]}
       />
