@@ -21,7 +21,10 @@ export default function VideoScroller({ videoIds, videoUrls, onOpen }: Props) {
   return (
     <div className="mt-4 overflow-hidden w-full">
       <div className="relative w-full">
-        <div className="flex gap-3 animate-scrollVideos select-none whitespace-nowrap" style={{ width: 'max-content' }}>
+        <div
+          className="flex gap-3 animate-scrollVideos select-none whitespace-nowrap"
+          style={{ width: "max-content" }}
+        >
           {looped.map((src, i) => {
             const idx = i % sources.length;
             return (

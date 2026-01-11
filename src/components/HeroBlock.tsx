@@ -73,8 +73,12 @@ export default function HeroBlock({
                 className="bg-white border border-slate-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center"
                 style={{ minWidth: 0 }}
               >
-                <div className="font-semibold truncate w-full text-center">{s.label}</div>
-                <div className="text-slate-600 break-words w-full text-center">{s.value}</div>
+                <div className="font-semibold truncate w-full text-center">
+                  {s.label}
+                </div>
+                <div className="text-slate-600 break-words w-full text-center">
+                  {s.value}
+                </div>
               </div>
             ))}
           </div>
