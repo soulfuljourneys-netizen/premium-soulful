@@ -114,7 +114,8 @@ export default function UdaipurMountAbu() {
           title="Udaipur - Mount Abu"
           subtitle="5Days / 4N (including travel days)"
           description="A soulful combo of Udaipur’s palaces and lakes with the green hill station charm of Mount Abu - culture, pools, and evening bonfires. Every Friday evening departure from Delhi / Gurgaon."
-          thumbnails={[thumb1, thumb2, thumb3, thumb4]}
+          heroImage={thumb1}
+          thumbnails={[thumb2, thumb3, thumb4]}
           stats={[
             { label: "Duration", value: "5D • 4N" },
             { label: "Pickup", value: "Delhi / Gurgaon (Jaipur pickup)" },
