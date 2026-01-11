@@ -113,10 +113,7 @@ export default function UdaipurMountAbu() {
         <HeroBlock
           title="Udaipur - Mount Abu"
           subtitle="5Days / 4N (including travel days)"
-          description={
-            "A soulful combo of Udaipur’s palaces and lakes with the green hill station charm of Mount Abu - culture, pools, and evening bonfires. Every Friday evening departure from Delhi / Gurgaon."
-          {
-            title: "DAY 1 - Departure",
+          description="A soulful combo of Udaipur’s palaces and lakes with the green hill station charm of Mount Abu - culture, pools, and evening bonfires. Every Friday evening departure from Delhi / Gurgaon."
           thumbnails={[thumb1, thumb2, thumb3, thumb4]}
           stats={[
             { label: "Duration", value: "5D • 4N" },
@@ -144,7 +141,9 @@ export default function UdaipurMountAbu() {
               <div className="icon-wrap">🏰</div>
               <div>
                 <div className="font-semibold">City Palaces</div>
-                <div className="text-sm text-slate-600">City Palace & cultural shows</div>
+                <div className="text-sm text-slate-600">
+                  City Palace & cultural shows
+                </div>
               </div>
             </div>
           </div>
@@ -154,7 +153,9 @@ export default function UdaipurMountAbu() {
               <div className="icon-wrap">🏊</div>
               <div>
                 <div className="font-semibold">Pool & Parties</div>
-                <div className="text-sm text-slate-600">DJ nights, pool parties and lakeside dining</div>
+                <div className="text-sm text-slate-600">
+                  DJ nights, pool parties and lakeside dining
+                </div>
               </div>
             </div>
           </div>
@@ -164,7 +165,9 @@ export default function UdaipurMountAbu() {
               <div className="icon-wrap">🗺️</div>
               <div>
                 <div className="font-semibold">Mount Abu Excursion</div>
-                <div className="text-sm text-slate-600">Dilwara temples, Nakki Lake and scenic viewpoints</div>
+                <div className="text-sm text-slate-600">
+                  Dilwara temples, Nakki Lake and scenic viewpoints
+                </div>
               </div>
             </div>
           </div>
@@ -236,7 +239,6 @@ export default function UdaipurMountAbu() {
               </li>
             </ul>
           </div>
-          
         </div>
 
         <div className="w-full md:w-1/2">
