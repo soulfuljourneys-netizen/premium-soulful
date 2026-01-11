@@ -314,11 +314,20 @@ export default function LeadFormCard({
               onChange={handleChange}
               className="px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-[#ffb347] text-base sm:text-lg border border-white/6 shadow-none w-full"
             >
-              <option value="" className="text-slate-400" style={{ color: '#94a3b8' }}>
+              <option
+                value=""
+                className="text-slate-400"
+                style={{ color: "#94a3b8" }}
+              >
                 Select Month
               </option>
               {months.map((month) => (
-                <option key={month} value={month} className="text-slate-900" style={{ color: '#0f172a' }}>
+                <option
+                  key={month}
+                  value={month}
+                  className="text-slate-900"
+                  style={{ color: "#0f172a" }}
+                >
                   {month}
                 </option>
               ))}
@@ -338,19 +347,39 @@ export default function LeadFormCard({
               onChange={handleChange}
               className="px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-[#ffb347] text-base sm:text-lg border border-white/6 shadow-none w-full"
             >
-              <option value="" className="text-slate-400" style={{ color: '#94a3b8' }}>
+              <option
+                value=""
+                className="text-slate-400"
+                style={{ color: "#94a3b8" }}
+              >
                 How soon do you want to book?
               </option>
-              <option value="Immediately" className="text-slate-900" style={{ color: '#0f172a' }}>
+              <option
+                value="Immediately"
+                className="text-slate-900"
+                style={{ color: "#0f172a" }}
+              >
                 Immediately
               </option>
-              <option value="Within a week" className="text-slate-900" style={{ color: '#0f172a' }}>
+              <option
+                value="Within a week"
+                className="text-slate-900"
+                style={{ color: "#0f172a" }}
+              >
                 Within a week
               </option>
-              <option value="Within a month" className="text-slate-900" style={{ color: '#0f172a' }}>
+              <option
+                value="Within a month"
+                className="text-slate-900"
+                style={{ color: "#0f172a" }}
+              >
                 Within a month
               </option>
-              <option value="Just exploring" className="text-slate-900" style={{ color: '#0f172a' }}>
+              <option
+                value="Just exploring"
+                className="text-slate-900"
+                style={{ color: "#0f172a" }}
+              >
                 Just exploring
               </option>
             </select>

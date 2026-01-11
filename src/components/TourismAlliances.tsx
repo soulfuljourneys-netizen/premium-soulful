@@ -31,7 +31,10 @@ export default function TourismAlliances() {
 
         <div className="overflow-hidden mt-6 w-full">
           <div className="relative w-full">
-            <div className="flex gap-4 md:gap-6 items-center select-none animate-scrollVideos whitespace-nowrap" style={{ width: 'max-content' }}>
+            <div
+              className="flex gap-4 md:gap-6 items-center select-none animate-scrollVideos whitespace-nowrap"
+              style={{ width: "max-content" }}
+            >
               {logos.concat(logos).map((src, i) => (
                 <div
                   key={i}

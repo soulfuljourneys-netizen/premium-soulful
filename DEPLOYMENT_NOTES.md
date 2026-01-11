@@ -26,4 +26,4 @@ Recommended steps to deploy the Vite SPA to Hostinger (public_html):
 If you want, I can:
 
 - Patch `src/main.tsx` to use `HashRouter` instead of `BrowserRouter` (no server changes needed).
- - Set `base` in `vite.config.ts` to `./` (useful for some shared-host environments) - tell me the site subpath.
+- Set `base` in `vite.config.ts` to `./` (useful for some shared-host environments) - tell me the site subpath.
