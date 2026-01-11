@@ -4,18 +4,19 @@ import soulfulLogo from "../assets/Thumbnails/Soulful Logo.jpg";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [overHero, setOverHero] = useState(false);
+  // Start overHero as true so header is transparent on initial load
+  const [overHero, setOverHero] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [tripsDropdownOpen, setTripsDropdownOpen] = useState(false);
   const location = useLocation();
 
   // Trip page paths and prices
   const tripPrices: Record<string, string> = {
-    "/manali-kasol-chills": "7499",
-    "/kasol-kheerganga": "6999",
-    "/chopta-tungnath": "6999",
-    "/jibhi-tirthan": "6999",
-    "/udaipur-mount-abu": "7999",
+    "/manali-kasol-chills": "6499",
+    "/kasol-kheerganga": "5499",
+    "/chopta-tungnath": "5999",
+    "/jibhi-tirthan": "6499",
+    "/udaipur-mount-abu": "6999",
   };
   const tripPath = Object.keys(tripPrices).find((p) =>
     location.pathname.startsWith(p)
@@ -40,6 +41,8 @@ export default function Header() {
       }
     };
 
+    // Always start as overHero (transparent) on load
+    setOverHero(true);
     computeStates();
     window.addEventListener("scroll", computeStates);
     window.addEventListener("resize", computeStates);

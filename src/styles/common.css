@@ -356,13 +356,17 @@ body.hide-chrome .content-area {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
 }
+/* More robust: use will-change and hardware acceleration to reduce animation resets */
 .animate-scrollVideos {
   animation: scrollVideos 24s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 @media (max-width: 768px) {
   .animate-scrollVideos {
-    /* faster loop on small screens so logos aren't so slow */
-    animation-duration: 14s;
+    /* slightly slower loop on small screens for video carousel */
+    animation-duration: 20s;
   }
 }
 .no-scrollbar::-webkit-scrollbar { display: none; }

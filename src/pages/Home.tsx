@@ -43,13 +43,13 @@ export default function Home() {
       </div>
 
       <main className="max-w-6xl mx-auto px-4 md:px-6 pb-12">
-        {/* Trip cards — kept simple and boxed */}
+          {/* Trip cards - kept simple and boxed */}
         <section
           id="trips"
           className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
         >
           <TripCard
-            title="Kasol — Kheerganga"
+            title="Kasol - Kheerganga"
             duration="5D • 4N"
             pickup="Pickup: Delhi & Chandigarh"
             href="/kasol-kheerganga"
@@ -58,7 +58,7 @@ export default function Home() {
           />
 
           <TripCard
-            title="Jibhi — Tirthan"
+            title="Jibhi - Tirthan"
             duration="5D • 4N"
             pickup="Pickup: Delhi & Chandigarh"
             href="/jibhi-tirthan"
@@ -67,7 +67,7 @@ export default function Home() {
           />
 
           <TripCard
-            title="Chopta — Tungnath"
+            title="Chopta - Tungnath"
             duration="5D • 4N"
             pickup="Pickup: Delhi & Rishikesh"
             href="/chopta-tungnath"
@@ -76,7 +76,7 @@ export default function Home() {
           />
 
           <TripCard
-            title="Udaipur — Mount Abu"
+            title="Udaipur - Mount Abu"
             duration="5D • 4N"
             pickup="Pickup: Delhi & Jaipur"
             href="/udaipur-mount-abu"
@@ -85,7 +85,7 @@ export default function Home() {
           />
 
           <TripCard
-            title="Manali — Sissu — Kasol"
+            title="Manali - Sissu - Kasol"
             duration="6D • 5N"
             pickup="Pickup: Delhi & Chandigarh"
             href="/manali-kasol-chills"
@@ -93,7 +93,7 @@ export default function Home() {
             thumbnails={[manaliThumb]}
           />
 
-          {/* optional extras kept minimal — you can add more TripCard instances here */}
+          {/* optional extras kept minimal - you can add more TripCard instances here */}
         </section>
 
         {/* Reviews will appear after Why Choose Us (moved further down) */}
@@ -107,7 +107,7 @@ export default function Home() {
                 </h2>
                 <span className="block h-1 w-14 mx-auto mt-3 rounded-full bg-gradient-to-r from-[#ffb347] to-[#ff4c1b]" />
                 <p className="text-neutral-700 mt-2 max-w-2xl mx-auto">
-                  We make trips energetic, social and unforgettable — tailored
+                  We make trips energetic, social and unforgettable - tailored
                   for young travellers who want more than the usual sightseeing.
                 </p>
               </div>
@@ -129,7 +129,7 @@ export default function Home() {
                     Young Tribe
                   </h3>
                   <p className="text-neutral-700 mt-2 text-sm">
-                    A community of like-minded young travellers — make friends
+                    A community of like-minded young travellers - make friends
                     on every trip.
                   </p>
                 </div>
@@ -196,7 +196,7 @@ export default function Home() {
             </h2>
             <span className="block h-1 w-14 mx-auto mt-3 rounded-full bg-gradient-to-r from-[#ffb347] to-[#ff4c1b]" />
             <p className="text-neutral-700 mt-2">
-              Short clips from our travellers — real reactions, real moments.
+              Short clips from our travellers - real reactions, real moments.
             </p>
 
             <div className="mt-6">

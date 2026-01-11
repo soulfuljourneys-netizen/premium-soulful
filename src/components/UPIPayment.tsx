@@ -123,7 +123,7 @@ export default function UPIPayment({
         )}
 
         <div className="mt-4 text-sm text-slate-500">
-          Tip: you can copy the UPI id or click Pay — on desktop you'll see a QR
+          Tip: you can copy the UPI id or click Pay - on desktop you'll see a QR
           code, on mobile you'll be offered app options.
         </div>
       </div>

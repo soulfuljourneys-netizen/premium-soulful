@@ -36,34 +36,55 @@ export default function ManaliSissuKasol() {
 
   const itinerary = [
     {
-      title: "DAY 1 — Departure",
+      title: "DAY 1 - Departure",
       subtitle: "Evening departure from Delhi",
-      body: "Start your evening departure towards Manali; overnight on the way.",
+      body: [
+        "Evening departure from Delhi towards Manali.",
+        "Overnight journey en route.",
+      ],
     },
     {
-      title: "DAY 2 — Manali Arrival & Local",
+      title: "DAY 2 - Manali Arrival & Local",
       subtitle: "Check-in, Jogini Falls, Hadimba Temple, Mall Road",
-      body: "Arrive Manali around 11 AM–12 PM, check-in and rest. Explore Jogini Waterfall, Hadimba Temple, Mall Road and Van Vihar. Evening back to hotel for dinner and overnight stay.",
+      body: [
+        "Arrive Manali late morning and check in to hotel.",
+        "Visit Jogini Falls, Hadimba Temple, Mall Road and Van Vihar.",
+        "Evening return to hotel for dinner and overnight stay.",
+      ],
     },
     {
-      title: "DAY 3 — Solang Valley & Sissu/Atal Tunnel (if open)",
+      title: "DAY 3 - Solang Valley & Sissu/Atal Tunnel (if open)",
       subtitle: "Snow activities / Solang valley visit",
-      body: "After breakfast head to Solang Valley for snow activities (rentals and activity charges extra). If accessible, visit Atal Tunnel and Sissu for snow views. Return to Manali for dinner and stay.",
+      body: [
+        "After breakfast, visit Solang Valley for snow activities (charges extra).",
+        "If accessible, visit Atal Tunnel and Sissu for scenic views.",
+        "Return to Manali for dinner and overnight stay.",
+      ],
     },
     {
-      title: "DAY 4 — Kullu to Kasol",
+      title: "DAY 4 - Kullu to Kasol",
       subtitle: "Rafting / adventure options then Kasol Riverside Camps",
-      body: "Checkout from Manali and head towards Kullu for optional rafting or paragliding (extra). Continue to Kasol and check in to riverside camps. Evening DJ night, bonfire and dinner at the camps.",
+      body: [
+        "Checkout from Manali and drive to Kullu for optional rafting/paragliding (extra).",
+        "Continue to Kasol and check in to riverside camps.",
+        "Evening: DJ night, bonfire and dinner at the camps.",
+      ],
     },
     {
-      title: "DAY 5 — Kasol & Local Treks",
+      title: "DAY 5 - Kasol & Local Treks",
       subtitle: "Manikaran, Chhalal trek & market",
-      body: "Breakfast in camps. Visit Manikaran Gurudwara, explore Kasol market and do a short Chhalal riverside walk/trek. Depart Kasol late afternoon towards Delhi.",
+      body: [
+        "Breakfast in camps and visit Manikaran Gurudwara.",
+        "Explore Kasol market and do a short Chhalal riverside walk/trek.",
+        "Depart Kasol late afternoon towards Delhi.",
+      ],
     },
     {
-      title: "DAY 6 — Return",
+      title: "DAY 6 - Return",
       subtitle: "Arrival in Delhi",
-      body: "Arrive back in Delhi between 06:00–08:00 AM depending on traffic and stops en route.",
+      body: [
+        "Arrive in Delhi early morning (approx 6–8 AM depending on traffic).",
+      ],
     },
   ];
 
@@ -80,6 +101,9 @@ export default function ManaliSissuKasol() {
     "Activity charges (skiing, zipline, river crossing, rafting, paragliding)",
     "GST / applicable taxes",
     "Personal expenses",
+    "Room Heater",
+    "Travel Time Meals",
+    "Lunch",
   ];
 
   const prices = {
@@ -100,18 +124,13 @@ export default function ManaliSissuKasol() {
     <main className="max-w-6xl mx-auto px-4 md:px-6 pb-36 pt-6">
       <div className="relative">
         <HeroBlock
-          title="Manali — Sissu — Kasol"
-          subtitle="6 Days / 5 Nights — Every Friday Evening from Delhi & Chandigarh"
+          title="Manali - Sissu - Kasol"
+          subtitle="6 Days / 5 Nights - Every Friday Evening from Delhi & Chandigarh"
           description={
-            "A combined itinerary covering Manali’s highlights, the snow-accessible Sissu/Atal Tunnel region (seasonal), and riverside camping at Kasol — ideal for adventure and relaxed evenings around the bonfire."
+            "A combined itinerary covering Manali’s highlights, the snow-accessible Sissu/Atal Tunnel region (seasonal), and riverside camping at Kasol - ideal for adventure and relaxed evenings around the bonfire."
           }
           heroImage={hero1}
           thumbnails={[hero2, hero3, hero4]}
-          ctaPrimary={{ text: "Reserve Your Seat", href: "#book" }}
-          ctaSecondary={{
-            text: "More Info",
-            href: "https://soulfuljourneystours.com/manali-kasol-chills",
-          }}
           stats={[
             { label: "Duration", value: "6D • 5N" },
             { label: "Pickup", value: "Delhi / Chandigarh" },
@@ -125,14 +144,8 @@ export default function ManaliSissuKasol() {
         id="overview"
         className="mt-12 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm"
       >
-        <h3 className="text-2xl font-bold">Overview & Highlights</h3>
+        <h3 className="text-2xl font-bold">Highlights</h3>
         <div className="accent-line" />
-        <p className="mt-4 text-slate-600">
-          Multi-day itinerary combining Manali’s scenic valleys, snow activities
-          at Solang/Atal Tunnel region and an immersive riverside camping
-          experience in Kasol — perfect balance of adventure and relaxed
-          evenings.
-        </p>
 
         <div className="mt-6 grid md:grid-cols-3 gap-4">
           <div className="p-4 rounded-xl border highlight-card">
@@ -177,19 +190,44 @@ export default function ManaliSissuKasol() {
         carousels={[
           {
             title: "Stays We Provide",
-            images: [manali1, manali2, manali3, manali4, manali5, manali6, manali7, manali8, manali9, manali10, manali11],
+            images: [
+              manali1,
+              manali2,
+              manali3,
+              manali4,
+              manali5,
+              manali6,
+              manali7,
+              manali8,
+              manali9,
+              manali10,
+              manali11,
+            ],
           },
         ]}
       />
 
-      <DetailsPanel inclusions={inclusions} exclusions={exclusions} />
+      <DetailsPanel
+        inclusions={inclusions}
+        exclusions={exclusions}
+        dates={[
+          "9 Jan 2026",
+          "16 Jan 2026",
+          "23 Jan 2026",
+          "30 Jan 2026",
+          "6 Feb 2026",
+          "13 Feb 2026",
+          "20 Feb 2026",
+          "27 Feb 2026",
+        ]}
+      />
 
       <section
         id="book"
         className="mt-12 p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
       >
         <div>
-          <div className="text-sm text-slate-600">Prices (Before 15th Dec)</div>
+          <div className="text-sm text-slate-600">Prices (Regular)</div>
           <div className="mt-2">
             <div className="text-3xl sm:text-4xl font-extrabold text-slate-900">
               {prices.before.quad}{" "}
@@ -214,13 +252,6 @@ export default function ManaliSissuKasol() {
               </li>
             </ul>
           </div>
-          <p className="mt-3 text-sm text-slate-600">
-            After Dec 15 add{" "}
-            <span className="font-semibold text-slate-900">
-              {prices.after.add}
-            </span>{" "}
-            to above prices.
-          </p>
         </div>
 
         <div className="w-full md:w-1/2">

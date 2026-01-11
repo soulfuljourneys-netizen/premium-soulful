@@ -33,7 +33,7 @@ export default function VideoModal({
     }
   }, [videoData?.src]);
 
-  // support old usage (videoUrl) — convert to a minimal VideoData
+  // support old usage (videoUrl) - convert to a minimal VideoData
   const effective: VideoData | null =
     videoData ??
     (videoUrl ? { src: videoUrl, index: 0, sources: [videoUrl] } : null);

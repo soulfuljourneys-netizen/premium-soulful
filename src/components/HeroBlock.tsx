@@ -66,14 +66,15 @@ export default function HeroBlock({
         </div>
 
         {stats.length > 0 && (
-          <div className="mt-6 grid grid-cols-3 gap-3 text-sm">
+          <div className="mt-6 grid grid-cols-3 gap-2 text-xs sm:text-sm">
             {stats.map((s, i) => (
               <div
                 key={i}
-                className="bg-white border border-slate-200 rounded-2xl p-3 shadow-sm flex flex-col"
+                className="bg-white border border-slate-200 rounded-xl p-2 sm:p-3 shadow-sm flex flex-col items-center"
+                style={{ minWidth: 0 }}
               >
-                <div className="font-semibold">{s.label}</div>
-                <div className="text-slate-600">{s.value}</div>
+                <div className="font-semibold truncate w-full text-center">{s.label}</div>
+                <div className="text-slate-600 break-words w-full text-center">{s.value}</div>
               </div>
             ))}
           </div>

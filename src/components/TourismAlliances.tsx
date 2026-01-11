@@ -29,23 +29,24 @@ export default function TourismAlliances() {
         </h3>
         <span className="block h-1 w-14 mx-auto mt-3 rounded-full bg-gradient-to-r from-[#ffb347] to-[#ff4c1b]" />
 
-        <div className="overflow-hidden mt-6">
-          {/* Use shared animation class; duration adjusted in CSS (faster on mobile) */}
-          <div className="flex gap-4 md:gap-6 items-center select-none animate-scrollVideos">
-            {longList.map((src, i) => (
-              <div
-                key={i}
-                className="flex-shrink-0 flex items-center justify-center px-1 md:px-2"
-              >
-                <div className="p-2 md:p-1 bg-transparent rounded-md flex items-center justify-center">
-                  <img
-                    src={src}
-                    alt={`Tourism board ${(i % logos.length) + 1}`}
-                    className="h-20 md:h-24 object-contain transition ease-linear bg-transparent"
-                  />
+        <div className="overflow-hidden mt-6 w-full">
+          <div className="relative w-full">
+            <div className="flex gap-4 md:gap-6 items-center select-none animate-scrollVideos whitespace-nowrap" style={{ width: 'max-content' }}>
+              {logos.concat(logos).map((src, i) => (
+                <div
+                  key={i}
+                  className="flex-shrink-0 flex items-center justify-center px-1 md:px-2"
+                >
+                  <div className="p-2 md:p-1 bg-transparent rounded-md flex items-center justify-center">
+                    <img
+                      src={src}
+                      alt={`Tourism board ${(i % logos.length) + 1}`}
+                      className="h-20 md:h-24 object-contain transition ease-linear bg-transparent"
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

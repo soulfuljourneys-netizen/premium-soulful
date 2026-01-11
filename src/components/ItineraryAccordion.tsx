@@ -3,7 +3,8 @@ import React, { useState } from "react";
 interface Day {
   title: string;
   subtitle?: string;
-  body: string;
+  // body can be a paragraph or an array of bullet points
+  body: string | string[];
 }
 interface Props {
   itinerary: Day[];
@@ -46,7 +47,15 @@ export default function ItineraryAccordion({ itinerary }: Props) {
                   : "max-h-0 opacity-0"
               }`}
             >
-              <p className="text-slate-600">{day.body}</p>
+              {Array.isArray(day.body) ? (
+                <ul className="list-disc list-inside space-y-2 text-slate-600">
+                  {day.body.map((point, idx) => (
+                    <li key={idx}>{point}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-slate-600">{day.body}</p>
+              )}
             </div>
           </article>
         ))}

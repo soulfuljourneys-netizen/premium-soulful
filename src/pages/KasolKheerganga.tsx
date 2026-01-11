@@ -34,27 +34,42 @@ export default function KasolKheerganga() {
     {
       title: "DAY 1",
       subtitle: "Departure from Delhi",
-      body: "Shaam ko Dilli se AC Traveller ya Volvo mein journey shuru karo.",
+      body: [
+        "Evening departure from Delhi in AC traveller/Volvo.",
+        "Overnight journey towards Kasol with scheduled stops.",
+      ],
     },
     {
       title: "DAY 2",
       subtitle: "Kasol Arrival & Local",
-      body: "Kasol phuchke, phir camps mein check-in. Manikaran Gurudwara aur Shiv Mandir ka Darshan. Kasol Local Market Mein Ghoomna. Chhalal Trek krke Riverside Baithte hai Cafe Hoping. Camps mein Dinner, DJ Night & Bonfire.",
+      body: [
+        "Arrive Kasol and check in to camps.",
+        "Visit Manikaran Gurudwara and nearby temples.",
+        "Explore Kasol market and riverside cafés (Chhalal).",
+        "Evening: dinner, DJ night and bonfire at the camp.",
+      ],
     },
     {
       title: "DAY 3",
       subtitle: "Kheerganga Trek",
-      body: "Camps mein Breakfast. Kasol Camps se checkout krke Barshaini tak jate hai. Barshaini se Kheerganga Trek Chalu (approx). Kheerganga mein Raat Bhar Camps mai stay. Dinner & Bonfire.",
+      body: [
+        "Breakfast at camp and checkout from Kasol camps.",
+        "Drive to Barshaini and begin the Kheerganga trek.",
+        "Reach Kheerganga; evening at camp with dinner and bonfire.",
+      ],
     },
     {
       title: "DAY 4",
       subtitle: "Return Trek & Travel",
-      body: "Kheerganga mein Breakfast. Check Out from Camps. Barshaini tak wapas Trek. Dilli ke liye sham mai Vapis.",
+      body: [
+        "Breakfast in Kheerganga and check out from camp.",
+        "Trek back to Barshaini and drive towards Delhi in the evening.",
+      ],
     },
     {
       title: "DAY 5",
       subtitle: "Arrival in Delhi",
-      body: "Reach Delhi by 7-8 am.",
+      body: ["Arrive in Delhi by early morning (approx 7–8 AM)."],
     },
   ];
 
@@ -71,6 +86,9 @@ export default function KasolKheerganga() {
     "Personal expenses",
     "Adventure charges (if any)",
     "GST/taxes unless specified",
+    "Room Heater",
+    "Travel Time Meals",
+    "Lunch",
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -91,22 +109,17 @@ export default function KasolKheerganga() {
     <main className="max-w-6xl mx-auto px-4 md:px-6 pb-36 pt-6">
       <div className="relative">
         <HeroBlock
-          title="Kasol — Kheerganga"
-          subtitle="5D • 4N | Pickup: Delhi / Rishikesh"
+          title="Kasol - Kheerganga"
+          subtitle="5D • 4N | Pickup: Delhi / Chandigarh"
           description={
             "Kasol is a riverside hamlet famous for its laidback cafe culture and scenic trails. This trip blends relaxed riverside time with an invigorating trek to Kheerganga and cozy nights in camps."
           }
           heroImage={thumb1}
-          thumbnails={[thumb1, thumb2, thumb3, thumb4]}
-          ctaPrimary={{ text: "Reserve Your Seat", href: "#book" }}
-          ctaSecondary={{
-            text: "More Info",
-            href: "https://soulfuljourneystours.com/kasol-kheerganga",
-          }}
+          thumbnails={[thumb2, thumb3, thumb4]}
           stats={[
             { label: "Duration", value: "5D • 4N" },
-            { label: "Pickup", value: "Delhi / Rishikesh" },
-            { label: "Price", value: "Quad: ₹5,499" },
+            { label: "Pickup", value: "Delhi / Chandigarh" },
+            { label: "Price", value: "Quad: 5499" },
           ]}
         />
         <PageVisuals />
@@ -115,14 +128,8 @@ export default function KasolKheerganga() {
         id="overview"
         className="mt-12 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm"
       >
-        <h3 className="text-2xl font-bold">Overview & Highlights</h3>
+        <h3 className="text-2xl font-bold">Highlights</h3>
         <div className="accent-line" />
-        <p className="mt-4 text-slate-600">
-          Kasol is a riverside hamlet famous for its easygoing vibe and cafe
-          culture. Kheerganga offers alpine meadows and hot springs after a
-          scenic trek — this trip blends laidback riverside time with a
-          refreshing trek and cozy nights in camps.
-        </p>
 
         <div className="mt-6 grid md:grid-cols-3 gap-4">
           <div className="p-4 rounded-xl border highlight-card">
@@ -168,7 +175,17 @@ export default function KasolKheerganga() {
         carousels={[
           {
             title: "Stays We Provide",
-            images: [kasol1, kasol2, kasol3, kasol4, kasol5, kasol6, kasol7, kasol8, kasol9],
+            images: [
+              kasol1,
+              kasol2,
+              kasol3,
+              kasol4,
+              kasol5,
+              kasol6,
+              kasol7,
+              kasol8,
+              kasol9,
+            ],
           },
         ]}
       />
@@ -177,12 +194,14 @@ export default function KasolKheerganga() {
         inclusions={inclusions}
         exclusions={exclusions}
         dates={[
-          "12th–16th Dec",
-          "19th–23rd Dec",
-          "21st–31st Dec (Everyday Departure)",
-          "2nd–6th Jan",
-          "9th–13th Jan",
-          "16th–20th Jan",
+          "9 Jan 2026",
+          "16 Jan 2026",
+          "23 Jan 2026",
+          "30 Jan 2026",
+          "6 Feb 2026",
+          "13 Feb 2026",
+          "20 Feb 2026",
+          "27 Feb 2026",
         ]}
       />
 
@@ -191,7 +210,7 @@ export default function KasolKheerganga() {
         className="mt-12 p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
       >
         <div>
-          <div className="text-sm text-slate-600">Prices (Before 15th Dec)</div>
+          <div className="text-sm text-slate-600">Prices (Regular)</div>
 
           <div className="mt-2">
             <div className="text-3xl sm:text-4xl font-extrabold text-slate-900">
@@ -218,12 +237,6 @@ export default function KasolKheerganga() {
               </li>
             </ul>
           </div>
-
-          <p className="mt-3 text-sm text-slate-600">
-            After Dec 15 add{" "}
-            <span className="font-semibold text-slate-900">₹2,000</span> to
-            above prices.
-          </p>
         </div>
 
         <div className="w-full md:w-1/2">

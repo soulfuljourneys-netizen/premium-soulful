@@ -31,24 +31,37 @@ export default function ChoptaTungnath() {
 
   const itinerary = [
     {
-      title: "Day 0 — Depart",
+      title: "Day 0 - Depart",
       subtitle: "Evening departure from Delhi",
-      body: "Leave in the evening towards Uttarakhand; overnight travel towards Chopta.",
+      body: [
+        "Evening departure from Delhi towards Uttarakhand.",
+        "Overnight travel en route to Chopta.",
+      ],
     },
     {
-      title: "Day 1 — Chopta Arrival",
+      title: "Day 1 - Chopta Arrival",
       subtitle: "Short treks & local exploration",
-      body: "Reach Chopta, check-in and explore nearby trails; sunset views and campfire at night.",
+      body: [
+        "Arrive Chopta and check in to the campsite.",
+        "Short local treks and sunset viewpoints.",
+        "Evening campfire and dinner.",
+      ],
     },
     {
-      title: "Day 2 — Tungnath Trek",
+      title: "Day 2 - Tungnath Trek",
       subtitle: "Trek to Tungnath & Chandrashila",
-      body: "Early morning trek to Tungnath temple and optional Chandrashila summit for panoramic Himalayan views.",
+      body: [
+        "Early morning trek to Tungnath temple.",
+        "Optional ascent to Chandrashila summit for panoramic views.",
+      ],
     },
     {
-      title: "Day 3 — Return",
+      title: "Day 3 - Return",
       subtitle: "Drive back to city",
-      body: "After breakfast, start return journey; arrive back in Delhi by evening/morning depending on schedule.",
+      body: [
+        "Breakfast and checkout from campsite.",
+        "Drive back to Delhi; arrival timing depends on schedule.",
+      ],
     },
   ];
 
@@ -59,7 +72,14 @@ export default function ChoptaTungnath() {
     "Local guide & permits",
   ];
 
-  const exclusions = ["Personal expenses", "Adventure charges", "GST/taxes"];
+  const exclusions = [
+    "Personal expenses",
+    "Adventure charges",
+    "GST/taxes",
+    "Room Heater",
+    "Travel Time Meals",
+    "Lunch",
+  ];
 
   const prices = {
     before: { quad: "₹5,999", triple: "₹6,499", dbl: "₹6,999" },
@@ -84,15 +104,13 @@ export default function ChoptaTungnath() {
     <main className="max-w-6xl mx-auto px-4 md:px-6 pb-36 pt-6">
       <div className="relative">
         <HeroBlock
-          title="Chopta — Tungnath"
-          subtitle="3 Days / 2 Nights — Weekend getaway"
+          title="Chopta - Tungnath"
+          subtitle="3 Days / 2 Nights - Weekend getaway"
           description={
-            "Alpine meadows of Chopta and the spiritual trail to Tungnath — ideal for short trekking groups and nature lovers."
+            "Alpine meadows of Chopta and the spiritual trail to Tungnath - ideal for short trekking groups and nature lovers."
           }
           heroImage={thumb1}
           thumbnails={[thumb1, thumb2, thumb3, thumb4]}
-          ctaPrimary={{ text: "Reserve Your Seat", href: "#book" }}
-          ctaSecondary={{ text: "More Info", href: "#" }}
           stats={[
             { label: "Duration", value: "3D • 2N" },
             { label: "Pickup", value: "Delhi" },
@@ -106,21 +124,15 @@ export default function ChoptaTungnath() {
         id="overview"
         className="mt-12 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm"
       >
-        <h3 className="text-2xl font-bold">Overview & Highlights</h3>
+        <h3 className="text-2xl font-bold">Highlights</h3>
         <div className="accent-line" />
-        <p className="mt-4 text-slate-600">
-          Chopta is a serene meadow region that provides access to Tungnath, the
-          highest Shiva temple in the world, and Chandrashila summit. Short
-          treks, alpine meadows and starry night camps make this a soulful
-          mountain break.
-        </p>
 
         <div className="mt-6 grid md:grid-cols-3 gap-4">
           <div className="p-4 rounded-xl border highlight-card">
             <div className="flex items-start gap-3">
               <div className="icon-wrap">🏔</div>
               <div>
-                <div className="font-semibold">Alpine Trails</div>
+                <div className="font-semibold">Short Treks</div>
                 <div className="text-sm text-slate-600">
                   Short, scenic treks
                 </div>
@@ -167,12 +179,14 @@ export default function ChoptaTungnath() {
         inclusions={inclusions}
         exclusions={exclusions}
         dates={[
-          "12th–16th Dec",
-          "19th–23rd Dec",
-          "21st–31st Dec (Everyday Departure)",
-          "2nd–6th Jan",
-          "9th–13th Jan",
-          "16th–20th Jan",
+          "9 Jan 2026",
+          "16 Jan 2026",
+          "23 Jan 2026",
+          "30 Jan 2026",
+          "6 Feb 2026",
+          "13 Feb 2026",
+          "20 Feb 2026",
+          "27 Feb 2026",
         ]}
       />
 
@@ -181,7 +195,7 @@ export default function ChoptaTungnath() {
         className="mt-12 p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
       >
         <div>
-          <div className="text-sm text-slate-600">Prices (Before 15th Dec)</div>
+          <div className="text-sm text-slate-600">Prices (Regular)</div>
 
           <div className="mt-2">
             <div className="text-3xl sm:text-4xl font-extrabold text-slate-900">
@@ -208,14 +222,6 @@ export default function ChoptaTungnath() {
               </li>
             </ul>
           </div>
-
-          <p className="mt-3 text-sm text-slate-600">
-            After Dec 15 add{" "}
-            <span className="font-semibold text-slate-900">
-              {prices.after.add}
-            </span>{" "}
-            to above prices.
-          </p>
         </div>
 
         <div className="w-full md:w-1/2">

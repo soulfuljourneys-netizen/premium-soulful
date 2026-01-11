@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 
 const Home = lazy(() => import("./pages/Home"));
+import Booking from "./pages/Booking";
 const KasolKheerganga = lazy(() => import("./pages/KasolKheerganga"));
 const JibhiTirthan = lazy(() => import("./pages/JibhiTirthan"));
 const ChoptaTungnath = lazy(() => import("./pages/ChoptaTungnath"));
@@ -114,6 +115,7 @@ export default function App() {
             </Suspense>
           }
         />
+        <Route path="booking" element={<Booking />} />
       </Route>
     </Routes>
   );

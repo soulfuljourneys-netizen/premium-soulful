@@ -52,28 +52,48 @@ export default function JibhiTirthan() {
     "Personal expenses",
     "Travel insurance",
     "Optional activity fees",
+    "GST/taxes unless specified",
+    "Room Heater",
+    "Travel Time Meals",
+    "Lunch",
   ];
 
   const itinerary = [
     {
-      title: "Day 1 — Arrival & Local Walk",
+      title: "Day 1 - Arrival & Local Walk",
       subtitle: "Drive to Jibhi; evening walk",
-      body: "Meet at the pickup point, drive to Jibhi, check-in at the hotel and enjoy a relaxed evening around a bonfire. Short village walk depending on arrival time.",
+      body: [
+        "Meet at pickup point and drive to Jibhi.",
+        "Check in and relax at the hotel.",
+        "Evening: short village walk and bonfire (time permitting).",
+      ],
     },
     {
-      title: "Day 2 — Waterfalls & Trails",
+      title: "Day 2 - Waterfalls & Trails",
       subtitle: "Trek to Chhoie and nearby trails",
-      body: "After breakfast head out for short treks to nearby waterfalls and forest trails. Picnic lunch and an easy-paced evening.",
+      body: [
+        "Breakfast then short treks to nearby waterfalls (Chhoie).",
+        "Picnic lunch and explore forest trails.",
+        "Easy-paced evening back at the homestay.",
+      ],
     },
     {
-      title: "Day 3 — Tirthan Riverside",
+      title: "Day 3 - Tirthan Riverside",
       subtitle: "Riverside cafes & light exploration",
-      body: "Leisurely day exploring the Tirthan riverbanks, visiting local cafes and optional short hikes. Evening spent at the homestay or guesthouse.",
+      body: [
+        "Leisurely exploration of Tirthan riverbanks and cafes.",
+        "Optional short hikes and local sightseeing.",
+        "Evening at homestay or guesthouse with relaxed dinner.",
+      ],
     },
     {
-      title: "Day 4 — Departure",
+      title: "Day 4 - Departure",
       subtitle: "Return to pickup city",
-      body: "After breakfast, pack up and drive back to Delhi / Chandigarh with stops on the way as needed. End of trip.",
+      body: [
+        "Breakfast and check out.",
+        "Drive back to Delhi/Chandigarh with stops en route.",
+        "Trip concludes on arrival at pickup city.",
+      ],
     },
   ];
 
@@ -95,18 +115,13 @@ export default function JibhiTirthan() {
     <main className="max-w-6xl mx-auto px-4 md:px-6 pb-36 pt-6">
       <div className="relative">
         <HeroBlock
-          title="Jibhi — Tirthan Valley"
-          subtitle="5 Days / 4 Nights — Every Friday Evening from Delhi & Chandigarh"
+          title="Jibhi - Tirthan Valley"
+          subtitle="5 Days / 4 Nights - Every Friday Evening from Delhi & Chandigarh"
           description={
-            "A calm valley escape into Jibhi & Tirthan — waterfalls, forest treks, and evenings around the bonfire. Ideal for groups and travellers seeking nature with cozy hotel stays."
+            "A calm valley escape into Jibhi & Tirthan - waterfalls, forest treks, and evenings around the bonfire. Ideal for groups and travellers seeking nature with cozy hotel stays."
           }
           heroImage={thumb1}
           thumbnails={[thumb1, thumb2, thumb3, thumb4]}
-          ctaPrimary={{ text: "Reserve Your Seat", href: "#book" }}
-          ctaSecondary={{
-            text: "More Info",
-            href: "https://soulfuljourneystours.com/jibhi-tirthan",
-          }}
           stats={[
             { label: "Duration", value: "5D • 4N" },
             { label: "Pickup", value: "Delhi / Chandigarh" },
@@ -123,22 +138,17 @@ export default function JibhiTirthan() {
         id="overview"
         className="mt-12 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm"
       >
-        <h3 className="text-2xl font-bold">Overview & Highlights</h3>
+        <h3 className="text-2xl font-bold">Highlights</h3>
         <div className="accent-line" />
-        <p className="mt-4 text-slate-600">
-          Jibhi & Tirthan Valley offer serene trails, riverside cafes and hidden
-          waterfalls — perfect for a relaxed cultural and nature escape.
-        </p>
 
         <div className="mt-6 grid md:grid-cols-3 gap-4">
           <div className="p-4 rounded-xl border highlight-card">
-            <div className="flex items-start gap-3">
-              <div className="icon-wrap">💧</div>
-              <div>
-                <div className="font-semibold">Waterfalls</div>
-                <div className="text-sm text-slate-600">
-                  Chhoie & Jibhi cascades
-                </div>
+            title: "Day 2 - Waterfalls & Trails",
+            <div className="icon-wrap">💧</div>
+            <div>
+              title: "Day 3 - Tirthan Riverside",
+              <div className="text-sm text-slate-600">
+                Chhoie & Jibhi cascades title: "Day 4 - Departure",
               </div>
             </div>
           </div>
@@ -199,12 +209,14 @@ export default function JibhiTirthan() {
         inclusions={inclusions}
         exclusions={exclusions}
         dates={[
-          "12th–16th Dec",
-          "19th–23rd Dec",
-          "21st–31st Dec (Everyday Departure)",
-          "2nd–6th Jan",
-          "9th–13th Jan",
-          "16th–20th Jan",
+          "9 Jan 2026",
+          "16 Jan 2026",
+          "23 Jan 2026",
+          "30 Jan 2026",
+          "6 Feb 2026",
+          "13 Feb 2026",
+          "20 Feb 2026",
+          "27 Feb 2026",
         ]}
       />
 
@@ -213,7 +225,7 @@ export default function JibhiTirthan() {
         className="mt-12 p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
       >
         <div>
-          <div className="text-sm text-slate-600">Prices (Before 15th Dec)</div>
+          <div className="text-sm text-slate-600">Prices (Regular)</div>
 
           <div className="mt-2">
             <div className="text-3xl sm:text-4xl font-extrabold text-slate-900">
@@ -240,14 +252,6 @@ export default function JibhiTirthan() {
               </li>
             </ul>
           </div>
-
-          <p className="mt-3 text-sm text-slate-600">
-            After Dec 15 add{" "}
-            <span className="font-semibold text-slate-900">
-              {prices.after.add}
-            </span>{" "}
-            to above prices.
-          </p>
         </div>
 
         <div className="w-full md:w-1/2">

@@ -94,7 +94,7 @@ export default function HomeHero() {
       />
       {/* inner wrapper: add mobile top padding so header overlays but content has breathing room */}
       <div className="w-full flex flex-col md:flex-row items-center justify-center pt-20 md:pt-0">
-        {/* LEFT — Collage */}
+        {/* LEFT - Collage */}
         <div className="w-full md:w-1/2 flex items-center justify-center pl-4 md:pl-12 lg:pl-20">
           <div className="flex items-end justify-center gap-2 md:gap-3 translate-x-0 md:translate-x-6 px-2">
             {/* Left card (slightly smaller) */}
@@ -112,7 +112,7 @@ export default function HomeHero() {
           </div>
         </div>
 
-        {/* RIGHT — Typewriter + Counters + CTAs */}
+        {/* RIGHT - Typewriter + Counters + CTAs */}
         <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-end text-center md:text-right space-y-6 sm:space-y-8 mt-8 md:mt-0 px-2 sm:px-4 md:pr-12 lg:pr-28">
           <Typewriter
             words={["Travel.", "Party.", "Socialise.", "Experience."]}
