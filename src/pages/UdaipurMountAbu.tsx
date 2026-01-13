@@ -34,8 +34,8 @@ export default function UdaipurMountAbu() {
       title: "DAY 1 - Departure",
       subtitle: "Evening departure from Delhi / Gurgaon",
       body: [
-        "Evening departure from Delhi/Gurgaon (approx 8 PM).",
-        "Overnight drive to Udaipur (approx 14 hours) with a Jakarta/Jaipur pickup en route and dinner stop.",
+        "Evening departure from Gurgaon (approx 8 PM).",
+        "Overnight drive to Udaipur (approx 14 hours) with a Jaipur pickup en route and dinner stop.",
       ],
     },
     {
@@ -118,7 +118,7 @@ export default function UdaipurMountAbu() {
           thumbnails={[thumb2, thumb3, thumb4]}
           stats={[
             { label: "Duration", value: "5D • 4N" },
-            { label: "Pickup", value: "Delhi / Gurgaon (Jaipur pickup)" },
+            { label: "Pickup", value: " Gurgaon & Jaipur" },
             { label: "Price", value: `Quad: ${prices.before.quad}` },
           ]}
         />

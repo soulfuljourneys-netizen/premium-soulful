@@ -14,7 +14,7 @@ const trips = [
   "Udaipur MountAbu",
   "Manali Sissu Kasol",
 ];
-const months = ["December 2025", "January 2026", "February 2026"];
+const months = ["January 2026", "February 2026", "March 2026"];
 
 function formatPhoneNumberForIndia(number: string) {
   number = number.replace(/\D/g, "");
@@ -334,9 +334,12 @@ export default function LeadFormCard({
 
             <input
               name="persons"
+              type="number"
+              min="1"
+              max="20"
               value={form.persons}
               onChange={handleChange}
-              placeholder="Number of Persons"
+              placeholder="Number of Persons (use digits)"
               className="px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg bg-transparent text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#ffb347] text-base sm:text-lg border border-white/6 w-full"
             />
 
@@ -354,28 +357,35 @@ export default function LeadFormCard({
                 How soon do you want to book?
               </option>
               <option
-                value="Immediately"
+                value="now"
                 className="text-slate-900"
                 style={{ color: "#0f172a" }}
               >
-                Immediately
+                Now
               </option>
               <option
-                value="Within a week"
+                value="in 3 days"
                 className="text-slate-900"
                 style={{ color: "#0f172a" }}
               >
-                Within a week
+                In 3 days
               </option>
               <option
-                value="Within a month"
+                value="in a week"
                 className="text-slate-900"
                 style={{ color: "#0f172a" }}
               >
-                Within a month
+                In a week
               </option>
               <option
-                value="Just exploring"
+                value="in a month"
+                className="text-slate-900"
+                style={{ color: "#0f172a" }}
+              >
+                In a month
+              </option>
+              <option
+                value="just exploring"
                 className="text-slate-900"
                 style={{ color: "#0f172a" }}
               >

@@ -57,7 +57,7 @@ const trips = [
   "Udaipur MountAbu",
   "Manali Sissu Kasol",
 ];
-const months = ["December 2025", "January 2026", "February 2026"];
+const months = ["January 2026", "February 2026", "March 2026"];
 
 export default function MetaLeadForm() {
   const navigate = useNavigate();
@@ -445,9 +445,12 @@ export default function MetaLeadForm() {
 
               <input
                 name="persons"
+                type="number"
+                min="1"
+                max="20"
                 value={form.persons}
                 onChange={handleChange}
-                placeholder="Number of Persons"
+                placeholder="Number of Persons (use digits)"
                 className="px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg bg-transparent text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#ffb347] text-base sm:text-lg border border-white/6 w-full"
               />
               {errors.persons && (
@@ -463,10 +466,11 @@ export default function MetaLeadForm() {
                 className="px-4 py-2.5 sm:px-5 sm:py-3 rounded-lg bg-transparent text-white focus:outline-none focus:ring-2 focus:ring-[#ffb347] text-base sm:text-lg border border-white/6 shadow-none w-full"
               >
                 <option value="">How soon do you want to book?</option>
-                <option value="Immediately">Immediately</option>
-                <option value="Within a week">Within a week</option>
-                <option value="Within a month">Within a month</option>
-                <option value="Just exploring">Just exploring</option>
+                <option value="now">Now</option>
+                <option value="in 3 days">In 3 days</option>
+                <option value="in a week">In a week</option>
+                <option value="in a month">In a month</option>
+                <option value="just exploring">Just exploring</option>
               </select>
               {errors.how_soon_you_want_to_book && (
                 <div className="text-xs text-pink-400 mt-1">
