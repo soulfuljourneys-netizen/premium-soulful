@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import ghostPic from "../assets/Misc/ghost-picture.jpg";
 // Typewriter component (tuned for the meta form hero)
 function Typewriter({ words }: { words: string[] }) {
@@ -59,6 +60,7 @@ const trips = [
 const months = ["December 2025", "January 2026", "February 2026"];
 
 export default function MetaLeadForm() {
+  const navigate = useNavigate();
   const [overlay, setOverlay] = useState(false);
   const [overlayText, setOverlayText] = useState("");
   const [form, setForm] = useState({
@@ -171,7 +173,7 @@ export default function MetaLeadForm() {
 
       setOverlayText("Redirecting…");
       setTimeout(() => {
-        window.location.href = "https://premiumsoulful.com/thank-you-meta/";
+        navigate("/");
       }, 500);
     } catch (err) {
       setOverlayText("Error submitting. Please try again.");

@@ -44,7 +44,7 @@ const Booking: React.FC = () => {
 
   // Static payment details (customize as needed)
   const PAYMENT = {
-    upiId: "soulful@upi",
+    upiId: "9899435374@okbizaxis",
     payeeName: "Soulful Journeys",
     bank: {
       name: "Axis Bank",

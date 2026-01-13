@@ -33,6 +33,7 @@ export default function LeadFormCard({
 }: Props) {
   const [overlay, setOverlay] = useState(false);
   const [overlayText, setOverlayText] = useState("");
+  const [thankYou, setThankYou] = useState(false);
   const [step, setStep] = useState<number>(1);
   const [form, setForm] = useState({
     firstname: "",
@@ -143,10 +144,8 @@ export default function LeadFormCard({
       console.error(err);
     }
 
-    setOverlayText("Redirecting…");
-    setTimeout(() => {
-      window.location.href = "https://premiumsoulful.com/thank-you-meta/";
-    }, 600);
+    setOverlay(false);
+    setThankYou(true);
   };
 
   // Partial submit used when user completes step 1 (Get Callback)
@@ -418,6 +417,28 @@ export default function LeadFormCard({
             <div className="text-slate-600">
               Please wait while we process your request…
             </div>
+          </div>
+        </div>
+      )}
+
+      {thankYou && !overlay && (
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl p-8 shadow-lg text-center max-w-md w-full">
+            <div className="text-2xl font-bold text-purple-700 mb-2">
+              Thank you for your interest!
+            </div>
+            <div className="text-slate-700 mb-4">
+              Our team will reach out to you soon.<br />
+              If you want to chat with us right now, tap below:
+            </div>
+            <a
+              href="https://wa.me/918383021712?text=Hi%20Soulful%20Journeys%2C%20I%20just%20filled%20the%20trip%20form!"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 rounded-lg bg-green-500 text-white font-bold text-lg shadow hover:bg-green-600 transition"
+            >
+              Chat on WhatsApp
+            </a>
           </div>
         </div>
       )}

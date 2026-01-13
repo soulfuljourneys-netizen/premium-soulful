@@ -30,7 +30,6 @@ import PageVisuals from "../components/PageVisuals";
 import LeadFormCard from "../components/LeadFormCard";
 
 export default function JibhiTirthan() {
-  const [form, setForm] = useState({ name: "", phone: "", email: "" });
   const [openVideo, setOpenVideo] = useState<{
     src: string;
     index: number;
@@ -43,9 +42,11 @@ export default function JibhiTirthan() {
   };
 
   const inclusions = [
-    "Accommodation as per itinerary",
-    "Meals as specified",
-    "Transport as per plan",
+    "All the Transportation from Delhi (Another Pickup at Chandigarh)",
+    "2 Nights Stay in 3 Star hotel in Jibhi/Tirthan.",
+    "2 Breakfast + 2 Dinners (Unlimited Veg Buffet)",
+    "Dj Night + Bonfire",
+    "Trip Captain",
   ];
 
   const exclusions = [
@@ -60,56 +61,53 @@ export default function JibhiTirthan() {
 
   const itinerary = [
     {
-      title: "Day 1 - Arrival & Local Walk",
-      subtitle: "Drive to Jibhi; evening walk",
+      title: "DAY 1",
+      subtitle: "Evening Departure",
       body: [
-        "Meet at pickup point and drive to Jibhi.",
-        "Check in and relax at the hotel.",
-        "Evening: short village walk and bonfire (time permitting).",
+        "🕔 7:00 PM: Gather in Delhi, Jibhi Volvo /Traveller hit the road by 9:30 PM.",
+        "🚗 Chandigarh pickups from 2:00 AM to 4:00 AM.",
       ],
     },
     {
-      title: "Day 2 - Waterfalls & Trails",
-      subtitle: "Trek to Chhoie and nearby trails",
+      title: "DAY 2",
+      subtitle: "Jibhi Arrival & Waterfall",
       body: [
-        "Breakfast then short treks to nearby waterfalls (Chhoie).",
-        "Picnic lunch and explore forest trails.",
-        "Easy-paced evening back at the homestay.",
+        "🚌 Reach Jibhi by 10:00 AM (approx).",
+        "🛏️ Check in and relax.",
+        "🍽️ Visit Chhoie Waterfall.",
+        "🌄 Return by sunset.",
+        "🔥 Enjoy bonfire, DJ night, and dinner.",
       ],
     },
     {
-      title: "Day 3 - Tirthan Riverside",
-      subtitle: "Riverside cafes & light exploration",
+      title: "DAY 3",
+      subtitle: "Jalori Pass & Serolsar Lake Trek",
       body: [
-        "Leisurely exploration of Tirthan riverbanks and cafes.",
-        "Optional short hikes and local sightseeing.",
-        "Evening at homestay or guesthouse with relaxed dinner.",
+        "🌅 Breakfast & head towards Jalori Pass",
+        "🥾 Begin the trek to Serolsar Lake through scenic forest trails.",
+        "⏱️ Moderate trek 5–6 hours depending on weather.",
+        "🏡 Return to your hotel by evening.",
+        "Dinner in Hotel",
       ],
     },
     {
-      title: "Day 4 - Departure",
-      subtitle: "Return to pickup city",
+      title: "DAY 4",
+      subtitle: "Jibhi Waterfall, Mini Thailand & Market",
       body: [
-        "Breakfast and check out.",
-        "Drive back to Delhi/Chandigarh with stops en route.",
-        "Trip concludes on arrival at pickup city.",
+        "🍳 Have breakfast in the morning.",
+        "💦 Visit Jibhi Waterfall and then Mini Thailand hidden in the forest.",
+        "🛍️ Explore Jibhi Market and cafes.",
+        "🚌 Depart for Delhi/Chandigarh in the evening.",
+      ],
+    },
+    {
+      title: "DAY 5",
+      subtitle: "Delhi Arrival",
+      body: [
+        "🌞 Arrival in Delhi 8:00 AM and 10:00 AM🎉",
       ],
     },
   ];
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
-
-  const submitForm = () => {
-    console.log("Booking request", form);
-    alert("Request received. We'll contact you shortly.");
-    setForm({ name: "", phone: "", email: "" });
-  };
-
-  const handleSubmit = (e?: React.FormEvent) => {
-    if (e && e.preventDefault) e.preventDefault();
-    submitForm();
-  };
 
   return (
     <main className="max-w-6xl mx-auto px-4 md:px-6 pb-36 pt-6">
@@ -121,13 +119,13 @@ export default function JibhiTirthan() {
             "A calm valley escape into Jibhi & Tirthan - waterfalls, forest treks, and evenings around the bonfire. Ideal for groups and travellers seeking nature with cozy hotel stays."
           }
           heroImage={thumb1}
-          thumbnails={[thumb1, thumb2, thumb3, thumb4]}
+          thumbnails={[thumb2, thumb3, thumb4]}
           stats={[
             { label: "Duration", value: "5D • 4N" },
             { label: "Pickup", value: "Delhi / Chandigarh" },
             {
               label: "Price",
-              value: `Quad: ${prices.before.quad} • Triple: ${prices.before.triple} • Double: ${prices.before.dbl}`,
+              value: `Quad: ₹6,499`,
             },
           ]}
         />
@@ -143,12 +141,13 @@ export default function JibhiTirthan() {
 
         <div className="mt-6 grid md:grid-cols-3 gap-4">
           <div className="p-4 rounded-xl border highlight-card">
-            title: "Day 2 - Waterfalls & Trails",
-            <div className="icon-wrap">💧</div>
-            <div>
-              title: "Day 3 - Tirthan Riverside",
-              <div className="text-sm text-slate-600">
-                Chhoie & Jibhi cascades title: "Day 4 - Departure",
+            <div className="flex items-start gap-3">
+              <div className="icon-wrap">💧</div>
+              <div>
+                <div className="font-semibold">Waterfalls & Trails</div>
+                <div className="text-sm text-slate-600">
+                  Chhoie & Jibhi cascades
+                </div>
               </div>
             </div>
           </div>

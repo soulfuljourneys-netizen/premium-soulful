@@ -31,36 +31,50 @@ export default function ChoptaTungnath() {
 
   const itinerary = [
     {
-      title: "Day 0 - Depart",
-      subtitle: "Evening departure from Delhi",
+      title: "DAY 1",
+      subtitle: "Delhi to Chopta",
       body: [
-        "Evening departure from Delhi towards Uttarakhand.",
-        "Overnight travel en route to Chopta.",
+        "📍 Pick-up from Preet Vihar Metro Station (Gate No. 3) at 8:30 PM.",
+        "🚌 Overnight journey from Delhi to Chopta & connect with your co-travellers.",
       ],
     },
     {
-      title: "Day 1 - Chopta Arrival",
-      subtitle: "Short treks & local exploration",
+      title: "DAY 2",
+      subtitle: "Devprayag & Chopta Arrival",
       body: [
-        "Arrive Chopta and check in to the campsite.",
-        "Short local treks and sunset viewpoints.",
-        "Evening campfire and dinner.",
+        "🌄 Reach Devprayag in the morning, freshen up, and have breakfast (on your own expense).",
+        "🌊 Witness the Sangam of Bhagirathi and Alaknanda.",
+        "🛣️ Continue to Chopta with a stop at Dhari Devi Temple.",
+        "🏕️ Arrive and check in at a campsite in Chopta",
+        "☕ Enjoy evening snacks.",
+        "🔥 Bond with your group around a bonfire and light music.",
+        "🍽️ Have dinner and rest",
       ],
     },
     {
-      title: "Day 2 - Tungnath Trek",
-      subtitle: "Trek to Tungnath & Chandrashila",
+      title: "DAY 3",
+      subtitle: "Tungnath & Chandrashila Trek",
       body: [
-        "Early morning trek to Tungnath temple.",
-        "Optional ascent to Chandrashila summit for panoramic views.",
+        "🌅 Start with breakfast.",
+        "🚗 Drive to the base and trek 4.5 km to Tungnath.",
+        "🏔️ Continue to Chandrashila for 360° views. (1Km approx)",
+        "🏕️ Return by evening for snacks, bonfire, dinner, and rest.",
       ],
     },
     {
-      title: "Day 3 - Return",
-      subtitle: "Drive back to city",
+      title: "DAY 4",
+      subtitle: "Deoria Tal & Departure",
       body: [
-        "Breakfast and checkout from campsite.",
-        "Drive back to Delhi; arrival timing depends on schedule.",
+        "🌅 Wake up early, have breakfast, and check out from the campsite.",
+        "🚗 Drive to Sari Village (about 30 minutes away).",
+        "🥾 Trek to Deoria Tal and depart for Delhi after lunch.",
+      ],
+    },
+    {
+      title: "DAY 5",
+      subtitle: "Delhi Arrival",
+      body: [
+        "🌞 Arrival in Delhi expected between 6:00 AM and 8:00 AM",
       ],
     },
   ];

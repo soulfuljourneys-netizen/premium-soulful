@@ -20,7 +20,7 @@ export default function Payment() {
     | undefined;
 
   const amount = state?.amount ? String(state.amount) : "1499";
-  const name = state?.name || "Premium Soulful";
+  const name = state?.name || "Soulful Journeys";
   const note = state
     ? `Trip: ${state.trip || "-"}, Name: ${state.name || "-"}, Seats: ${
         state.seats || 1
