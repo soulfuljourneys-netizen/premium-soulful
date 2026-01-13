@@ -73,9 +73,7 @@ export default function ChoptaTungnath() {
     {
       title: "DAY 5",
       subtitle: "Delhi Arrival",
-      body: [
-        "🌞 Arrival in Delhi expected between 6:00 AM and 8:00 AM",
-      ],
+      body: ["🌞 Arrival in Delhi expected between 6:00 AM and 8:00 AM"],
     },
   ];
 

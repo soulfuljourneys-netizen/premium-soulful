@@ -428,7 +428,8 @@ export default function LeadFormCard({
               Thank you for your interest!
             </div>
             <div className="text-slate-700 mb-4">
-              Our team will reach out to you soon.<br />
+              Our team will reach out to you soon.
+              <br />
               If you want to chat with us right now, tap below:
             </div>
             <a

@@ -103,9 +103,7 @@ export default function JibhiTirthan() {
     {
       title: "DAY 5",
       subtitle: "Delhi Arrival",
-      body: [
-        "🌞 Arrival in Delhi 8:00 AM and 10:00 AM🎉",
-      ],
+      body: ["🌞 Arrival in Delhi 8:00 AM and 10:00 AM🎉"],
     },
   ];
 
