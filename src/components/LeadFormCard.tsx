@@ -88,6 +88,24 @@ export default function LeadFormCard({
 
     const formattedPhone = formatPhoneNumberForIndia(form.phone);
 
+    // Log lead to backend (fire-and-forget)
+    try {
+      fetch("/api/logLead.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          phone: formattedPhone,
+          submitted_at: new Date().toISOString(),
+          page_url: window.location.href,
+          user_agent: navigator.userAgent,
+        }),
+      });
+    } catch (err) {
+      // Logging error is non-blocking
+      console.error("Lead log error", err);
+    }
+
     const hubspotData = {
       fields: [
         { name: "firstname", value: form.firstname || "N/A" },
@@ -155,6 +173,25 @@ export default function LeadFormCard({
     setOverlay(true);
     setOverlayText("Sending callback request…");
     const formattedPhone = formatPhoneNumberForIndia(form.phone);
+
+    // Log lead to backend (fire-and-forget)
+    try {
+      fetch("/api/logLead.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          phone: formattedPhone,
+          submitted_at: new Date().toISOString(),
+          page_url: window.location.href,
+          user_agent: navigator.userAgent,
+        }),
+      });
+    } catch (err) {
+      // Logging error is non-blocking
+      console.error("Lead log error", err);
+    }
+
     const hubspotData = {
       fields: [
         { name: "firstname", value: form.firstname || "N/A" },
