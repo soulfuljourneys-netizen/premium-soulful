@@ -113,6 +113,24 @@ export default function MetaLeadForm() {
     const fbp = fbpCookie || "";
     const formattedPhone = formatPhoneNumberForIndia(form.phone);
 
+    // Log lead to backend using sendBeacon for reliability
+    try {
+      const leadData = {
+        ...form,
+        phone: formattedPhone,
+        submitted_at: new Date().toISOString(),
+        page_url: window.location.href,
+        user_agent: navigator.userAgent,
+      };
+      const blob = new Blob([JSON.stringify(leadData)], {
+        type: "application/json",
+      });
+      navigator.sendBeacon("/api/lead_forms.php", blob);
+    } catch (err) {
+      // Logging error is non-blocking
+      console.error("Lead log error", err);
+    }
+
     // HubSpot payload
     const hubspotData = {
       fields: [
