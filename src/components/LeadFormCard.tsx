@@ -101,7 +101,7 @@ export default function LeadFormCard({
         type: "application/json",
       });
       navigator.sendBeacon(
-        "https://soulfuljourneystours.com/api/lead_forms.php",
+        "/api/lead_forms.php",
         blob
       );
     } catch (err) {
@@ -190,7 +190,7 @@ export default function LeadFormCard({
         type: "application/json",
       });
       navigator.sendBeacon(
-        "https://soulfuljourneystours.com/api/lead_forms.php",
+        "/api/lead_forms.php",
         blob
       );
     } catch (err) {
