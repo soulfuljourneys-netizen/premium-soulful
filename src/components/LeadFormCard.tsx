@@ -88,19 +88,22 @@ export default function LeadFormCard({
 
     const formattedPhone = formatPhoneNumberForIndia(form.phone);
 
-    // Log lead to backend (fire-and-forget)
+    // Log lead to backend using sendBeacon for reliability
     try {
-      fetch("/api/logLead.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          phone: formattedPhone,
-          submitted_at: new Date().toISOString(),
-          page_url: window.location.href,
-          user_agent: navigator.userAgent,
-        }),
+      const leadData = {
+        ...form,
+        phone: formattedPhone,
+        submitted_at: new Date().toISOString(),
+        page_url: window.location.href,
+        user_agent: navigator.userAgent,
+      };
+      const blob = new Blob([JSON.stringify(leadData)], {
+        type: "application/json",
       });
+      navigator.sendBeacon(
+        "https://soulfuljourneystours.com/api/lead_forms.php",
+        blob
+      );
     } catch (err) {
       // Logging error is non-blocking
       console.error("Lead log error", err);
@@ -174,19 +177,22 @@ export default function LeadFormCard({
     setOverlayText("Sending callback request…");
     const formattedPhone = formatPhoneNumberForIndia(form.phone);
 
-    // Log lead to backend (fire-and-forget)
+    // Log lead to backend using sendBeacon for reliability
     try {
-      fetch("/api/logLead.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          phone: formattedPhone,
-          submitted_at: new Date().toISOString(),
-          page_url: window.location.href,
-          user_agent: navigator.userAgent,
-        }),
+      const leadData = {
+        ...form,
+        phone: formattedPhone,
+        submitted_at: new Date().toISOString(),
+        page_url: window.location.href,
+        user_agent: navigator.userAgent,
+      };
+      const blob = new Blob([JSON.stringify(leadData)], {
+        type: "application/json",
       });
+      navigator.sendBeacon(
+        "https://soulfuljourneystours.com/api/lead_forms.php",
+        blob
+      );
     } catch (err) {
       // Logging error is non-blocking
       console.error("Lead log error", err);
