@@ -113,7 +113,7 @@ export default function MetaLeadForm() {
     const fbp = fbpCookie || "";
     const formattedPhone = formatPhoneNumberForIndia(form.phone);
 
-    // Log lead to backend using sendBeacon for reliability
+    // Log lead to backend using fetch and await for reliability
     try {
       const leadData = {
         ...form,
@@ -122,12 +122,16 @@ export default function MetaLeadForm() {
         page_url: window.location.href,
         user_agent: navigator.userAgent,
       };
-      const blob = new Blob([JSON.stringify(leadData)], {
-        type: "application/json",
+      console.log(
+        "[MetaLeadForm] Sending lead to /api/lead_forms.php",
+        leadData
+      );
+      const res = await fetch("/api/lead_forms.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(leadData),
       });
-      console.log("[MetaLeadForm] Sending lead to /api/lead_forms.php", leadData);
-      const result = navigator.sendBeacon("/api/lead_forms.php", blob);
-      console.log("[MetaLeadForm] sendBeacon result:", result);
+      console.log("[MetaLeadForm] fetch result:", res.status);
     } catch (err) {
       // Logging error is non-blocking
       console.error("Lead log error", err);
