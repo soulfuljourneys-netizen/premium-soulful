@@ -125,7 +125,9 @@ export default function MetaLeadForm() {
       const blob = new Blob([JSON.stringify(leadData)], {
         type: "application/json",
       });
-      navigator.sendBeacon("/api/lead_forms.php", blob);
+      console.log("[MetaLeadForm] Sending lead to /api/lead_forms.php", leadData);
+      const result = navigator.sendBeacon("/api/lead_forms.php", blob);
+      console.log("[MetaLeadForm] sendBeacon result:", result);
     } catch (err) {
       // Logging error is non-blocking
       console.error("Lead log error", err);
