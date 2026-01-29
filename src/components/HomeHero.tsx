@@ -49,6 +49,7 @@ function Card({ src, className }: { src: string; className?: string }) {
     >
       <div className="w-full h-full relative">
         <img
+          loading="lazy"
           src={src}
           className="absolute inset-0 w-full h-full object-cover"
           alt="hero"

@@ -41,6 +41,7 @@ export default function StayCarousel({ title, images }: StayCarouselProps) {
           {getVisibleImages().map((img, idx) => (
             <div key={idx} className="flex-shrink-0 w-full md:w-1/3">
               <img
+                loading="lazy"
                 src={img}
                 alt={title + " stay " + idx}
                 className="w-full h-64 object-cover cursor-pointer"
@@ -90,6 +91,7 @@ export default function StayCarousel({ title, images }: StayCarouselProps) {
               &#8592;
             </button>
             <img
+              loading="lazy"
               src={images[popup]}
               alt={title + " enlarged " + popup}
               className="w-full h-96 object-contain mb-4"

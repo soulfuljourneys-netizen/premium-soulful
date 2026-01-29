@@ -13,6 +13,7 @@ export default function Footer() {
         {/* Logo & Contact */}
         <div className="flex flex-col items-center md:items-start gap-3 mb-6 md:mb-0">
           <img
+            loading="lazy"
             src={soulfulLogo}
             alt="Soulful Journeys Logo"
             className="w-16 h-16 rounded-full shadow-lg mb-2"

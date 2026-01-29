@@ -1,3 +1,5 @@
+// Set your API base URL here (e.g. "/api" for same server, or full URL for remote)
+const API_BASE = "/api";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ghostPic from "../assets/Misc/ghost-picture.jpg";
@@ -113,7 +115,22 @@ export default function MetaLeadForm() {
     const fbp = fbpCookie || "";
     const formattedPhone = formatPhoneNumberForIndia(form.phone);
 
-    // Log lead to backend using fetch and await for reliability
+    // 1. Get round robin owner from backend
+    let ownerId = null;
+    try {
+      const ownerRes = await fetch(`${API_BASE}/lead_owner_round_robin.php`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone: formattedPhone, name: form.firstname, page_url: window.location.href })
+      });
+      const ownerData = await ownerRes.json();
+      ownerId = ownerData.owner_id;
+    } catch (err) {
+      // fallback: no owner assigned
+      ownerId = null;
+    }
+
+    // 2. Log lead to backend (CSV)
     try {
       const leadData = {
         ...form,
@@ -121,51 +138,41 @@ export default function MetaLeadForm() {
         submitted_at: new Date().toISOString(),
         page_url: window.location.href,
         user_agent: navigator.userAgent,
+        hubspot_owner_id: ownerId || undefined,
       };
-      console.log(
-        "[MetaLeadForm] Sending lead to /api/lead_forms.php",
-        leadData
-      );
-      const res = await fetch("/api/lead_forms.php", {
+      await fetch("/api/lead_forms.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(leadData),
       });
-      console.log("[MetaLeadForm] fetch result:", res.status);
     } catch (err) {
       // Logging error is non-blocking
       console.error("Lead log error", err);
     }
 
-    // HubSpot payload
-    const hubspotData = {
-      fields: [
-        { name: "firstname", value: form.firstname || "N/A" },
-        { name: "lastname", value: form.lastname || "N/A" },
-        { name: "email", value: form.email || "N/A" },
-        { name: "phone", value: formattedPhone || "N/A" },
-        { name: "trip", value: form.trip || "N/A" },
-        { name: "trip_month", value: form.trip_month || "N/A" },
-        { name: "persons", value: form.persons || "N/A" },
-        {
-          name: "how_soon_you_want_to_book",
-          value: form.how_soon_you_want_to_book || "N/A",
-        },
-        { name: "twitterhandle", value: fbc || "N/A" },
-      ],
-    };
-
+    // 3. Send to backend to create HubSpot contact (with owner)
     try {
-      // Send to HubSpot
+      const contactPayload = {
+        firstname: form.firstname || "N/A",
+        lastname: form.lastname || "N/A",
+        email: form.email || "N/A",
+        phone: formattedPhone || "N/A",
+        trip: form.trip || "N/A",
+        trip_month: form.trip_month || "N/A",
+        persons: form.persons || "N/A",
+        how_soon_you_want_to_book: form.how_soon_you_want_to_book || "N/A",
+        page_url: window.location.href,
+      };
       const hsRes = await fetch(
-        "https://api.hsforms.com/submissions/v3/integration/submit/44702223/19022646-1178-421d-979b-10293febc2a4",
+        `${API_BASE}/create_hubspot_contact.php`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(hubspotData),
+          body: JSON.stringify(contactPayload),
         }
       );
-      if (!hsRes.ok) throw new Error("HubSpot submission failed");
+      const hsResult = await hsRes.json();
+      if (!hsResult.success) throw new Error("HubSpot contact creation failed");
       setOverlayText("Processing details…");
 
       // Send to CAPI

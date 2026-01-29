@@ -93,7 +93,7 @@ export default function VideoModal({
           ▶
         </button>
 
-        <video
+        <video loading="lazy"
           key={src}
           ref={videoRef}
           src={src}

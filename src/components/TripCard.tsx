@@ -43,6 +43,7 @@ export default function TripCard({
         {thumbnails && thumbnails.length > 0 ? (
           <div className="trip-img-box aspect-square w-full rounded-lg overflow-hidden bg-slate-100">
             <img
+              loading="lazy"
               src={thumbnails[0]}
               alt={`${title} thumbnail`}
               className="w-full h-full object-contain saturate-110 contrast-105"
@@ -51,6 +52,7 @@ export default function TripCard({
         ) : (
           <div className="trip-img-box">
             <img
+              loading="lazy"
               src={image}
               className="trip-img saturate-110 contrast-105"
               alt={title}

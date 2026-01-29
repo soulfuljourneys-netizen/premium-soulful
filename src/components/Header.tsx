@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useLayoutEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import soulfulLogo from "../assets/Thumbnails/Soulful Logo.jpg";
 
@@ -6,6 +6,8 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   // Start overHero as true so header is transparent on initial load
   const [overHero, setOverHero] = useState(true);
+  // Track if first layout pass is done
+  const firstLayoutDone = useRef(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [tripsDropdownOpen, setTripsDropdownOpen] = useState(false);
   const location = useLocation();
@@ -24,39 +26,45 @@ export default function Header() {
   const isTripPage = !!tripPath;
   const tripPrice = tripPath ? tripPrices[tripPath] : undefined;
 
-  useEffect(() => {
+  // Use layout effect to ensure DOM is ready and avoid initial flicker
+  useLayoutEffect(() => {
+    let timeout: number | undefined;
     const computeStates = () => {
       setScrolled(window.scrollY > 60);
       if (location.pathname === "/") {
         const hero = document.getElementById("home-hero");
         if (hero) {
           const heroBottom = hero.offsetTop + hero.offsetHeight;
-          // Header considered overlapping hero until its top passes beyond hero bottom
           setOverHero(window.scrollY < heroBottom - 60);
         } else {
-          setOverHero(false);
+          setOverHero(true); // Force transparent until hero is found
         }
       } else {
         setOverHero(false);
       }
+      firstLayoutDone.current = true;
     };
-
-    // Always start as overHero (transparent) on load
-    setOverHero(true);
-    computeStates();
-    window.addEventListener("scroll", computeStates);
-    window.addEventListener("resize", computeStates);
+    // Wait a tick for layout/hero to be ready
+    timeout = window.setTimeout(() => {
+      computeStates();
+      window.addEventListener("scroll", computeStates);
+      window.addEventListener("resize", computeStates);
+    }, 10);
     return () => {
+      if (timeout) clearTimeout(timeout);
       window.removeEventListener("scroll", computeStates);
       window.removeEventListener("resize", computeStates);
     };
   }, [location.pathname]);
 
-  const headerClass = overHero
+  // On first render, if on home, force transparent header until layout effect runs
+  const effectiveOverHero = location.pathname === "/" && !firstLayoutDone.current ? true : overHero;
+
+  const headerClass = effectiveOverHero
     ? "fixed inset-x-0 top-0 z-50 bg-transparent"
     : "fixed inset-x-0 top-0 z-50 bg-white/90 shadow-sm";
 
-  const logoClass = overHero
+  const logoClass = effectiveOverHero
     ? "w-12 h-12 rounded-2xl flex items-center justify-center font-bold bg-[#0f002e] text-white shadow"
     : "w-12 h-12 rounded-2xl flex items-center justify-center font-bold bg-white text-[#0f002e] shadow-sm";
 
@@ -65,6 +73,7 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
         <Link to="/" className={logoClass} aria-label="Soulful Journeys">
           <img
+            loading="lazy"
             src={soulfulLogo}
             alt="Soulful Journeys logo"
             className="w-full h-full object-contain rounded-2xl"

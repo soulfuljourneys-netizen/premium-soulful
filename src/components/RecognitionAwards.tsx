@@ -49,6 +49,7 @@ export default function RecognitionAwards() {
               className="flex flex-col items-center text-center p-2 bg-transparent rounded-lg"
             >
               <img
+                loading="lazy"
                 src={it.src}
                 alt={it.title}
                 className="h-10 sm:h-12 md:h-14 object-contain mb-1 max-w-[140px]"

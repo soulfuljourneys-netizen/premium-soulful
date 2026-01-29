@@ -33,7 +33,7 @@ export default function VideoScroller({ videoIds, videoUrls, onOpen }: Props) {
                 onClick={() => onOpen({ src, index: idx, sources })}
                 className="w-44 md:w-64 lg:w-72 h-[14rem] md:h-[20rem] rounded-2xl overflow-hidden flex-shrink-0 p-0 bg-black"
               >
-                <video
+                <video loading="lazy"
                   className="object-cover w-full h-full"
                   src={src}
                   autoPlay
