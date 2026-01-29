@@ -77,7 +77,7 @@ export default function MetaLeadForm() {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -121,7 +121,11 @@ export default function MetaLeadForm() {
       const ownerRes = await fetch(`${API_BASE}/lead_owner_round_robin.php`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone: formattedPhone, name: form.firstname, page_url: window.location.href })
+        body: JSON.stringify({
+          phone: formattedPhone,
+          name: form.firstname,
+          page_url: window.location.href,
+        }),
       });
       const ownerData = await ownerRes.json();
       ownerId = ownerData.owner_id;
@@ -163,14 +167,11 @@ export default function MetaLeadForm() {
         how_soon_you_want_to_book: form.how_soon_you_want_to_book || "N/A",
         page_url: window.location.href,
       };
-      const hsRes = await fetch(
-        `${API_BASE}/create_hubspot_contact.php`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(contactPayload),
-        }
-      );
+      const hsRes = await fetch(`${API_BASE}/create_hubspot_contact.php`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(contactPayload),
+      });
       const hsResult = await hsRes.json();
       if (!hsResult.success) throw new Error("HubSpot contact creation failed");
       setOverlayText("Processing details…");

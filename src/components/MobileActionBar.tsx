@@ -34,18 +34,15 @@ export default function MobileActionBar({
     setLoading(true);
     try {
       // First, submit lead to backend (ensures HubSpot is updated)
-      const res = await fetch(
-        `${API_BASE}/lead_owner_round_robin.php`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            phone: data.phone,
-            name: data.name,
-            page_url: window.location.href,
-          }),
-        },
-      );
+      const res = await fetch(`${API_BASE}/lead_owner_round_robin.php`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          phone: data.phone,
+          name: data.name,
+          page_url: window.location.href,
+        }),
+      });
       const owner = await res.json();
 
       // Send CAPI event (fire and forget)
@@ -65,7 +62,8 @@ export default function MobileActionBar({
           persons: data.persons,
           url: window.location.href,
           fbp: getFbpCookie(),
-          fbclid: (new URLSearchParams(window.location.search)).get("fbclid") || "",
+          fbclid:
+            new URLSearchParams(window.location.search).get("fbclid") || "",
         }),
       });
 

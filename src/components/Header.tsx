@@ -21,7 +21,7 @@ export default function Header() {
     "/udaipur-mount-abu": "6999",
   };
   const tripPath = Object.keys(tripPrices).find((p) =>
-    location.pathname.startsWith(p)
+    location.pathname.startsWith(p),
   );
   const isTripPage = !!tripPath;
   const tripPrice = tripPath ? tripPrices[tripPath] : undefined;
@@ -58,7 +58,8 @@ export default function Header() {
   }, [location.pathname]);
 
   // On first render, if on home, force transparent header until layout effect runs
-  const effectiveOverHero = location.pathname === "/" && !firstLayoutDone.current ? true : overHero;
+  const effectiveOverHero =
+    location.pathname === "/" && !firstLayoutDone.current ? true : overHero;
 
   const headerClass = effectiveOverHero
     ? "fixed inset-x-0 top-0 z-50 bg-transparent"
