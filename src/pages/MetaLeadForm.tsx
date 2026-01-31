@@ -115,24 +115,9 @@ export default function MetaLeadForm() {
     const fbp = fbpCookie || "";
     const formattedPhone = formatPhoneNumberForIndia(form.phone);
 
-    // 1. Get round robin owner from backend
+    // 1. Skip round-robin owner lookup to avoid duplicate HubSpot creation.
+    // The backend `create_hubspot_contact.php` will handle owner assignment.
     let ownerId = null;
-    try {
-      const ownerRes = await fetch(`${API_BASE}/lead_owner_round_robin.php`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          phone: formattedPhone,
-          name: form.firstname,
-          page_url: window.location.href,
-        }),
-      });
-      const ownerData = await ownerRes.json();
-      ownerId = ownerData.owner_id;
-    } catch (err) {
-      // fallback: no owner assigned
-      ownerId = null;
-    }
 
     // 2. Log lead to backend (CSV)
     try {
