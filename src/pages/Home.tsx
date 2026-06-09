@@ -4,6 +4,7 @@ import kasolThumb from "../assets/Thumbnails/Kasol Kheerganga.png";
 import jibhiThumb from "../assets/Thumbnails/Jibhi Tirthan Valley.png";
 import choptaThumb from "../assets/Thumbnails/Chopta tungnath.png";
 import udaipurThumb from "../assets/Thumbnails/Udaiur Mount Abu.png";
+import kashmirThumb from "../assets/Thumbnails/manali kasol.png";
 
 import HomeHero from "../components/HomeHero";
 import VideoScroller from "../components/VideoScroller";
@@ -82,6 +83,15 @@ export default function Home() {
             href="/udaipur-mount-abu"
             image={udaipurThumb}
             thumbnails={[udaipurThumb]}
+          />
+
+          <TripCard
+            title="Kashmir Backpacking"
+            duration="6D • 5N"
+            pickup="Pickup: Delhi"
+            href="/kashmir-backpacking"
+            image={kashmirThumb}
+            thumbnails={[kashmirThumb]}
           />
 
           <TripCard

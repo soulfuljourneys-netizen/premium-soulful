@@ -25,6 +25,9 @@ export default function Footer() {
             Curated soulful travel experiences
           </div>
           <div className="text-sm text-white/80">+91 83830 21712</div>
+          <div className="text-sm text-white/80">
+            <a href="https://maps.app.goo.gl/NDD2ckViXY65jz158" target="_blank" rel="noopener noreferrer" className="hover:text-white">Office (Map)</a>
+          </div>
         </div>
         <div className="flex flex-col gap-6 md:gap-8">
           <div className="flex flex-col md:flex-row gap-8 md:gap-16">
@@ -59,27 +62,38 @@ export default function Footer() {
               <div className="font-semibold mb-2">Trips</div>
               <ul className="space-y-1 text-sm text-white/80">
                 <li>
-                  <a href="/manalisissukasol" className="hover:text-white">
+                  <a href="/manali-kasol-chills" className="hover:text-white">
                     Manali Kasol Chills
                   </a>
                 </li>
                 <li>
-                  <a href="/kasolkheerganga" className="hover:text-white">
+                  <a href="/kasol-kheerganga" className="hover:text-white">
                     Kasol Kheerganga
                   </a>
                 </li>
                 <li>
-                  <a href="/choptatungnath" className="hover:text-white">
+                  <a href="/chopta-tungnath" className="hover:text-white">
                     Chopta Tungnath
                   </a>
                 </li>
                 <li>
-                  <a href="/jibhitirthan" className="hover:text-white">
+                  <a href="/jibhi-tirthan" className="hover:text-white">
                     Jibhi Tirthan
                   </a>
                 </li>
                 <li>
-                  <a href="/udaipurmountabu" className="hover:text-white">
+                  <a href="/kashmir-backpacking" className="hover:text-white">
+                    Kashmir Backpacking
+                  </a>
+                </li>
+                <li>
+                  <a href="/goa" className="hover:text-white">Goa</a>
+                </li>
+                <li>
+                  <a href="/kedarnath" className="hover:text-white">Kedarnath</a>
+                </li>
+                <li>
+                  <a href="/udaipur-mount-abu" className="hover:text-white">
                     Udaipur Mount Abu
                   </a>
                 </li>
@@ -121,15 +135,14 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://instagram.com/soulfuljourneysindia"
+              href="https://www.instagram.com/soulfuljourneystours"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               aria-label="Instagram"
               className="text-white hover:text-pink-500"
             >
               <svg className="w-6 h-6" viewBox="0 0 32 32" fill="currentColor">
-                <path d="M16 7c2.2 0 2.5 0 3.4.1.9.1 1.4.2 1.7.3.4.2.7.4 1 .7.3.3.5.6.7 1 .1.3.2.8.3 1.7.1.9.1 1.2.1 3.4s0 2.5-.1 3.4c-.1.9-.2 1.4-.3 1.7-.2.4-.4.7-.7 1-.3.3-.6.5-1 .7-.3.1-.8.2-1.7.3-.9.1-1.2.1-3.4.1s-2.5 0-3.4-.1c-.9-.1-1.4-.2-1.7-.3-.4-.2-.7-.4-1-.7-.3-.3-.5-.6-.7-1-.1-.3-.2-.8-.3-1.7-.1-.9-.1-1.2-.1-3.4s0-2.5.1-3.4c.1-.9.2-1.4.3-1.7.2-.4.4-.7.7-1 .3-.3.6-.5 1-.7.3-.1.8-.2 1.7-.3.9-.1 1.2-.1 3.4-.1zm0-2c-2.3 0-2.6 0-3.5.1-1 .1-1.7.2-2.3.4-.6.2-1.1.5-1.6 1-.5.5-.8 1-1 1.6-.2.6-.3 1.3-.4 2.3-.1.9-.1 1.2-.1 3.5s0 2.6.1 3.5c.1 1 .2 1.7.4 2.3.2.6.5 1.1 1 1.6.5.5 1 .8 1.6 1 .6.2 1.3.3 2.3.4.9.1 1.2.1 3.5.1s2.6 0 3.5-.1c1-.1 1.7-.2 2.3-.4.6-.2 1.1-.5 1.6-1 .5-.5.8-1 1-1.6.2-.6.3-1.3.4-2.3.1-.9.1-1.2.1-3.5s0-2.6-.1-3.5c-.1-1-.2-1.7-.4-2.3-.2-.6-.5-1.1-1-1.6-.5-.5-1-.8-1.6-1-.6-.2-1.3-.3-2.3-.4-.9-.1-1.2-.1-3.5-.1zm0 5a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 6.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm6.5-7.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-              </svg>
+                <path d="M16 7c2.2 0 2.5 0 3.4.1.9.1 1.4.2 1.7.3.4.2.7.4 1 .7.3.3.5.6.7 1 .1.3.2.8.3 1.7.1.9.1 1.2.1 3.4s0 2.5-.1 3.4c-.1.9-.2 1.4-.3 1.7-.2.4-.4.7-.7 1-.3.3-.6.5-1 .7-.3.1-.8.2-1.7.3-.9.1-1.2.1-3.4.1s-2.5 0-3.4-.1c-.9-.1-1.4-.2-1.7-.3-.4-.2-.7-.4-1-.7-.3-.3-.5-.6-.7-1-.1-.3-.2-.8-.3-1.7-.1-.9-.1-1.2-.1-3.4s0-2.5.1-3.4c.1-.9.2-1.4.3-1.7.2-.4.4-.7.7-1 .3-.3.6-.5 1-.7.3-.1.8-.2 1.7-.3.9-.1 1.2-.1 3.4-.1zm0-2c-2.3 0-2.6 0-3.5.1-1 .1-1.7.2-2.3.4-.6.2-1.1.5-1.6 1-.5.5-.8 1-1 1.6-.2.6-.3 1.3-.4 2.3-.1.9-.1 1.2-.1 3.5s0 2.6.1 3.5c.1 1 .2 1.7.4 2.3.2.6.5 1.1 1 1.6.5.5 1 .8 1.6 1 .6.2 1.3.3 2.3.4.9.1 1.2.1 3.5.1s2.6 0 3.5-.1c1-.1 1.7-.2 2.3-.4.6-.2 1.1-.5 1.6-1 .5-.5.8-1 1-1.6.2-.6.3-1.3.4-2.3.1-.9.1-1.2.1-3.5s0-2.6-.1-3.5c-.1-1-.2-1.7-.4-2.3-.2-.6-.5-1.1-1-1.6-.5-.5-1-.8-1.6-1-.6-.2-1.3-.3-2.3-.4-.9-.1-1.2-.1-3.5-.1zm0 5a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 6.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm6.5-7.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" /></svg>
             </a>
             <a
               href="https://twitter.com/soulfuljourneys"
@@ -143,16 +156,23 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://linkedin.com/company/soulfuljourneys"
+              href="https://in.linkedin.com/company/soulful-journeys-tours"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               aria-label="LinkedIn"
               className="text-white hover:text-blue-700"
             >
               <svg className="w-6 h-6" viewBox="0 0 32 32" fill="currentColor">
-                <path d="M29 0h-26c-1.7 0-3 1.3-3 3v26c0 1.7 1.3 3 3 3h26c1.7 0 3-1.3 3-3v-26c0-1.7-1.3-3-3-3zm-19 27h-5v-14h5v14zm-2.5-16c-1.6 0-2.5-1.1-2.5-2.5s.9-2.5 2.5-2.5 2.5 1.1 2.5 2.5-.9 2.5-2.5 2.5zm19.5 16h-5v-7c0-1.7-.6-2.8-2.1-2.8-1.1 0-1.7.7-2 1.4-.1.2-.1.5-.1.8v7.6h-5s.1-12.3 0-14h5v2c.7-1.1 2-2.7 4.8-2.7 3.5 0 6.1 2.3 6.1 7.2v7.5z" />
-              </svg>
+                <path d="M29 0h-26c-1.7 0-3 1.3-3 3v26c0 1.7 1.3 3 3 3h26c1.7 0 3-1.3 3-3v-26c0-1.7-1.3-3-3-3zm-19 27h-5v-14h5v14zm-2.5-16c-1.6 0-2.5-1.1-2.5-2.5s.9-2.5 2.5-2.5 2.5 1.1 2.5 2.5-.9 2.5-2.5 2.5zm19.5 16h-5v-7c0-1.7-.6-2.8-2.1-2.8-1.1 0-1.7.7-2 1.4-.1.2-.1.5-.1.8v7.6h-5s.1-12.3 0-14h5v2c.7-1.1 2-2.7 4.8-2.7 3.5 0 6.1 2.3 6.1 7.2v7.5z" /></svg>
             </a>
+            <a
+              href="https://www.youtube.com/@SoulfulJourneysTours"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+              className="text-white hover:text-red-500"
+            >
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C16.6 2.2 12 2.2 12 2.2h-.1s-4.6 0-8.6.6c-.5.1-1.4.1-2.2 1C.3 4.5.1 6.2.1 6.2S0 8 0 9.9v4.2C0 16 0.1 17.8.1 17.8s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.8.2 7 .7 8.7.7 0 0 4.6 0 8.6-.6.5-.1 1.4-.1 2.2-1 .6-.7.8-2.4.8-2.4s.1-1.9.1-3.7V9.9c0-1.9-.1-3.7-.1-3.7zM9.8 15.6V8.3l6.1 3.6-6.1 3.7z"/></svg></a>
           </div>
         </div>
       </div>

@@ -11,10 +11,12 @@ const trips = [
   "Kasol Kheerganga",
   "Jibhi Tirthan",
   "Chopta Tungnath",
+  "Kashmir Backpacking",
   "Udaipur MountAbu",
   "Manali Sissu Kasol",
+  "Goa",
 ];
-const months = ["January 2026", "February 2026", "March 2026"];
+const months = ["May 2026", "June 2026", "July 2026", "August 2026"];
 
 function formatPhoneNumberForIndia(number: string) {
   number = number.replace(/\D/g, "");
@@ -35,6 +37,7 @@ export default function LeadFormCard({
   const [overlayText, setOverlayText] = useState("");
   const [thankYou, setThankYou] = useState(false);
   const [step, setStep] = useState<number>(1);
+  const [ownerPhone, setOwnerPhone] = useState("918383021712"); // default fallback
   const [form, setForm] = useState({
     firstname: "",
     lastname: "",
@@ -46,6 +49,15 @@ export default function LeadFormCard({
     how_soon_you_want_to_book: "",
   });
   const [errors, setErrors] = useState<{ [k: string]: string }>({});
+
+  const getThankYouWhatsappHref = () => {
+    const isKashmirTrip = form.trip === "Kashmir Backpacking";
+    const phone = isKashmirTrip ? "918377872694" : ownerPhone;
+    const text = isKashmirTrip
+      ? "Hey Soulful Journeys, I'm interested in Kashmir's Strangers Trip"
+      : "Hi Soulful Journeys, I just filled the trip form!";
+    return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -163,6 +175,24 @@ export default function LeadFormCard({
       });
     } catch (err) {
       console.error(err);
+    }
+
+    // Fetch dynamic owner phone for WhatsApp redirection
+    try {
+      const res = await fetch("/api/lead_owner_round_robin.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          phone: formattedPhone,
+          name: `${form.firstname} ${form.lastname}`.trim(),
+          page_url: window.location.href,
+        }),
+      });
+      const owner = await res.json();
+      setOwnerPhone(owner.phone || "918383021712");
+    } catch (err) {
+      console.error("Failed to fetch owner phone", err);
+      // Keep default
     }
 
     setOverlay(false);
@@ -486,7 +516,7 @@ export default function LeadFormCard({
               If you want to chat with us right now, tap below:
             </div>
             <a
-              href="https://wa.me/918383021712?text=Hi%20Soulful%20Journeys%2C%20I%20just%20filled%20the%20trip%20form!"
+              href={getThankYouWhatsappHref()}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-6 py-3 rounded-lg bg-green-500 text-white font-bold text-lg shadow hover:bg-green-600 transition"

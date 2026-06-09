@@ -1,5 +1,4 @@
 node_modules/
-dist/
 build/
 .parcel-cache/
 .turbo/
@@ -74,3 +73,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.mp4
+*.mov
+*.avi
+*.mkv
+videos/

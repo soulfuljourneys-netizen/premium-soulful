@@ -7,12 +7,15 @@ import Booking from "./pages/Booking";
 const KasolKheerganga = lazy(() => import("./pages/KasolKheerganga"));
 const JibhiTirthan = lazy(() => import("./pages/JibhiTirthan"));
 const ChoptaTungnath = lazy(() => import("./pages/ChoptaTungnath"));
+const Goa = lazy(() => import("./pages/Goa"));
 const UdaipurMountAbu = lazy(() => import("./pages/UdaipurMountAbu"));
 const ManaliSissuKasol = lazy(() => import("./pages/ManaliSissuKasol"));
+const Kedarnath = lazy(() => import("./pages/Kedarnath"));
 const MetaLeadForm = lazy(() => import("./pages/MetaLeadForm"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const ContactUs = lazy(() => import("./pages/ContactUs"));
 const Payment = lazy(() => import("./pages/Payment"));
+const Terms = lazy(() => import("./pages/Terms"));
 
 function Loader() {
   return (
@@ -44,6 +47,14 @@ export default function App() {
           element={
             <Suspense fallback={<Loader />}>
               <ChoptaTungnath />
+            </Suspense>
+          }
+        />
+        <Route
+          path="goa"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Goa />
             </Suspense>
           }
         />
@@ -87,6 +98,14 @@ export default function App() {
             </Suspense>
           }
         />
+        <Route
+          path="kedarnath"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Kedarnath />
+            </Suspense>
+          }
+        />
 
         {/* More trips */}
         <Route path="rishikesh" element={<div>Rishikesh Coming Soon</div>} />
@@ -112,6 +131,14 @@ export default function App() {
           element={
             <Suspense fallback={<Loader />}>
               <ContactUs />
+            </Suspense>
+          }
+        />
+        <Route
+          path="terms"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Terms />
             </Suspense>
           }
         />

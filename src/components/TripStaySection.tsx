@@ -3,7 +3,8 @@ import StayCarousel from "./StayCarousel";
 
 interface CarouselConfig {
   title: string;
-  images: string[];
+  images?: string[];
+  videos?: string[];
 }
 
 interface TripStaySectionProps {
@@ -17,7 +18,7 @@ export default function TripStaySection({ carousels }: TripStaySectionProps) {
         <StayCarousel
           key={idx}
           title={carousel.title}
-          images={carousel.images}
+          items={[...(carousel.images || []), ...(carousel.videos || [])]}
         />
       ))}
     </div>

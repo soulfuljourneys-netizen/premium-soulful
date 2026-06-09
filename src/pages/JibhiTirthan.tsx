@@ -28,6 +28,8 @@ import TripStaySection from "../components/TripStaySection";
 import MobileActionBar from "../components/MobileActionBar";
 import PageVisuals from "../components/PageVisuals";
 import LeadFormCard from "../components/LeadFormCard";
+import useTripMeta from "../hooks/useTripMeta";
+import PhasePricing from "../components/PhasePricing";
 
 export default function JibhiTirthan() {
   const [openVideo, setOpenVideo] = useState<{
@@ -35,6 +37,8 @@ export default function JibhiTirthan() {
     index: number;
     sources: string[];
   } | null>(null);
+
+  const { meta: metaJibhi } = useTripMeta("jibhi-tirthan");
 
   const prices = {
     before: { quad: "₹6,499", triple: "₹6,999", dbl: "₹7,499" },
@@ -205,15 +209,15 @@ export default function JibhiTirthan() {
       <DetailsPanel
         inclusions={inclusions}
         exclusions={exclusions}
-        dates={[
-          "9 Jan 2026",
-          "16 Jan 2026",
-          "23 Jan 2026",
-          "30 Jan 2026",
-          "6 Feb 2026",
-          "13 Feb 2026",
-          "20 Feb 2026",
-          "27 Feb 2026",
+        pickup={"Delhi & Chandigarh"}
+        dates={metaJibhi?.dates ?? [
+          "5th June",
+          "12th June",
+          "19th June",
+          "26th June",
+          "3rd July",
+          "10th July",
+          "17th July",
         ]}
       />
 
@@ -222,33 +226,38 @@ export default function JibhiTirthan() {
         className="mt-12 p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
       >
         <div>
-          <div className="text-sm text-slate-600">Prices (Regular)</div>
+          {metaJibhi && metaJibhi.usePricePhases ? (
+            <PhasePricing endpoint={metaJibhi.pricePhasesEndpoint || "/price-phases.json"} />
+          ) : (
+            <>
+              <div className="mt-2">
+                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900">
+                  {metaJibhi?.prices?.quad ? `₹${Number(metaJibhi.prices.quad).toLocaleString()}` : prices.before.quad}
+                  <span className="text-lg font-medium text-slate-600"> / person</span>
+                </div>
+              </div>
 
-          <div className="mt-2">
-            <div className="text-3xl sm:text-4xl font-extrabold text-slate-900">
-              {prices.before.quad}{" "}
-              <span className="text-lg font-medium text-slate-600">
-                / person
-              </span>
-            </div>
-          </div>
-
-          <div className="mt-3 text-slate-600 text-sm">
-            <ul className="list-disc list-inside space-y-1">
-              <li>
-                <span className="font-semibold text-slate-900">Quad:</span>{" "}
-                {prices.before.quad}
-              </li>
-              <li>
-                <span className="font-semibold text-slate-900">Triple:</span>{" "}
-                {prices.before.triple}
-              </li>
-              <li>
-                <span className="font-semibold text-slate-900">Double:</span>{" "}
-                {prices.before.dbl}
-              </li>
-            </ul>
-          </div>
+              <div className="mt-3 text-slate-600 text-sm">
+                <ul className="list-disc list-inside space-y-1">
+                  {metaJibhi?.prices?.quad && (
+                    <li>
+                      <span className="font-semibold text-slate-900">Quad:</span> ₹{Number(metaJibhi.prices.quad).toLocaleString()}
+                    </li>
+                  )}
+                  {metaJibhi?.prices?.triple && (
+                    <li>
+                      <span className="font-semibold text-slate-900">Triple:</span> ₹{Number(metaJibhi.prices.triple).toLocaleString()}
+                    </li>
+                  )}
+                  {metaJibhi?.prices?.double && (
+                    <li>
+                      <span className="font-semibold text-slate-900">Double:</span> ₹{Number(metaJibhi.prices.double).toLocaleString()}
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </>
+          )}
         </div>
 
         <div className="w-full md:w-1/2">

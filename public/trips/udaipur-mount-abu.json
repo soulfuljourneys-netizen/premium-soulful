@@ -1,0 +1,5 @@
+{
+  "dates": ["14th Sep","21st Sep","28th Sep"],
+  "prices": { "quad": 9999, "triple": 10999, "double": 12999 },
+  "usePricePhases": false
+}

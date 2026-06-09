@@ -28,7 +28,6 @@ export default function VideoModal({
     if (videoRef.current) {
       try {
         videoRef.current.currentTime = 0;
-        videoRef.current.play().catch(() => {});
       } catch (e) {}
     }
   }, [videoData?.src]);

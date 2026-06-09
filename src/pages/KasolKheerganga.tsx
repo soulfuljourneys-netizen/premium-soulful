@@ -8,6 +8,8 @@ import ItineraryAccordion from "../components/ItineraryAccordion";
 import DetailsPanel from "../components/DetailsPanel";
 import VideoScroller from "../components/VideoScroller";
 import LeadFormCard from "../components/LeadFormCard";
+import useTripMeta from "../hooks/useTripMeta";
+import PhasePricing from "../components/PhasePricing";
 import VideoModal from "../components/VideoModal";
 import MobileActionBar from "../components/MobileActionBar";
 import PageVisuals from "../components/PageVisuals";
@@ -23,6 +25,7 @@ import kasol8 from "../assets/Kasol Stays/Kasol Camp 8.jpeg";
 import kasol9 from "../assets/Kasol Stays/Kasol Camp 9.jpeg";
 
 export default function KasolKheerganga() {
+  const { meta: metaKasol } = useTripMeta("kasol-kheerganga");
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
   const [openVideo, setOpenVideo] = useState<{
     src: string;
@@ -193,15 +196,15 @@ export default function KasolKheerganga() {
       <DetailsPanel
         inclusions={inclusions}
         exclusions={exclusions}
-        dates={[
-          "9 Jan 2026",
-          "16 Jan 2026",
-          "23 Jan 2026",
-          "30 Jan 2026",
-          "6 Feb 2026",
-          "13 Feb 2026",
-          "20 Feb 2026",
-          "27 Feb 2026",
+        pickup={"Delhi & Chandigarh"}
+        dates={metaKasol?.dates ?? [
+          "5th June",
+          "12th June",
+          "19th June",
+          "26th June",
+          "3rd July",
+          "10th July",
+          "17th July",
         ]}
       />
 
@@ -210,33 +213,38 @@ export default function KasolKheerganga() {
         className="mt-12 p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
       >
         <div>
-          <div className="text-sm text-slate-600">Prices (Regular)</div>
+          {metaKasol && metaKasol.usePricePhases ? (
+            <PhasePricing endpoint={metaKasol.pricePhasesEndpoint || "/price-phases.json"} />
+          ) : (
+            <>
+              <div className="mt-2">
+                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900">
+                  {metaKasol?.prices?.quad ? `₹${Number(metaKasol.prices.quad).toLocaleString()}` : "₹5,499"}
+                  <span className="text-lg font-medium text-slate-600"> / person</span>
+                </div>
+              </div>
 
-          <div className="mt-2">
-            <div className="text-3xl sm:text-4xl font-extrabold text-slate-900">
-              ₹5,499{" "}
-              <span className="text-lg font-medium text-slate-600">
-                / person
-              </span>
-            </div>
-          </div>
-
-          <div className="mt-3 text-slate-600 text-sm">
-            <ul className="list-disc list-inside space-y-1">
-              <li>
-                <span className="font-semibold text-slate-900">Quad:</span>{" "}
-                ₹5,499
-              </li>
-              <li>
-                <span className="font-semibold text-slate-900">Triple:</span>{" "}
-                ₹5,999
-              </li>
-              <li>
-                <span className="font-semibold text-slate-900">Double:</span>{" "}
-                ₹6,499
-              </li>
-            </ul>
-          </div>
+              <div className="mt-3 text-slate-600 text-sm">
+                <ul className="list-disc list-inside space-y-1">
+                  {metaKasol?.prices?.quad && (
+                    <li>
+                      <span className="font-semibold text-slate-900">Quad:</span> ₹{Number(metaKasol.prices.quad).toLocaleString()}
+                    </li>
+                  )}
+                  {metaKasol?.prices?.triple && (
+                    <li>
+                      <span className="font-semibold text-slate-900">Triple:</span> ₹{Number(metaKasol.prices.triple).toLocaleString()}
+                    </li>
+                  )}
+                  {metaKasol?.prices?.double && (
+                    <li>
+                      <span className="font-semibold text-slate-900">Double:</span> ₹{Number(metaKasol.prices.double).toLocaleString()}
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </>
+          )}
         </div>
 
         <div className="w-full md:w-1/2">

@@ -31,17 +31,36 @@ export default function VideoScroller({ videoIds, videoUrls, onOpen }: Props) {
               <button
                 key={"vid-" + i}
                 onClick={() => onOpen({ src, index: idx, sources })}
-                className="w-44 md:w-64 lg:w-72 h-[14rem] md:h-[20rem] rounded-2xl overflow-hidden flex-shrink-0 p-0 bg-black"
+                className="relative w-44 md:w-64 lg:w-72 h-[14rem] md:h-[20rem] rounded-2xl overflow-hidden flex-shrink-0 p-0 bg-black"
               >
                 <video
                   className="object-cover w-full h-full"
                   src={src}
-                  autoPlay
                   loop
                   muted
+                  autoPlay
                   playsInline
                   preload="auto"
+                  crossOrigin="anonymous"
+                  onPlay={(e) => {
+                    const video = e.currentTarget;
+                    setTimeout(() => {
+                      video.pause();
+                    }, 100);
+                  }}
                 />
+                <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/80 bg-white/20 backdrop-blur-sm text-white">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="h-8 w-8"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </span>
+                </div>
               </button>
             );
           })}

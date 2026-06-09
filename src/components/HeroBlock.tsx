@@ -91,6 +91,7 @@ export default function HeroBlock({
             alt="hero"
             className="object-cover w-full h-full"
             src={heroImage}
+            loading="lazy"
           />
         </div>
         {thumbnails && thumbnails.length > 0 && (
@@ -101,6 +102,7 @@ export default function HeroBlock({
                 alt={`thumb-${i}`}
                 className="w-1/3 h-28 md:h-36 rounded-xl shadow-md object-cover"
                 src={src}
+                loading="lazy"
               />
             ))}
           </div>

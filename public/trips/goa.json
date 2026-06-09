@@ -1,0 +1,19 @@
+{
+  "dates": [
+    "18th September",
+    "25th September",
+    "2nd October"
+  ],
+  "prices": {
+    "triple": 8999,
+    "double": 10999,
+    "quad": 7999,
+    "note": "3rd AC: Extra costing based on ticket prices"
+  },
+  "usePricePhases": false,
+  "pricePhasesEndpoint": "/price-phases.json",
+  "earlyBirdSeats": {
+    "filled": 1,
+    "total": 10
+  }
+}

@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function MobileActionBar({
-  whatsappHref = "https://wa.me/918383021712",
+  whatsappHref = "",
   callHref = "tel:+918383021712",
   bookHref = "#book",
 }: Props) {
@@ -21,6 +21,10 @@ export default function MobileActionBar({
   // No local round robin, use server
 
   const handleAction = (type: "call" | "whatsapp") => {
+    if (type === "whatsapp" && whatsappHref) {
+      window.open(whatsappHref, "_blank");
+      return;
+    }
     setAction(type);
     setPopupOpen(true);
   };

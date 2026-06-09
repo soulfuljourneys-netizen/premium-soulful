@@ -1,0 +1,5 @@
+{
+  "dates": ["12th June","19th June","26th June"],
+  "prices": { "quad": 7499, "triple": 7999, "double": 8499, "note": "Extra add: ₹1,000" },
+  "usePricePhases": false
+}

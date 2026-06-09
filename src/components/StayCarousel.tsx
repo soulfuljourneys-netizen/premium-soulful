@@ -2,81 +2,74 @@ import React, { useState } from "react";
 
 interface StayCarouselProps {
   title: string;
-  images: string[];
+  items: string[];
 }
 
-export default function StayCarousel({ title, images }: StayCarouselProps) {
-  const [current, setCurrent] = useState(0);
+const isVideoFile = (src: string) => /\.(mp4|mov|webm)$/i.test(src);
+
+export default function StayCarousel({ title, items }: StayCarouselProps) {
   const [popup, setPopup] = useState<number | null>(null);
-
-  // Show 3 images in a row on desktop, 1 on mobile
-  const getVisibleImages = () => {
-    if (window.innerWidth < 768) {
-      return [images[current]];
-    }
-    // Desktop: 3 images
-    const arr = [];
-    for (let i = 0; i < 3; i++) {
-      arr.push(images[(current + i) % images.length]);
-    }
-    return arr;
-  };
-
-  const prev = () => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
-  const next = () => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
-
-  // Listen for resize to update visible images
-  const [, setRerender] = useState(false);
-  React.useEffect(() => {
-    const handleResize = () => setRerender((r) => !r);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <section className="my-10">
       <h3 className="text-xl font-bold mb-4">{title}</h3>
       <div className="relative w-full max-w-4xl mx-auto">
-        <div className="flex gap-4 overflow-hidden rounded-2xl shadow-lg justify-center">
-          {getVisibleImages().map((img, idx) => (
-            <div key={idx} className="flex-shrink-0 w-full md:w-1/3">
-              <img
-                loading="lazy"
-                src={img}
-                alt={title + " stay " + idx}
-                className="w-full h-64 object-cover cursor-pointer"
-                onClick={() => setPopup((current + idx) % images.length)}
-              />
-            </div>
-          ))}
-        </div>
-        <button
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 shadow"
-          onClick={prev}
-          aria-label="Previous"
-        >
-          &#8592;
-        </button>
-        <button
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 shadow"
-          onClick={next}
-          aria-label="Next"
-        >
-          &#8594;
-        </button>
-        <div className="flex justify-center gap-2 mt-3">
-          {images.map((_, i) => (
-            <span
-              key={i}
-              className={`inline-block w-3 h-3 rounded-full ${
-                i === current ? "bg-purple-600" : "bg-slate-300"
-              }`}
-            />
-          ))}
+        <div className="flex gap-4 overflow-x-auto rounded-2xl shadow-lg pb-4">
+          {items.map((item, idx) => {
+            const isVideo = isVideoFile(item);
+            return (
+              <div key={idx} className="flex-shrink-0 w-80">
+                <div
+                  className="relative w-full h-64 rounded-lg overflow-hidden cursor-pointer"
+                  onClick={() => setPopup(idx)}
+                >
+                  {isVideo ? (
+                    <video
+                      src={item}
+                      className="w-full h-full object-cover"
+                      muted
+                      loop
+                      autoPlay
+                      playsInline
+                      preload="auto"
+                      crossOrigin="anonymous"
+                      onPlay={(e) => {
+                        const video = e.currentTarget;
+                        setTimeout(() => {
+                          video.pause();
+                        }, 100);
+                      }}
+                    />
+                  ) : (
+                    <img
+                      loading="lazy"
+                      src={item}
+                      alt={title + " stay " + idx}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                  {isVideo && (
+                    <div className="absolute inset-0 bg-black/25 flex items-center justify-center">
+                      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-black shadow">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className="h-8 w-8"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
-      {/* Popup for enlarged image with navigation */}
+      {/* Popup for enlarged image/video with navigation */}
       {popup !== null && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
           <div className="bg-white rounded-2xl shadow-lg p-4 max-w-lg w-full flex flex-col items-center relative">
@@ -84,24 +77,33 @@ export default function StayCarousel({ title, images }: StayCarouselProps) {
               className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 shadow"
               onClick={(e) => {
                 e.stopPropagation();
-                setPopup((popup - 1 + images.length) % images.length);
+                setPopup((popup - 1 + items.length) % items.length);
               }}
               aria-label="Previous"
             >
               &#8592;
             </button>
-            <img
-              loading="lazy"
-              src={images[popup]}
-              alt={title + " enlarged " + popup}
-              className="w-full h-96 object-contain mb-4"
-              onClick={(e) => e.stopPropagation()}
-            />
+            {isVideoFile(items[popup]) ? (
+              <video
+                key={items[popup]}
+                controls
+                src={items[popup]}
+                className="w-full h-96 object-contain mb-4"
+                playsInline
+              />
+            ) : (
+              <img
+                loading="lazy"
+                src={items[popup]}
+                alt={title + " enlarged " + popup}
+                className="w-full h-96 object-contain mb-4"
+              />
+            )}
             <button
               className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 shadow"
               onClick={(e) => {
                 e.stopPropagation();
-                setPopup((popup + 1) % images.length);
+                setPopup((popup + 1) % items.length);
               }}
               aria-label="Next"
             >

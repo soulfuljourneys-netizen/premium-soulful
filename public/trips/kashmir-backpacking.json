@@ -1,0 +1,5 @@
+{
+  "dates": ["26th June","17th July","31st July"],
+  "prices": { "triple": 15999, "double": 16999 },
+  "usePricePhases": false
+}

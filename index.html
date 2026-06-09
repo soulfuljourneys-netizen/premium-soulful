@@ -3,11 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/src/assets/Misc/Logo-4.png" />
+    <link rel="manifest" href="/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Soulful Journeys</title>
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      window._hsq = window._hsq || [];
+      window._hsq.push(["setPath", window.location.pathname + window.location.search]);
+    </script>
+    <script async defer src="https://js.hs-scripts.com/44702223.js"></script>
     <script type="module" src="/src/main.tsx"></script>
+    <script src="/tracker.js"></script>
   </body>
 </html>

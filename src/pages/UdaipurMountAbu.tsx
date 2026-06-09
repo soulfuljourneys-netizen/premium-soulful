@@ -12,6 +12,8 @@ import MobileActionBar from "../components/MobileActionBar";
 import PageVisuals from "../components/PageVisuals";
 import TripStaySection from "../components/TripStaySection";
 import LeadFormCard from "../components/LeadFormCard";
+import useTripMeta from "../hooks/useTripMeta";
+import PhasePricing from "../components/PhasePricing";
 import udaipur1 from "../assets/Udaipur Stays/Udaipur 1.jpeg";
 import udaipur2 from "../assets/Udaipur Stays/Udaipur 2.jpeg";
 import udaipur3 from "../assets/Udaipur Stays/Udaipur 3.jpeg";
@@ -22,6 +24,7 @@ import udaipur7 from "../assets/Udaipur Stays/Udaipur 7.jpeg";
 import udaipur8 from "../assets/Udaipur Stays/Udaipur 8.jpeg";
 
 export default function UdaipurMountAbu() {
+  const { meta: metaUdaipur } = useTripMeta("udaipur-mount-abu");
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
   const [openVideo, setOpenVideo] = useState<{
     src: string;
@@ -117,10 +120,10 @@ export default function UdaipurMountAbu() {
           heroImage={thumb1}
           thumbnails={[thumb2, thumb3, thumb4]}
           stats={[
-            { label: "Duration", value: "5D • 4N" },
-            { label: "Pickup", value: " Gurgaon & Jaipur" },
-            { label: "Price", value: `Quad: ${prices.before.quad}` },
-          ]}
+              { label: "Duration", value: "5D • 4N" },
+              { label: "Pickup", value: "Delhi & Jaipur" },
+              { label: "Price", value: `Quad: ${prices.before.quad}` },
+            ]}
         />
         <PageVisuals />
       </div>
@@ -198,16 +201,8 @@ export default function UdaipurMountAbu() {
       <DetailsPanel
         inclusions={inclusions}
         exclusions={exclusions}
-        dates={[
-          "9 Jan 2026",
-          "16 Jan 2026",
-          "23 Jan 2026",
-          "30 Jan 2026",
-          "6 Feb 2026",
-          "13 Feb 2026",
-          "20 Feb 2026",
-          "27 Feb 2026",
-        ]}
+        pickup={"Delhi & Jaipur"}
+        dates={metaUdaipur?.dates ?? []}
       />
 
       <section
@@ -215,31 +210,38 @@ export default function UdaipurMountAbu() {
         className="mt-12 p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
       >
         <div>
-          <div className="text-sm text-slate-600">Prices (Regular)</div>
-          <div className="mt-2">
-            <div className="text-3xl sm:text-4xl font-extrabold text-slate-900">
-              {prices.before.quad}{" "}
-              <span className="text-lg font-medium text-slate-600">
-                / person
-              </span>
-            </div>
-          </div>
-          <div className="mt-3 text-slate-600 text-sm">
-            <ul className="list-disc list-inside space-y-1">
-              <li>
-                <span className="font-semibold text-slate-900">Quad:</span>{" "}
-                {prices.before.quad}
-              </li>
-              <li>
-                <span className="font-semibold text-slate-900">Triple:</span>{" "}
-                {prices.before.triple}
-              </li>
-              <li>
-                <span className="font-semibold text-slate-900">Double:</span>{" "}
-                {prices.before.dbl}
-              </li>
-            </ul>
-          </div>
+          {metaUdaipur && metaUdaipur.usePricePhases ? (
+            <PhasePricing endpoint={metaUdaipur.pricePhasesEndpoint || "/price-phases.json"} />
+          ) : (
+            <>
+              <div className="mt-2">
+                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900">
+                  {metaUdaipur?.prices?.quad ? `₹${Number(metaUdaipur.prices.quad).toLocaleString()}` : prices.before.quad}
+                  <span className="text-lg font-medium text-slate-600"> / person</span>
+                </div>
+              </div>
+
+              <div className="mt-3 text-slate-600 text-sm">
+                <ul className="list-disc list-inside space-y-1">
+                  {metaUdaipur?.prices?.quad && (
+                    <li>
+                      <span className="font-semibold text-slate-900">Quad:</span> ₹{Number(metaUdaipur.prices.quad).toLocaleString()}
+                    </li>
+                  )}
+                  {metaUdaipur?.prices?.triple && (
+                    <li>
+                      <span className="font-semibold text-slate-900">Triple:</span> ₹{Number(metaUdaipur.prices.triple).toLocaleString()}
+                    </li>
+                  )}
+                  {metaUdaipur?.prices?.double && (
+                    <li>
+                      <span className="font-semibold text-slate-900">Double:</span> ₹{Number(metaUdaipur.prices.double).toLocaleString()}
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </>
+          )}
         </div>
 
         <div className="w-full md:w-1/2">

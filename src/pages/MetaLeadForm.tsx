@@ -58,8 +58,9 @@ const trips = [
   "Chopta Tungnath",
   "Udaipur MountAbu",
   "Manali Sissu Kasol",
+  "Goa",
 ];
-const months = ["January 2026", "February 2026", "March 2026"];
+const months = ["May 2026", "June 2026", "July 2026", "August 2026"];
 
 export default function MetaLeadForm() {
   const navigate = useNavigate();
@@ -190,7 +191,31 @@ export default function MetaLeadForm() {
 
       setOverlayText("Redirecting…");
       setTimeout(() => {
-        navigate("/");
+        // Conditional redirection based on selected trip
+        const tripRedirects: { [k: string]: string } = {
+          "Kasol Kheerganga": "/kasol-kheerganga",
+          "Jibhi Tirthan": "/jibhi-tirthan",
+          "Chopta Tungnath": "/chopta-tungnath",
+          "Kashmir Backpacking": "/kashmir-backpacking",
+          "Udaipur MountAbu": "/udaipur-mount-abu",
+          "Manali Sissu Kasol": "/manali-kasol-chills",
+          "Goa": "/goa",
+        };
+
+        const selectedTrip = form.trip;
+        const redirectUrl = tripRedirects[selectedTrip];
+
+        if (redirectUrl) {
+          // Redirect to specific trip page
+          navigate(redirectUrl);
+        } else {
+          // Redirect to WhatsApp for other trips
+          const whatsappUrl = `https://wa.me/8383021712?text=${encodeURIComponent(
+            "I am looking for other trip apart from the options"
+          )}`;
+          window.open(whatsappUrl, "_blank");
+          navigate("/");
+        }
       }, 500);
     } catch (err) {
       setOverlayText("Error submitting. Please try again.");

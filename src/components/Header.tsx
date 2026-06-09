@@ -19,6 +19,7 @@ export default function Header() {
     "/chopta-tungnath": "5999",
     "/jibhi-tirthan": "6499",
     "/udaipur-mount-abu": "6999",
+    "/kashmir-backpacking": "15999",
   };
   const tripPath = Object.keys(tripPrices).find((p) =>
     location.pathname.startsWith(p),
@@ -161,10 +162,31 @@ export default function Header() {
                 </Link>
                 <Link
                   className="block px-4 py-2 text-sm hover:bg-slate-100"
+                  to="/goa"
+                  onClick={() => setTripsDropdownOpen(false)}
+                >
+                  Goa
+                </Link>
+                <Link
+                  className="block px-4 py-2 text-sm hover:bg-slate-100"
+                  to="/kedarnath"
+                  onClick={() => setTripsDropdownOpen(false)}
+                >
+                  Kedarnath
+                </Link>
+                <Link
+                  className="block px-4 py-2 text-sm hover:bg-slate-100"
                   to="/jibhi-tirthan"
                   onClick={() => setTripsDropdownOpen(false)}
                 >
                   Jibhi Tirthan
+                </Link>
+                <Link
+                  className="block px-4 py-2 text-sm hover:bg-slate-100"
+                  to="/kashmir-backpacking"
+                  onClick={() => setTripsDropdownOpen(false)}
+                >
+                  Kashmir Backpacking
                 </Link>
                 <Link
                   className="block px-4 py-2 text-sm hover:bg-slate-100"
@@ -274,10 +296,31 @@ export default function Header() {
             </Link>
             <Link
               className="block px-2 py-1"
+              to="/goa"
+              onClick={() => setMenuOpen(false)}
+            >
+              Goa
+            </Link>
+            <Link
+              className="block px-2 py-1"
+              to="/kedarnath"
+              onClick={() => setMenuOpen(false)}
+            >
+              Kedarnath
+            </Link>
+            <Link
+              className="block px-2 py-1"
               to="/jibhi-tirthan"
               onClick={() => setMenuOpen(false)}
             >
               Jibhi Tirthan
+            </Link>
+            <Link
+              className="block px-2 py-1"
+              to="/kashmir-backpacking"
+              onClick={() => setMenuOpen(false)}
+            >
+              Kashmir Backpacking
             </Link>
             <Link
               className="block px-2 py-1"
